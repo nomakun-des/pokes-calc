@@ -29,7 +29,7 @@ window.onload = function () {
 
 function setHpInfo() {
     console.log("setHpInfo()");
-    
+
     for (let i = 0; i < hpTheory.length; i++) {
         document.getElementById("hpTheoryInfo_" + (i + 1)).innerHTML = hpTheory[i];
     }
@@ -37,7 +37,7 @@ function setHpInfo() {
 
 function reCalc() {
     console.log("reCalc()");
-    
+
     document.getElementById("EV_total").value = total_ev();
     document.getElementById("Bs_total").value = total_bs();
     for (let i = 0; i < 6; i++) {
@@ -54,7 +54,7 @@ function reCalc() {
 
 function byStats() {
     console.log("byStats()");
-    
+
     for (let i = 0; i < 6; i++) {
         if (EV_calc(i) >= 0)
             document.getElementById("EV_" + stats_name[i]).value = EV_calc(i);
@@ -108,9 +108,9 @@ function nameofTheory() {
                 if (nameofTheory_vague(i))
                     result += stats_name[i];
             }
-            if (result.length === 2){
+            if (result.length === 2) {
                 result += "ベース";
-            }else{
+            } else {
                 result = result_store;
             }
         }
@@ -123,19 +123,19 @@ function nameofTheory() {
     }
 }
 function nameofTheory_vague(num) {
-    console.log("nameofTheory_vague("+num+")");
-    
+    console.log("nameofTheory_vague(" + num + ")");
+
     return (Number(document.getElementById("EV_" + stats_name[num]).value) >= 180);
 }
 
 function ANplusB_H(A, B) {
-    console.log("ANplusB_H("+A+","+B+")");
-    
+    console.log("ANplusB_H(" + A + "," + B + ")");
+
     return Number.isInteger(((Number(document.getElementById("Stats_H").value)) - B) / A);
 }
 function ANplusB_excess(A, B) {
-    console.log("ANplusB_excess("+A+","+B+")");
-    
+    console.log("ANplusB_excess(" + A + "," + B + ")");
+
     HP = Number(document.getElementById("Stats_H").value);
     plus = 0;
     minus = 0;
@@ -148,8 +148,8 @@ function ANplusB_excess(A, B) {
     return "<span style='color:red;'>+" + plus + "</span> / <span style='color:blue;'>-" + minus + "</span>";
 }
 function ANplusB_excess_3point(A, B1, B2, B3) {
-    console.log("ANplusB_excess_3point("+A+", "+B1+", "+B2+", "+B3+")");
-    
+    console.log("ANplusB_excess_3point(" + A + ", " + B1 + ", " + B2 + ", " + B3 + ")");
+
     HP = Number(document.getElementById("Stats_H").value);
     plus = 0;
     minus = 0;
@@ -195,8 +195,8 @@ function ANplusB_excess_3point(A, B1, B2, B3) {
     return "<span style='color:red;'>+" + plus + "</span> / <span style='color:blue;'>-" + minus + "</span>";
 }
 function HPcheck(A, B) {
-    console.log("HPcheck("+A+","+B+")");
-    
+    console.log("HPcheck(" + A + "," + B + ")");
+
     if (ANplusB_H(A, B)) {
         return "○";
     } else {
@@ -204,8 +204,8 @@ function HPcheck(A, B) {
     }
 }
 function HPcheck_3point(A, B1, B2, B3) {
-    console.log("HPcheck_3point("+A+", "+B1+", "+B2+", "+B3+")");
-    
+    console.log("HPcheck_3point(" + A + ", " + B1 + ", " + B2 + ", " + B3 + ")");
+
     if (ANplusB_H(A, B1) || ANplusB_H(A, B2) || ANplusB_H(A, B3)) {
         return "○";
     } else {
@@ -350,7 +350,7 @@ function Stats_calc(num, lv) {
 }
 
 function EV_calc(num) {
-    console.log("EV_calc("+num+")");
+    console.log("EV_calc(" + num + ")");
 
     lv = Number(document.getElementById("lv").value);
     if (num === 0) {
@@ -395,7 +395,7 @@ function EV_calc(num) {
 
 function setPokes() {
     console.log("setPokes()");
-    
+
     for (let i = 0; i < 6; i++) {
         document.getElementById("Basestats_" + stats_name[i]).value =
                 pokemon[Number(document.getElementById("pokename").value)][i + 1];
@@ -406,7 +406,7 @@ function setPokes() {
 
 function all_set(num) {
     console.log("all_set(" + num + ")");
-    
+
     for (let i = 0; i < 6; i++) {
         setEV(num, i);
     }
@@ -414,15 +414,29 @@ function all_set(num) {
 
 function setEV(num, id) {
     console.log("setEV(" + num + "," + id + ")");
-    
-    document.getElementById("EV_" + stats_name[id]).value = num;
+
+    if (Number(document.getElementById("EV_" + stats_name[id]).value) < num){
+        if ((Number(document.getElementById("EV_total").value) + num) > 508) {
+            console.log("setEV is over");
+            num = 508 - Number(document.getElementById("EV_total").value);
+            while (num % 4 !== 0)
+                num--;
+            if (getStats(id, 50, num, "", "") === getStats(id, 50, num - 4, "", ""))
+                num -= 4;
+        }
+        
+    if (Number(document.getElementById("EV_" + stats_name[id]).value) < num)
+        document.getElementById("EV_" + stats_name[id]).value = num;
+    }else{
+        document.getElementById("EV_" + stats_name[id]).value = num;
+    }
 
     reCalc();
 }
 
 function setIV(num, id) {
     console.log("setIV(" + num + "," + id + ")");
-    
+
     document.getElementById("IV_" + stats_name[id]).value = num;
 
     reCalc();
@@ -430,7 +444,7 @@ function setIV(num, id) {
 
 function setLv(num) {
     console.log("setLv(" + num + ")");
-    
+
     document.getElementById("lv").value = num;
 
     reCalc();
@@ -438,7 +452,7 @@ function setLv(num) {
 
 function numCheck() {
     console.log("numCheck()");
-    
+
     if (1 <= Number(document.getElementById('lv').value)
             && Number(document.getElementById('lv').value) <= 100) {
         document.getElementById('lv').style.color = "black";
@@ -561,7 +575,7 @@ function numCheck() {
 
 function total_ev() {
     console.log("total_ev()");
-    
+
     result = 0;
     result += Number(document.getElementById('EV_H').value);
     result += Number(document.getElementById('EV_A').value);
@@ -575,7 +589,7 @@ function total_ev() {
 
 function total_bs() {
     console.log("total_bs()");
-    
+
     result = 0;
     result += Number(document.getElementById('Basestats_H').value);
     result += Number(document.getElementById('Basestats_A').value);
@@ -589,7 +603,7 @@ function total_bs() {
 
 function set_Nature(crease, num) {
     console.log("set_Nature(" + crease + "," + num + ")");
-    
+
     if (crease === 0) {
         if (num === 1) {
             document.getElementById('Nature_A_dec').checked = false;
@@ -668,9 +682,43 @@ function set_Nature(crease, num) {
     return;
 }
 
+function getStats(num, lv, EV, IV, Basestats) {
+    console.log("getStats(" + num + "," + lv + "," + EV + "," + IV + "," + Basestats + ")");
+
+    if (num === 0) {
+        if (EV === "")
+            EV = Number(document.getElementById("EV_H").value);                 //努力値
+        if (IV === "")
+            IV = Number(document.getElementById("IV_H").value);                 //個体値
+        if (Basestats === "")
+            Basestats = Number(document.getElementById("Basestats_H").value);   //種族値
+        result = Math.floor((Basestats * 2 + IV + Math.floor(EV / 4)) * lv / 100) + lv + 10;
+
+        return result;
+    } else {
+        if (EV === "")
+            EV = Number(document.getElementById("EV_" + stats_name[num]).value);                 //努力値
+        if (IV === "")
+            IV = Number(document.getElementById("IV_" + stats_name[num]).value);                 //個体値
+        if (Basestats === "")
+            Basestats = Number(document.getElementById("Basestats_" + stats_name[num]).value);   //種族値
+        if (document.getElementById("Nature_" + stats_name[num] + "_inc").checked) {
+            Nature = 1.1;
+        } else if (document.getElementById("Nature_" + stats_name[num] + "_dec").checked) {
+            Nature = 0.9;
+        } else {
+            Nature = 1;
+        }
+
+        result = Math.floor((Math.floor((Basestats * 2 + IV + Math.floor(EV / 4)) * lv / 100) + 5) * Nature);
+
+        return result;
+    }
+}
+
 function getNature() {
     console.log("getNature()");
-    
+
     if (document.getElementById('Nature_A_inc').checked) {
         if (document.getElementById('Nature_B_dec').checked)
             return "さみしがり";
