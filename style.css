@@ -1,0 +1,52 @@
+a {
+    color: #666;
+    border-bottom: 1px dashed #666;
+    text-decoration: none;
+}
+a:hover{
+    background-color:#69c;
+    color:#fff;
+    border-bottom:1px dashed #fff;
+}
+
+div#main{
+    display: flex;
+    flex-wrap: wrap;
+}
+div#main div{
+}
+.spacer{
+    width: 100%;
+}
+#main_hp{
+    min-height: 465px;
+}
+#hpTheory th{
+    background-color: #ccc;
+}
+
+input{
+    width: 35px;
+}
+input.rd{
+    width: 15px;
+}
+button{
+    width: 35px;
+}
+td{
+    text-align: center;
+    vertical-align: middle;
+}
+td.left{
+    text-align: left;
+}
+
+textarea{
+    min-height: 50px;
+    min-width: 250px;
+    height: 140px;
+    width: 395px;
+    max-height: 140px;
+    max-width: 395px;
+}
