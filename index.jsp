@@ -110,7 +110,8 @@
             </div>
             <div class="spacer"></div>
             <div>
-                Thx to <a href="https://github.com/select2/select2" target="_blank">Select2</a><br>
+                Thx to <a href="https://github.com/select2/select2" target="_blank">Select2</a>, 
+                <a href="https://into-the-program.com/javascript-loader/" target="_blank">ryohei</a><br>
                 Made by <a href="https://twitter.com/nomakun_des" target="_blank">@nomakun_des</a>
             </div>
         </DIV>
