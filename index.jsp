@@ -126,5 +126,51 @@
                 <div class="sk-chase-dot"></div>
             </div>
         </div>
+
+
+        <script src="https://github.com/niwaringo/moji/releases/download/V1.2.0/moji.js"></script>
+        <script>
+                            $(function () {
+                                function customMatcher(params, data) {
+                                    if ($.trim(params.term) === '') {
+                                        return data;
+                                    }
+
+                                    if (typeof data.text === 'undefined') {
+                                        return null;
+                                    }
+                                    /*
+                                     ZEtoHE 英数字を半角に
+                                     HKtoZK 半角カタカナを全角カタカナに
+                                     HGtoKK ひらがなをカタカナに
+                                     */
+                                    let term = moji(params.term.toUpperCase())
+                                            .convert("ZEtoHE").convert('HKtoZK').convert('HGtoKK').toString();
+
+                                    let text = moji(data.text.toUpperCase())
+                                            .convert("ZEtoHE").convert('HKtoZK').convert('HGtoKK').toString();
+
+                                    if (text.indexOf(term) > -1) {
+                                        return data;
+                                    }
+
+                                    let searchText = $(data.element).data('search');
+                                    if (searchText) {
+                                        //ホントはdata-searchに記載前にconvertしておく方が良い。
+                                        searchText = moji(searchText.toUpperCase())
+                                                .convert("ZEtoHE").convert('HKtoZK').convert('HGtoKK').toString();
+                                        if (searchText.indexOf(term) > -1) {
+                                            return data;
+                                        }
+
+                                    }
+                                    return null;
+                                }
+                                $("#pokename").select2({
+                                    language: "ja",
+                                    matcher: customMatcher
+                                });
+                            });
+        </script>
     </body>
 </html>
