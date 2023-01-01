@@ -36,6 +36,9 @@ div#main div{
 #main_hp{
     min-height: 465px;
 }
+#hpTheory{
+    display: none;
+}
 #hpTheory th{
     background-color: #ccc;
 }
@@ -52,6 +55,10 @@ button{
 button.pokes_S{
     width: 50px;
 }
+button#hpTheory_button{
+    width: 60px;
+}
+
 td{
     text-align: center;
     vertical-align: middle;
