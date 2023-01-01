@@ -35,11 +35,6 @@
                         }
                     </script>
                 </select>
-                <script>
-                    $(document).ready(function () {
-                        $('.select_search').select2();
-                    });
-                </script>
                 <TABLE>
                     <TR>
                         <TD>Lv.</TD>
@@ -91,7 +86,38 @@
                         <TD><button id="all_0" onClick="all_set(0)">ALL0</button></TD>
                         <TD><input type="number" value="600" id="Bs_total" readonly></TD>
                     </TR>
+                </TABLE><br>
+                
+                S比較<br>
+                <select id="pokename2" class="select_search" onchange="setPoke2_speed('max')">
+                    <option value="" disabled selected style="display:none;">ポケモン名</option>
+                    <% for (int i = 0; i < 425; i++) {%>
+                    <option id="pokename2_<%=i%>" value="<%=i%>">pokemon[<%=i%>][0]</option>
+                    <% }%>
+                    <script type="text/javascript">
+                        for (let i = 0; i < pokemon.length; i++) {
+                            document.getElementById("pokename2_" + i).innerHTML = pokemon[i][0];
+                        }
+                    </script>
+                </select>
+                <TABLE>
+                    <TR>
+                        <TD>
+                            素早さ
+                        </TD>
+                        <TD>
+                            <input type="number" id="poke2_speed" readonly>
+                        </TD>
+                        <TD>
+                            <button class="pokes_S" id="poke2_sMax" onclick="setPoke2_speed('max')">最速</button>
+                            <button class="pokes_S" id="poke2_sMin" onclick="setPoke2_speed('high')">準速</button>
+                            <button class="pokes_S" id="poke2_sMin" onclick="setPoke2_speed('normal')">無振</button>
+                            <button class="pokes_S" id="poke2_sMin" onclick="setPoke2_speed('low')">下降</button>
+                            <button class="pokes_S" id="poke2_sMin" onclick="setPoke2_speed('min')">最遅</button>
+                        </TD>
+                    </TR>
                 </TABLE>
+
                 <textarea id="text" placeholder="コピペ"></textarea><br>
             </div>
 
@@ -113,7 +139,7 @@
                 Thx to <a href="https://github.com/select2/select2" target="_blank">Select2</a>, 
                 <a href="https://into-the-program.com/javascript-loader/" target="_blank">ryohei</a><br>
                 Made by <a href="https://twitter.com/nomakun_des" target="_blank">@nomakun_des</a><br>
-                v1.02.0 <a href="update.html" target="_blank">Update Details</a>
+                v1.03.0 <a href="update.html" target="_blank">Update Details</a>
             </div>
         </DIV>
 
@@ -128,50 +154,59 @@
             </div>
         </div>
 
+        <script>
+            $(document).ready(function () {
+                $('.select_search').select2();
+            });
+        </script>
 
         <script src="https://github.com/niwaringo/moji/releases/download/V1.2.0/moji.js"></script>
         <script>
-                            $(function () {
-                                function customMatcher(params, data) {
-                                    if ($.trim(params.term) === '') {
-                                        return data;
-                                    }
+            $(function () {
+                function customMatcher(params, data) {
+                    if ($.trim(params.term) === '') {
+                        return data;
+                    }
 
-                                    if (typeof data.text === 'undefined') {
-                                        return null;
-                                    }
-                                    /*
-                                     ZEtoHE 英数字を半角に
-                                     HKtoZK 半角カタカナを全角カタカナに
-                                     HGtoKK ひらがなをカタカナに
-                                     */
-                                    let term = moji(params.term.toUpperCase())
-                                            .convert("ZEtoHE").convert('HKtoZK').convert('HGtoKK').toString();
+                    if (typeof data.text === 'undefined') {
+                        return null;
+                    }
+                    /*
+                     ZEtoHE 英数字を半角に
+                     HKtoZK 半角カタカナを全角カタカナに
+                     HGtoKK ひらがなをカタカナに
+                     */
+                    let term = moji(params.term.toUpperCase())
+                            .convert("ZEtoHE").convert('HKtoZK').convert('HGtoKK').toString();
 
-                                    let text = moji(data.text.toUpperCase())
-                                            .convert("ZEtoHE").convert('HKtoZK').convert('HGtoKK').toString();
+                    let text = moji(data.text.toUpperCase())
+                            .convert("ZEtoHE").convert('HKtoZK').convert('HGtoKK').toString();
 
-                                    if (text.indexOf(term) > -1) {
-                                        return data;
-                                    }
+                    if (text.indexOf(term) > -1) {
+                        return data;
+                    }
 
-                                    let searchText = $(data.element).data('search');
-                                    if (searchText) {
-                                        //ホントはdata-searchに記載前にconvertしておく方が良い。
-                                        searchText = moji(searchText.toUpperCase())
-                                                .convert("ZEtoHE").convert('HKtoZK').convert('HGtoKK').toString();
-                                        if (searchText.indexOf(term) > -1) {
-                                            return data;
-                                        }
+                    let searchText = $(data.element).data('search');
+                    if (searchText) {
+                        //ホントはdata-searchに記載前にconvertしておく方が良い。
+                        searchText = moji(searchText.toUpperCase())
+                                .convert("ZEtoHE").convert('HKtoZK').convert('HGtoKK').toString();
+                        if (searchText.indexOf(term) > -1) {
+                            return data;
+                        }
 
-                                    }
-                                    return null;
-                                }
-                                $("#pokename").select2({
-                                    language: "ja",
-                                    matcher: customMatcher
-                                });
-                            });
+                    }
+                    return null;
+                }
+                $("#pokename").select2({
+                    language: "ja",
+                    matcher: customMatcher
+                });
+                $("#pokename2").select2({
+                    language: "ja",
+                    matcher: customMatcher
+                });
+            });
         </script>
     </body>
 </html>
