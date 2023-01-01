@@ -29,11 +29,6 @@
                     <% for (int i = 0; i < 425; i++) {%>
                     <option id="pokename_<%=i%>" value="<%=i%>">pokemon[<%=i%>][0]</option>
                     <% }%>
-                    <script type="text/javascript">
-                        for (let i = 0; i < pokemon.length; i++) {
-                            document.getElementById("pokename_" + i).innerHTML = pokemon[i][0];
-                        }
-                    </script>
                 </select>
                 <TABLE>
                     <TR>
@@ -87,18 +82,59 @@
                         <TD><input type="number" value="600" id="Bs_total" readonly></TD>
                     </TR>
                 </TABLE><br>
-                
+                <TABLE>
+                    <TR>
+                        <TH colspan="2"></TH><TH>ランク補正</TH><TH></TH><TH>麻痺</TH><TH>おいかぜ</TH>
+                    </TR>
+                    <TR>
+                        <TD>S</TD>
+                        <TD>
+                            <input id="real_Speed" value="120" readonly>
+                        </TD>
+                        <TD>
+                            <select id="s_rank" onchange="real_speed()">
+                                <% for (int i = 6; i > (-7); i--) {%>
+                                <option id="s_rank_<%=i%>" value="<%=i%>" 
+                                        <% if (i == 0) {%>selected="selected"<% }%>>
+                                    <%if (i > 0) {%>+<% }%><%=i%></option>
+                                    <% }%>
+                            </select>
+                        </TD>
+                        <TD class="left">
+                            <select class="select_search" id="s_skill" onchange="real_speed()">
+                                <option id="s_skill_null" value="" selected>
+                                    とくせい</option>
+                                    <% for (int i = 0; i < 9; i++) {%>
+                                <option id="s_skill_<%=i%>" value="<%=i%>">skill[<%=i%>][0]</option>
+                                <% }%>
+                            </select>
+                        </TD>
+                        <TD>
+                            <input type="checkbox" id="Paralysis" onchange="real_speed()">
+                        </TD>
+                        <TD>
+                            <input type="checkbox" id="Tailwind" onchange="real_speed()">
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD colspan="3"></TD>
+                        <TD class="left">
+                            <select class="select_search" id="s_item" onchange="real_speed()">
+                                <option id="s_item_null" value="" selected>
+                                    もちもの</option>
+                                    <% for (int i = 0; i < 2; i++) {%>
+                                <option id="s_item_<%=i%>" value="<%=i%>">item[<%=i%>][0]</option>
+                                <% }%>
+                            </select>
+                        </TD>
+                    </TR>
+                </TABLE>
                 S比較<br>
                 <select id="pokename2" class="select_search" onchange="setPoke2_speed('max')">
                     <option value="" disabled selected style="display:none;">ポケモン名</option>
                     <% for (int i = 0; i < 425; i++) {%>
                     <option id="pokename2_<%=i%>" value="<%=i%>">pokemon[<%=i%>][0]</option>
                     <% }%>
-                    <script type="text/javascript">
-                        for (let i = 0; i < pokemon.length; i++) {
-                            document.getElementById("pokename2_" + i).innerHTML = pokemon[i][0];
-                        }
-                    </script>
                 </select>
                 <TABLE>
                     <TR>
@@ -120,27 +156,47 @@
 
                 <textarea id="text" placeholder="コピペ"></textarea><br>
             </div>
+            <DIV>
+                <div id="main_info">
+                    <a id="info_button" class="word_button" onclick="info_display()">
+                        <h2 id="info_title">#このサイトについて ▽</h2>
+                    </a>
+                    <div id="info">
+                        ポケモンの実数値を計算するサイトです。<br>
+                        <br>
+                        ポケモン名は「かな/カナ」関わらず行えます。<br>
+                        入力されたポケモンの概要をタイトルとして表示します。<br>
+                        「252」ボタンで努力値を設定する場合に最大値を超えてしまったり、<br>
+                        無駄な努力値になってしまう事を自動で判断し計算します。<br>
+                        <br>
+                        特性「はやあし」によって麻痺での1/2が無視されます。<br>
+                        持ち物「スピードパウダー」は「メタモン」のみに効果があります。<br>
+                    </div>
+                </div>
 
-            <div id="main_hp">
-                HP調整表
-                <button id="hpTheory_button" onclick="hpTable_display()">表示切替</button>
-                <TABLE border="1" id="hpTheory">
-                    <TR>
-                        <TH>過不足</TH><TH>調整</TH><TH>内容</TH>
-                    </TR>
-                    <% for (int i = 1; i < 18; i++) {%>
-                    <TR>
-                        <TD id="hpTheory_<%=i%>">null</TD><TD id="hpTheoryName_<%=i%>"></TD><TD class="left" id="hpTheoryInfo_<%=i%>"></TD>
-                    </TR>
-                    <% }%>
-                </TABLE>
-            </div>
+                <div id="main_hp">
+                    <a id="hpTheory_button" class="word_button" onclick="hpTable_display()">
+                        <h2 id="hpTheory_title">#HP調整表 ▽</h2>
+                    </a>
+                    <TABLE border="1" id="hpTheory">
+                        <TR>
+                            <TH>過不足</TH><TH>調整</TH><TH>内容</TH>
+                        </TR>
+                        <% for (int i = 1; i < 18; i++) {%>
+                        <TR>
+                            <TD id="hpTheory_<%=i%>">null</TD><TD id="hpTheoryName_<%=i%>"></TD><TD class="left" id="hpTheoryInfo_<%=i%>"></TD>
+                        </TR>
+                        <% }%>
+                    </TABLE>
+                </div>
+            </DIV>
+
             <div class="spacer"></div>
             <div>
                 Thx to <a href="https://github.com/select2/select2" target="_blank">Select2</a>, 
                 <a href="https://into-the-program.com/javascript-loader/" target="_blank">ryohei</a><br>
                 Made by <a href="https://twitter.com/nomakun_des" target="_blank">@nomakun_des</a><br>
-                v1.04.0 <a href="update.html" target="_blank">Update Details</a>
+                v1.05.0 <a href="update.html" target="_blank">Update Details</a>
             </div>
         </DIV>
 
@@ -155,59 +211,6 @@
             </div>
         </div>
 
-        <script>
-            $(document).ready(function () {
-                $('.select_search').select2();
-            });
-        </script>
-
         <script src="https://github.com/niwaringo/moji/releases/download/V1.2.0/moji.js"></script>
-        <script>
-            $(function () {
-                function customMatcher(params, data) {
-                    if ($.trim(params.term) === '') {
-                        return data;
-                    }
-
-                    if (typeof data.text === 'undefined') {
-                        return null;
-                    }
-                    /*
-                     ZEtoHE 英数字を半角に
-                     HKtoZK 半角カタカナを全角カタカナに
-                     HGtoKK ひらがなをカタカナに
-                     */
-                    let term = moji(params.term.toUpperCase())
-                            .convert("ZEtoHE").convert('HKtoZK').convert('HGtoKK').toString();
-
-                    let text = moji(data.text.toUpperCase())
-                            .convert("ZEtoHE").convert('HKtoZK').convert('HGtoKK').toString();
-
-                    if (text.indexOf(term) > -1) {
-                        return data;
-                    }
-
-                    let searchText = $(data.element).data('search');
-                    if (searchText) {
-                        //ホントはdata-searchに記載前にconvertしておく方が良い。
-                        searchText = moji(searchText.toUpperCase())
-                                .convert("ZEtoHE").convert('HKtoZK').convert('HGtoKK').toString();
-                        if (searchText.indexOf(term) > -1) {
-                            return data;
-                        }
-
-                    }
-                    return null;
-                }
-                $("#pokename").select2({
-                    language: "ja",
-                    matcher: customMatcher
-                });
-                $("#pokename2").select2({
-                    language: "ja",
-                    matcher: customMatcher
-                });
-            });
-        </script>
     </body>
 </html>
