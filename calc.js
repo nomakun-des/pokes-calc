@@ -418,7 +418,7 @@ function setEV(num, id) {
     if (Number(document.getElementById("EV_" + stats_name[id]).value) < num){
         if ((Number(document.getElementById("EV_total").value) + num) > 508) {
             console.log("setEV is over");
-            num = 508 - Number(document.getElementById("EV_total").value);
+            num = 508 - (Number(document.getElementById("EV_total").value)-Number(document.getElementById("EV_" + stats_name[id]).value));
             while (num % 4 !== 0)
                 num--;
             if (getStats(id, 50, num, "", "") === getStats(id, 50, num - 4, "", ""))
