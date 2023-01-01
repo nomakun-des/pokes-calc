@@ -20,12 +20,104 @@ let hpTheory = [
     'ちきゅうなげ等の固定ダメージをみがわりが耐える'
 ];
 
+let speed_skill = [
+    ["かるわざ", "2.0"],
+    ["クォークチャージ", "1.5"],
+    ["こだいかっせい", "1.5"],
+    ["サーフテール", "2.0"],
+    ["すいすい", "2.0"],
+    ["すなかき", "2.0"],
+    ["はやあし", "1.5"],
+    ["ゆきかき", "2.0"],
+    ["ようりょくそ", "2.0"]
+];
+
+let speed_item = [
+    ["こだわりスカーフ", "1.5"],
+    ["スピードパウダー", "2.0"]
+];
+
 window.onload = function () {
+    first_setup();
     reCalc();
     setHpInfo();
+
     const loader = document.getElementById('loader');
     loader.classList.add('loaded');
 };
+
+function first_setup() {
+    for (let i = 0; i < pokemon.length; i++) {
+        document.getElementById("pokename_" + i).innerHTML = pokemon[i][0];
+    }
+    for (let i = 0; i < pokemon.length; i++) {
+        document.getElementById("pokename2_" + i).innerHTML = pokemon[i][0];
+    }
+    for (let i = 0; i < speed_skill.length; i++) {
+        document.getElementById("s_skill_" + i).innerHTML =
+                speed_skill[i][0] + "(×" + speed_skill[i][1] + ")";
+    }
+    for (let i = 0; i < speed_item.length; i++) {
+        document.getElementById("s_item_" + i).innerHTML =
+                speed_item[i][0] + "(×" + speed_item[i][1] + ")";
+    }
+    $(document).ready(function () {
+        $('.select_search').select2();
+    });
+    $(function () {
+        function customMatcher(params, data) {
+            if ($.trim(params.term) === '') {
+                return data;
+            }
+
+            if (typeof data.text === 'undefined') {
+                return null;
+            }
+            /*
+             ZEtoHE 英数字を半角に
+             HKtoZK 半角カタカナを全角カタカナに
+             HGtoKK ひらがなをカタカナに
+             */
+            let term = moji(params.term.toUpperCase())
+                    .convert("ZEtoHE").convert('HKtoZK').convert('HGtoKK').toString();
+
+            let text = moji(data.text.toUpperCase())
+                    .convert("ZEtoHE").convert('HKtoZK').convert('HGtoKK').toString();
+
+            if (text.indexOf(term) > -1) {
+                return data;
+            }
+
+            let searchText = $(data.element).data('search');
+            if (searchText) {
+                //ホントはdata-searchに記載前にconvertしておく方が良い。
+                searchText = moji(searchText.toUpperCase())
+                        .convert("ZEtoHE").convert('HKtoZK').convert('HGtoKK').toString();
+                if (searchText.indexOf(term) > -1) {
+                    return data;
+                }
+
+            }
+            return null;
+        }
+        $("#pokename").select2({
+            language: "ja",
+            matcher: customMatcher
+        });
+        $("#pokename2").select2({
+            language: "ja",
+            matcher: customMatcher
+        });
+        $("#s_skill").select2({
+            language: "ja",
+            matcher: customMatcher
+        });
+        $("#s_item").select2({
+            language: "ja",
+            matcher: customMatcher
+        });
+    });
+}
 
 function setHpInfo() {
     console.log("setHpInfo()");
@@ -45,6 +137,7 @@ function reCalc() {
     }
     Speed_lv50 = Stats_calc(5, 50);
     numCheck();
+    real_speed();
     setText();
     setTitle();
     HPchecker();
@@ -796,43 +889,103 @@ function setPoke2_speed(theory) {
 function setPoke2_button(theory) {
     console.log("setPoke2_button(" + theory + ")");
 
-    EV = 0;
-    IV = 0;
-    Nature = 1;
-    if (theory === 'min') {
+    if (document.getElementById("pokename2").value === '') {
+        return "";
+    } else {
         EV = 0;
         IV = 0;
-        Nature = 0.9;
-    } else if (theory === 'max') {
-        EV = 252;
-        IV = 31;
-        Nature = 1.1;
-    } else if (theory === 'high') {
-        EV = 252;
-        IV = 31;
         Nature = 1;
-    } else if (theory === 'low') {
-        EV = 0;
-        IV = 31;
-        Nature = 0.9;
-    } else if (theory === 'normal') {
-        EV = 0;
-        IV = 31;
-        Nature = 1;
+        if (theory === 'min') {
+            EV = 0;
+            IV = 0;
+            Nature = 0.9;
+        } else if (theory === 'max') {
+            EV = 252;
+            IV = 31;
+            Nature = 1.1;
+        } else if (theory === 'high') {
+            EV = 252;
+            IV = 31;
+            Nature = 1;
+        } else if (theory === 'low') {
+            EV = 0;
+            IV = 31;
+            Nature = 0.9;
+        } else if (theory === 'normal') {
+            EV = 0;
+            IV = 31;
+            Nature = 1;
+        }
+
+        speed = pokemon[Number(document.getElementById("pokename2").value)][6];
+        result = getStats(5, 50, EV, IV, speed, Nature);
+
+        return result;
     }
-
-    speed = pokemon[Number(document.getElementById("pokename2").value)][6];
-    result = getStats(5, 50, EV, IV, speed, Nature);
-
-    return result;
 }
 
 function hpTable_display() {
+    console.log("hpTable_display()");
+
     var change = document.getElementById("hpTheory");
 
     if (change.style.display === "block") {
         change.style.display = "none";
+        document.getElementById("hpTheory_title").innerHTML = "#HP調整表 ▽";
     } else {
         change.style.display = "block";
+        document.getElementById("hpTheory_title").innerHTML = "#HP調整表 △";
     }
+}
+
+function info_display() {
+    console.log("info_display()");
+
+    var change = document.getElementById("info");
+
+    if (change.style.display === "block") {
+        change.style.display = "none";
+        document.getElementById("info_title").innerHTML = "#このサイトについて ▽";
+    } else {
+        change.style.display = "block";
+        document.getElementById("info_title").innerHTML = "#このサイトについて △";
+    }
+}
+
+function real_speed() {
+    console.log("real_speed()");
+
+    result = document.getElementById("Stats_S").value;
+
+    if (Number(document.getElementById("s_rank").value) >= 0) {
+        rank = (Number(document.getElementById('s_rank').value) + 2) / 2;
+    } else {
+        rank = 2 / (2 - Number(document.getElementById('s_rank').value));
+    }
+    result = Math.floor(result * rank);
+
+    skill = 1;
+    if (document.getElementById("s_skill").value !== '')
+        skill = Number(speed_skill[Number(document.getElementById("s_skill").value)][1]);
+    result = Math.floor(result * skill);
+
+    item = 1;
+    if (document.getElementById("s_item").value !== '') {
+        if (Number(document.getElementById("s_item").value) === 1) {
+            if (Number(document.getElementById("pokename").value) === 363)
+                item = Number(speed_item[Number(document.getElementById("s_item").value)][1]);
+        } else {
+            item = Number(speed_item[Number(document.getElementById("s_item").value)][1]);
+        }
+    }
+    result = Math.floor(result * item);
+
+    if (document.getElementById("Paralysis").checked
+            && Number(document.getElementById("s_skill").value) !== 6)
+        result = Math.floor(result / 2);
+
+    if (document.getElementById("Tailwind").checked)
+        result = Math.floor(result * 2);
+
+    document.getElementById("real_Speed").value = result;
 }
