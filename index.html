@@ -876,11 +876,6 @@
                     
                     <option id="pokename_424" value="424">pokemon[424][0]</option>
                     
-                    <script type="text/javascript">
-                        for (let i = 0; i < pokemon.length; i++) {
-                            document.getElementById("pokename_" + i).innerHTML = pokemon[i][0];
-                        }
-                    </script>
                 </select>
                 <TABLE>
                     <TR>
@@ -1060,7 +1055,119 @@
                         <TD><input type="number" value="600" id="Bs_total" readonly></TD>
                     </TR>
                 </TABLE><br>
-                
+                <TABLE>
+                    <TR>
+                        <TH colspan="2"></TH><TH>ランク補正</TH><TH></TH><TH>麻痺</TH><TH>おいかぜ</TH>
+                    </TR>
+                    <TR>
+                        <TD>S</TD>
+                        <TD>
+                            <input id="real_Speed" value="120" readonly>
+                        </TD>
+                        <TD>
+                            <select id="s_rank" onchange="real_speed()">
+                                
+                                <option id="s_rank_6" value="6" 
+                                        >
+                                    +6</option>
+                                    
+                                <option id="s_rank_5" value="5" 
+                                        >
+                                    +5</option>
+                                    
+                                <option id="s_rank_4" value="4" 
+                                        >
+                                    +4</option>
+                                    
+                                <option id="s_rank_3" value="3" 
+                                        >
+                                    +3</option>
+                                    
+                                <option id="s_rank_2" value="2" 
+                                        >
+                                    +2</option>
+                                    
+                                <option id="s_rank_1" value="1" 
+                                        >
+                                    +1</option>
+                                    
+                                <option id="s_rank_0" value="0" 
+                                        selected="selected">
+                                    0</option>
+                                    
+                                <option id="s_rank_-1" value="-1" 
+                                        >
+                                    -1</option>
+                                    
+                                <option id="s_rank_-2" value="-2" 
+                                        >
+                                    -2</option>
+                                    
+                                <option id="s_rank_-3" value="-3" 
+                                        >
+                                    -3</option>
+                                    
+                                <option id="s_rank_-4" value="-4" 
+                                        >
+                                    -4</option>
+                                    
+                                <option id="s_rank_-5" value="-5" 
+                                        >
+                                    -5</option>
+                                    
+                                <option id="s_rank_-6" value="-6" 
+                                        >
+                                    -6</option>
+                                    
+                            </select>
+                        </TD>
+                        <TD class="left">
+                            <select class="select_search" id="s_skill" onchange="real_speed()">
+                                <option id="s_skill_null" value="" selected>
+                                    とくせい</option>
+                                    
+                                <option id="s_skill_0" value="0">skill[0][0]</option>
+                                
+                                <option id="s_skill_1" value="1">skill[1][0]</option>
+                                
+                                <option id="s_skill_2" value="2">skill[2][0]</option>
+                                
+                                <option id="s_skill_3" value="3">skill[3][0]</option>
+                                
+                                <option id="s_skill_4" value="4">skill[4][0]</option>
+                                
+                                <option id="s_skill_5" value="5">skill[5][0]</option>
+                                
+                                <option id="s_skill_6" value="6">skill[6][0]</option>
+                                
+                                <option id="s_skill_7" value="7">skill[7][0]</option>
+                                
+                                <option id="s_skill_8" value="8">skill[8][0]</option>
+                                
+                            </select>
+                        </TD>
+                        <TD>
+                            <input type="checkbox" id="Paralysis" onchange="real_speed()">
+                        </TD>
+                        <TD>
+                            <input type="checkbox" id="Tailwind" onchange="real_speed()">
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD colspan="3"></TD>
+                        <TD class="left">
+                            <select class="select_search" id="s_item" onchange="real_speed()">
+                                <option id="s_item_null" value="" selected>
+                                    もちもの</option>
+                                    
+                                <option id="s_item_0" value="0">item[0][0]</option>
+                                
+                                <option id="s_item_1" value="1">item[1][0]</option>
+                                
+                            </select>
+                        </TD>
+                    </TR>
+                </TABLE>
                 S比較<br>
                 <select id="pokename2" class="select_search" onchange="setPoke2_speed('max')">
                     <option value="" disabled selected style="display:none;">ポケモン名</option>
@@ -1915,11 +2022,6 @@
                     
                     <option id="pokename2_424" value="424">pokemon[424][0]</option>
                     
-                    <script type="text/javascript">
-                        for (let i = 0; i < pokemon.length; i++) {
-                            document.getElementById("pokename2_" + i).innerHTML = pokemon[i][0];
-                        }
-                    </script>
                 </select>
                 <TABLE>
                     <TR>
@@ -1941,91 +2043,111 @@
 
                 <textarea id="text" placeholder="コピペ"></textarea><br>
             </div>
+            <DIV>
+                <div id="main_info">
+                    <a id="info_button" class="word_button" onclick="info_display()">
+                        <h2 id="info_title">#このサイトについて ▽</h2>
+                    </a>
+                    <div id="info">
+                        ポケモンの実数値を計算するサイトです。<br>
+                        <br>
+                        ポケモン名は「かな/カナ」関わらず行えます。<br>
+                        入力されたポケモンの概要をタイトルとして表示します。<br>
+                        「252」ボタンで努力値を設定する場合に最大値を超えてしまったり、<br>
+                        無駄な努力値になってしまう事を自動で判断し計算します。<br>
+                        <br>
+                        特性「はやあし」によって麻痺での1/2が無視されます。<br>
+                        持ち物「スピードパウダー」は「メタモン」のみに効果があります。<br>
+                    </div>
+                </div>
 
-            <div id="main_hp">
-                HP調整表
-                <button id="hpTheory_button" onclick="hpTable_display()">表示切替</button>
-                <TABLE border="1" id="hpTheory">
-                    <TR>
-                        <TH>過不足</TH><TH>調整</TH><TH>内容</TH>
-                    </TR>
-                    
-                    <TR>
-                        <TD id="hpTheory_1">null</TD><TD id="hpTheoryName_1"></TD><TD class="left" id="hpTheoryInfo_1"></TD>
-                    </TR>
-                    
-                    <TR>
-                        <TD id="hpTheory_2">null</TD><TD id="hpTheoryName_2"></TD><TD class="left" id="hpTheoryInfo_2"></TD>
-                    </TR>
-                    
-                    <TR>
-                        <TD id="hpTheory_3">null</TD><TD id="hpTheoryName_3"></TD><TD class="left" id="hpTheoryInfo_3"></TD>
-                    </TR>
-                    
-                    <TR>
-                        <TD id="hpTheory_4">null</TD><TD id="hpTheoryName_4"></TD><TD class="left" id="hpTheoryInfo_4"></TD>
-                    </TR>
-                    
-                    <TR>
-                        <TD id="hpTheory_5">null</TD><TD id="hpTheoryName_5"></TD><TD class="left" id="hpTheoryInfo_5"></TD>
-                    </TR>
-                    
-                    <TR>
-                        <TD id="hpTheory_6">null</TD><TD id="hpTheoryName_6"></TD><TD class="left" id="hpTheoryInfo_6"></TD>
-                    </TR>
-                    
-                    <TR>
-                        <TD id="hpTheory_7">null</TD><TD id="hpTheoryName_7"></TD><TD class="left" id="hpTheoryInfo_7"></TD>
-                    </TR>
-                    
-                    <TR>
-                        <TD id="hpTheory_8">null</TD><TD id="hpTheoryName_8"></TD><TD class="left" id="hpTheoryInfo_8"></TD>
-                    </TR>
-                    
-                    <TR>
-                        <TD id="hpTheory_9">null</TD><TD id="hpTheoryName_9"></TD><TD class="left" id="hpTheoryInfo_9"></TD>
-                    </TR>
-                    
-                    <TR>
-                        <TD id="hpTheory_10">null</TD><TD id="hpTheoryName_10"></TD><TD class="left" id="hpTheoryInfo_10"></TD>
-                    </TR>
-                    
-                    <TR>
-                        <TD id="hpTheory_11">null</TD><TD id="hpTheoryName_11"></TD><TD class="left" id="hpTheoryInfo_11"></TD>
-                    </TR>
-                    
-                    <TR>
-                        <TD id="hpTheory_12">null</TD><TD id="hpTheoryName_12"></TD><TD class="left" id="hpTheoryInfo_12"></TD>
-                    </TR>
-                    
-                    <TR>
-                        <TD id="hpTheory_13">null</TD><TD id="hpTheoryName_13"></TD><TD class="left" id="hpTheoryInfo_13"></TD>
-                    </TR>
-                    
-                    <TR>
-                        <TD id="hpTheory_14">null</TD><TD id="hpTheoryName_14"></TD><TD class="left" id="hpTheoryInfo_14"></TD>
-                    </TR>
-                    
-                    <TR>
-                        <TD id="hpTheory_15">null</TD><TD id="hpTheoryName_15"></TD><TD class="left" id="hpTheoryInfo_15"></TD>
-                    </TR>
-                    
-                    <TR>
-                        <TD id="hpTheory_16">null</TD><TD id="hpTheoryName_16"></TD><TD class="left" id="hpTheoryInfo_16"></TD>
-                    </TR>
-                    
-                    <TR>
-                        <TD id="hpTheory_17">null</TD><TD id="hpTheoryName_17"></TD><TD class="left" id="hpTheoryInfo_17"></TD>
-                    </TR>
-                    
-                </TABLE>
-            </div>
+                <div id="main_hp">
+                    <a id="hpTheory_button" class="word_button" onclick="hpTable_display()">
+                        <h2 id="hpTheory_title">#HP調整表 ▽</h2>
+                    </a>
+                    <TABLE border="1" id="hpTheory">
+                        <TR>
+                            <TH>過不足</TH><TH>調整</TH><TH>内容</TH>
+                        </TR>
+                        
+                        <TR>
+                            <TD id="hpTheory_1">null</TD><TD id="hpTheoryName_1"></TD><TD class="left" id="hpTheoryInfo_1"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD id="hpTheory_2">null</TD><TD id="hpTheoryName_2"></TD><TD class="left" id="hpTheoryInfo_2"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD id="hpTheory_3">null</TD><TD id="hpTheoryName_3"></TD><TD class="left" id="hpTheoryInfo_3"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD id="hpTheory_4">null</TD><TD id="hpTheoryName_4"></TD><TD class="left" id="hpTheoryInfo_4"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD id="hpTheory_5">null</TD><TD id="hpTheoryName_5"></TD><TD class="left" id="hpTheoryInfo_5"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD id="hpTheory_6">null</TD><TD id="hpTheoryName_6"></TD><TD class="left" id="hpTheoryInfo_6"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD id="hpTheory_7">null</TD><TD id="hpTheoryName_7"></TD><TD class="left" id="hpTheoryInfo_7"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD id="hpTheory_8">null</TD><TD id="hpTheoryName_8"></TD><TD class="left" id="hpTheoryInfo_8"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD id="hpTheory_9">null</TD><TD id="hpTheoryName_9"></TD><TD class="left" id="hpTheoryInfo_9"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD id="hpTheory_10">null</TD><TD id="hpTheoryName_10"></TD><TD class="left" id="hpTheoryInfo_10"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD id="hpTheory_11">null</TD><TD id="hpTheoryName_11"></TD><TD class="left" id="hpTheoryInfo_11"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD id="hpTheory_12">null</TD><TD id="hpTheoryName_12"></TD><TD class="left" id="hpTheoryInfo_12"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD id="hpTheory_13">null</TD><TD id="hpTheoryName_13"></TD><TD class="left" id="hpTheoryInfo_13"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD id="hpTheory_14">null</TD><TD id="hpTheoryName_14"></TD><TD class="left" id="hpTheoryInfo_14"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD id="hpTheory_15">null</TD><TD id="hpTheoryName_15"></TD><TD class="left" id="hpTheoryInfo_15"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD id="hpTheory_16">null</TD><TD id="hpTheoryName_16"></TD><TD class="left" id="hpTheoryInfo_16"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD id="hpTheory_17">null</TD><TD id="hpTheoryName_17"></TD><TD class="left" id="hpTheoryInfo_17"></TD>
+                        </TR>
+                        
+                    </TABLE>
+                </div>
+            </DIV>
+
             <div class="spacer"></div>
             <div>
                 Thx to <a href="https://github.com/select2/select2" target="_blank">Select2</a>, 
                 <a href="https://into-the-program.com/javascript-loader/" target="_blank">ryohei</a><br>
                 Made by <a href="https://twitter.com/nomakun_des" target="_blank">@nomakun_des</a><br>
-                v1.04.1 <a href="update.html" target="_blank">Update Details</a>
+                v1.05.0 <a href="update.html" target="_blank">Update Details</a>
             </div>
         </DIV>
 
@@ -2040,59 +2162,6 @@
             </div>
         </div>
 
-        <script>
-            $(document).ready(function () {
-                $('.select_search').select2();
-            });
-        </script>
-
         <script src="https://github.com/niwaringo/moji/releases/download/V1.2.0/moji.js"></script>
-        <script>
-            $(function () {
-                function customMatcher(params, data) {
-                    if ($.trim(params.term) === '') {
-                        return data;
-                    }
-
-                    if (typeof data.text === 'undefined') {
-                        return null;
-                    }
-                    /*
-                     ZEtoHE 英数字を半角に
-                     HKtoZK 半角カタカナを全角カタカナに
-                     HGtoKK ひらがなをカタカナに
-                     */
-                    let term = moji(params.term.toUpperCase())
-                            .convert("ZEtoHE").convert('HKtoZK').convert('HGtoKK').toString();
-
-                    let text = moji(data.text.toUpperCase())
-                            .convert("ZEtoHE").convert('HKtoZK').convert('HGtoKK').toString();
-
-                    if (text.indexOf(term) > -1) {
-                        return data;
-                    }
-
-                    let searchText = $(data.element).data('search');
-                    if (searchText) {
-                        //ホントはdata-searchに記載前にconvertしておく方が良い。
-                        searchText = moji(searchText.toUpperCase())
-                                .convert("ZEtoHE").convert('HKtoZK').convert('HGtoKK').toString();
-                        if (searchText.indexOf(term) > -1) {
-                            return data;
-                        }
-
-                    }
-                    return null;
-                }
-                $("#pokename").select2({
-                    language: "ja",
-                    matcher: customMatcher
-                });
-                $("#pokename2").select2({
-                    language: "ja",
-                    matcher: customMatcher
-                });
-            });
-        </script>
     </body>
 </html>
