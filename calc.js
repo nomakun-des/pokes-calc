@@ -61,6 +61,13 @@ function first_setup() {
         document.getElementById("s_item_" + i).innerHTML =
                 speed_item[i][0] + "(×" + speed_item[i][1] + ")";
     }
+
+    document.getElementById('poke2_sMax').style.color = "#888";
+    document.getElementById('poke2_sHig').style.color = "#888";
+    document.getElementById('poke2_sNor').style.color = "#888";
+    document.getElementById('poke2_sLow').style.color = "#888";
+    document.getElementById('poke2_sMin').style.color = "#888";
+
     $(document).ready(function () {
         $('.select_search').select2();
     });
@@ -896,22 +903,47 @@ function setPoke2_button(theory) {
         IV = 0;
         Nature = 1;
         if (theory === 'min') {
+            document.getElementById('poke2_sMax').style.color = "#888";
+            document.getElementById('poke2_sHig').style.color = "#888";
+            document.getElementById('poke2_sNor').style.color = "#888";
+            document.getElementById('poke2_sLow').style.color = "#888";
+            document.getElementById('poke2_sMin').style.color = "#000";
             EV = 0;
             IV = 0;
             Nature = 0.9;
         } else if (theory === 'max') {
+            document.getElementById('poke2_sMax').style.color = "#000";
+            document.getElementById('poke2_sHig').style.color = "#888";
+            document.getElementById('poke2_sNor').style.color = "#888";
+            document.getElementById('poke2_sLow').style.color = "#888";
+            document.getElementById('poke2_sMin').style.color = "#888";
             EV = 252;
             IV = 31;
             Nature = 1.1;
         } else if (theory === 'high') {
+            document.getElementById('poke2_sMax').style.color = "#888";
+            document.getElementById('poke2_sHig').style.color = "#000";
+            document.getElementById('poke2_sNor').style.color = "#888";
+            document.getElementById('poke2_sLow').style.color = "#888";
+            document.getElementById('poke2_sMin').style.color = "#888";
             EV = 252;
             IV = 31;
             Nature = 1;
         } else if (theory === 'low') {
+            document.getElementById('poke2_sMax').style.color = "#888";
+            document.getElementById('poke2_sHig').style.color = "#888";
+            document.getElementById('poke2_sNor').style.color = "#888";
+            document.getElementById('poke2_sLow').style.color = "#000";
+            document.getElementById('poke2_sMin').style.color = "#888";
             EV = 0;
             IV = 31;
             Nature = 0.9;
         } else if (theory === 'normal') {
+            document.getElementById('poke2_sMax').style.color = "#888";
+            document.getElementById('poke2_sHig').style.color = "#888";
+            document.getElementById('poke2_sNor').style.color = "#000";
+            document.getElementById('poke2_sLow').style.color = "#888";
+            document.getElementById('poke2_sMin').style.color = "#888";
             EV = 0;
             IV = 31;
             Nature = 1;
