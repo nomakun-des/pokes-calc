@@ -49,6 +49,9 @@ input.rd{
 button{
     width: 35px;
 }
+button.pokes_S{
+    width: 50px;
+}
 td{
     text-align: center;
     vertical-align: middle;
