@@ -826,3 +826,13 @@ function setPoke2_button(theory) {
 
     return result;
 }
+
+function hpTable_display() {
+    var change = document.getElementById("hpTheory");
+
+    if (change.style.display === "block") {
+        change.style.display = "none";
+    } else {
+        change.style.display = "block";
+    }
+}
