@@ -415,19 +415,19 @@ function all_set(num) {
 function setEV(num, id) {
     console.log("setEV(" + num + "," + id + ")");
 
-    if (Number(document.getElementById("EV_" + stats_name[id]).value) < num){
+    if (Number(document.getElementById("EV_" + stats_name[id]).value) < num) {
         if ((Number(document.getElementById("EV_total").value) + num) > 508) {
             console.log("setEV is over");
-            num = 508 - (Number(document.getElementById("EV_total").value)-Number(document.getElementById("EV_" + stats_name[id]).value));
+            num = 508 - (Number(document.getElementById("EV_total").value) - Number(document.getElementById("EV_" + stats_name[id]).value));
             while (num % 4 !== 0)
                 num--;
-            if (getStats(id, 50, num, "", "") === getStats(id, 50, num - 4, "", ""))
+            if (getStats(id, 50, num, "", "", "") === getStats(id, 50, num - 4, "", "", ""))
                 num -= 4;
         }
-        
-    if (Number(document.getElementById("EV_" + stats_name[id]).value) < num)
-        document.getElementById("EV_" + stats_name[id]).value = num;
-    }else{
+
+        if (Number(document.getElementById("EV_" + stats_name[id]).value) < num)
+            document.getElementById("EV_" + stats_name[id]).value = num;
+    } else {
         document.getElementById("EV_" + stats_name[id]).value = num;
     }
 
@@ -682,8 +682,8 @@ function set_Nature(crease, num) {
     return;
 }
 
-function getStats(num, lv, EV, IV, Basestats) {
-    console.log("getStats(" + num + "," + lv + "," + EV + "," + IV + "," + Basestats + ")");
+function getStats(num, lv, EV, IV, Basestats, Nature) {
+    console.log("getStats(" + num + "," + lv + "," + EV + "," + IV + "," + Basestats + Nature + ")");
 
     if (num === 0) {
         if (EV === "")
@@ -702,12 +702,14 @@ function getStats(num, lv, EV, IV, Basestats) {
             IV = Number(document.getElementById("IV_" + stats_name[num]).value);                 //個体値
         if (Basestats === "")
             Basestats = Number(document.getElementById("Basestats_" + stats_name[num]).value);   //種族値
-        if (document.getElementById("Nature_" + stats_name[num] + "_inc").checked) {
-            Nature = 1.1;
-        } else if (document.getElementById("Nature_" + stats_name[num] + "_dec").checked) {
-            Nature = 0.9;
-        } else {
-            Nature = 1;
+        if (Nature === "") {
+            if (document.getElementById("Nature_" + stats_name[num] + "_inc").checked) {
+                Nature = 1.1;
+            } else if (document.getElementById("Nature_" + stats_name[num] + "_dec").checked) {
+                Nature = 0.9;
+            } else {
+                Nature = 1;
+            }
         }
 
         result = Math.floor((Math.floor((Basestats * 2 + IV + Math.floor(EV / 4)) * lv / 100) + 5) * Nature);
@@ -782,4 +784,45 @@ function getNature() {
             return "？？？";
         return "まじめ";
     }
+}
+
+function setPoke2_speed(theory) {
+    console.log("setPoke2_speed()");
+
+    document.getElementById("poke2_speed").value = setPoke2_button(theory);
+    return;
+}
+
+function setPoke2_button(theory) {
+    console.log("setPoke2_button(" + theory + ")");
+
+    EV = 0;
+    IV = 0;
+    Nature = 1;
+    if (theory === 'min') {
+        EV = 0;
+        IV = 0;
+        Nature = 0.9;
+    } else if (theory === 'max') {
+        EV = 252;
+        IV = 31;
+        Nature = 1.1;
+    } else if (theory === 'high') {
+        EV = 252;
+        IV = 31;
+        Nature = 1;
+    } else if (theory === 'low') {
+        EV = 0;
+        IV = 31;
+        Nature = 0.9;
+    } else if (theory === 'normal') {
+        EV = 0;
+        IV = 31;
+        Nature = 1;
+    }
+
+    speed = pokemon[Number(document.getElementById("pokename2").value)][6];
+    result = getStats(5, 50, EV, IV, speed, Nature);
+
+    return result;
 }
