@@ -13,8 +13,17 @@
     box-shadow: none;
 }
 
-body{
+html{
     color: #333;
+    font-family: "Arial", "メイリオ";
+}
+button{
+    font-family: "Arial", "メイリオ";
+    font-weight: bold;
+}
+textarea{
+    font-family: "Arial", "メイリオ";
+    font-weight: bold;
 }
 
 a {
