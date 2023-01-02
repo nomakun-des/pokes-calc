@@ -51,7 +51,7 @@ function first_setup() {
         document.getElementById("pokename_" + i).innerHTML = pokemon[i][0];
     }
     for (let i = 0; i < pokemon.length; i++) {
-        document.getElementById("pokename2_" + i).innerHTML = pokemon[i][0];
+        document.getElementById("pokename2_" + i).innerHTML = pokemon[i][0]+" ("+pokemon[i][6]+")";
     }
     for (let i = 0; i < speed_skill.length; i++) {
         document.getElementById("s_skill_" + i).innerHTML =
