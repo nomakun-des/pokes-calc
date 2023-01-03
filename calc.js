@@ -136,6 +136,11 @@ function setHpInfo() {
 
 function reCalc() {
     console.log("reCalc()");
+    
+    for (let i = 0; i < 6; i++) {
+        if(document.getElementById("EV_" + stats_name[i]).value==='')
+            document.getElementById("EV_" + stats_name[i]).value = 0;
+    }
 
     document.getElementById("EV_total").value = total_ev();
     document.getElementById("Bs_total").value = total_bs();
