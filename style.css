@@ -113,3 +113,22 @@ textarea{
     max-height: 140px;
     max-width: 395px;
 }
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button,
+#EV_total::-webkit-inner-spin-button,
+#EV_total::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.no-spin, #EV_total{
+    width: 25px;
+}
+#real_Speed{
+    width: 35px;
+}
+.no-spin, #EV_total{
+    -moz-appearance:textfield;
+}
+#Bs_total, #poke2_speed{
+    -moz-appearance:textfield;
+}
