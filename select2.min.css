@@ -93,6 +93,7 @@
     -webkit-user-select:none
 }
 .select2-results__option--selectable{
+    font-weight: bold;      /*modification add*/
     cursor:pointer
 }
 .select2-container--open .select2-dropdown{
@@ -158,6 +159,7 @@
     border-radius:4px
 }
 .select2-container--default .select2-selection--single .select2-selection__rendered{
+    font-weight: bold;      /*modification add*/
     color:#444;
     /*line-height:28px*/    /*modification delete*/
 }
