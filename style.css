@@ -52,7 +52,19 @@ div#main{
     display: flex;
     flex-wrap: wrap;
 }
-div#main div{
+div#main > div{
+    padding: 0 10px 10px;
+}
+div.arrow{
+    font-size: 5px;
+    display: flex;
+    flex-flow: column;
+    flex-wrap: wrap;
+}
+div.arrow a{
+    user-select: none;
+    border-bottom: 0;
+    text-decoration: none;
 }
 .spacer{
     width: 100%;
