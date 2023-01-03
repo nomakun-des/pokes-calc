@@ -303,7 +303,7 @@ function HPcheck(A, B) {
     console.log("HPcheck(" + A + "," + B + ")");
 
     if (ANplusB_H(A, B)) {
-        return "○";
+        return "O";
     } else {
         return ANplusB_excess(A, B);
     }
@@ -312,7 +312,7 @@ function HPcheck_3point(A, B1, B2, B3) {
     console.log("HPcheck_3point(" + A + ", " + B1 + ", " + B2 + ", " + B3 + ")");
 
     if (ANplusB_H(A, B1) || ANplusB_H(A, B2) || ANplusB_H(A, B3)) {
-        return "○";
+        return "O";
     } else {
         return ANplusB_excess_3point(A, B1, B2, B3);
     }
@@ -375,7 +375,7 @@ function HPchecker() {
     i++;
 
     if (Number(document.getElementById("Stats_H").value) >= 205) {
-        document.getElementById("hpTheory_17").innerHTML = "○";//>=205
+        document.getElementById("hpTheory_17").innerHTML = "O";//>=205
         document.getElementById("hpTheory_17").style.backgroundColor = "#FFE3E3";
     } else {
         document.getElementById("hpTheory_17").innerHTML = "+" + (205 - Number(document.getElementById("Stats_H").value));
