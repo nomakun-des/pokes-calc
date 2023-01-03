@@ -889,9 +889,11 @@
 
                 <TABLE>
                     <TR>
-                        <TH></TH><TH colspan="2">実数値</TH>
-                        <TH colspan="2">努力値</TH><TH></TH><TH>種族値</TH>
-                        <TH colspan="2">個体値</TH><TH></TH><TH colspan="2">性格</TH>
+                        <TH></TH><TH colspan="2"><div>実数値</div></TH>
+                        <TH colspan="2"><div>努力値</div></TH><TH></TH>
+                        <TH><div>種族値</div></TH>
+                        <TH colspan="2"><div>個体値</div></TH><TH></TH>
+                        <TH colspan="2"><div>性格</div></TH>
                     </TR>
                     
                     <TR>
@@ -922,7 +924,8 @@
                             <button id="IV31_H" onClick="setIV(31,0)">31</button></TD>
 
                         
-                        <TD style="color:red;">+</TD><TD style="color:blue;">-</TD>
+                        <TD class="nature_mark" style="color:red;">＋</TD>
+                        <TD class="nature_mark" style="color:blue;">－</TD>
                             
                     </TR>
                     
@@ -1129,10 +1132,11 @@
                         <TD><button id="all_0" onClick="all_set(0)">ALL0</button></TD>
                         <TD><input type="number" value="600" id="Bs_total" readonly></TD>
                     </TR>
-                </TABLE><br>
+                </TABLE>
                 <TABLE>
                     <TR>
-                        <TH colspan="2"></TH><TH>ランク補正</TH><TH></TH><TH>麻痺</TH><TH>おいかぜ</TH>
+                        <TH colspan="2"></TH><TH><div>ランク補正</div></TH><TH></TH>
+                        <TH><div>麻痺</div></TH><TH><div>おいかぜ</div></TH>
                     </TR>
                     <TR>
                         <TD>S</TD>
@@ -2115,7 +2119,7 @@
                         </TD>
                     </TR>
                 </TABLE>
-
+                <br>
                 <textarea id="text" placeholder="コピペ"></textarea><br>
             </div>
             <DIV>
@@ -2140,77 +2144,113 @@
                     <a id="hpTheory_button" class="word_button" onclick="hpTable_display()">
                         <h2 id="hpTheory_title">#HP調整表 ▽</h2>
                     </a>
-                    <TABLE border="1" id="hpTheory">
+                    <TABLE id="hpTheory">
                         <TR>
-                            <TH>過不足</TH><TH>調整</TH><TH>内容</TH>
+                            <TH class="hpTheory1">過不足</TH>
+                            <TH class="hpTheory2">調整</TH>
+                            <TH class="hpTheory3">内容</TH>
                         </TR>
                         
                         <TR>
-                            <TD id="hpTheory_1">null</TD><TD id="hpTheoryName_1"></TD><TD class="left" id="hpTheoryInfo_1"></TD>
+                            <TD class="hpTheory1" id="hpTheory_1">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_1"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_1"></TD>
                         </TR>
                         
                         <TR>
-                            <TD id="hpTheory_2">null</TD><TD id="hpTheoryName_2"></TD><TD class="left" id="hpTheoryInfo_2"></TD>
+                            <TD class="hpTheory1" id="hpTheory_2">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_2"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_2"></TD>
                         </TR>
                         
                         <TR>
-                            <TD id="hpTheory_3">null</TD><TD id="hpTheoryName_3"></TD><TD class="left" id="hpTheoryInfo_3"></TD>
+                            <TD class="hpTheory1" id="hpTheory_3">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_3"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_3"></TD>
                         </TR>
                         
                         <TR>
-                            <TD id="hpTheory_4">null</TD><TD id="hpTheoryName_4"></TD><TD class="left" id="hpTheoryInfo_4"></TD>
+                            <TD class="hpTheory1" id="hpTheory_4">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_4"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_4"></TD>
                         </TR>
                         
                         <TR>
-                            <TD id="hpTheory_5">null</TD><TD id="hpTheoryName_5"></TD><TD class="left" id="hpTheoryInfo_5"></TD>
+                            <TD class="hpTheory1" id="hpTheory_5">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_5"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_5"></TD>
                         </TR>
                         
                         <TR>
-                            <TD id="hpTheory_6">null</TD><TD id="hpTheoryName_6"></TD><TD class="left" id="hpTheoryInfo_6"></TD>
+                            <TD class="hpTheory1" id="hpTheory_6">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_6"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_6"></TD>
                         </TR>
                         
                         <TR>
-                            <TD id="hpTheory_7">null</TD><TD id="hpTheoryName_7"></TD><TD class="left" id="hpTheoryInfo_7"></TD>
+                            <TD class="hpTheory1" id="hpTheory_7">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_7"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_7"></TD>
                         </TR>
                         
                         <TR>
-                            <TD id="hpTheory_8">null</TD><TD id="hpTheoryName_8"></TD><TD class="left" id="hpTheoryInfo_8"></TD>
+                            <TD class="hpTheory1" id="hpTheory_8">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_8"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_8"></TD>
                         </TR>
                         
                         <TR>
-                            <TD id="hpTheory_9">null</TD><TD id="hpTheoryName_9"></TD><TD class="left" id="hpTheoryInfo_9"></TD>
+                            <TD class="hpTheory1" id="hpTheory_9">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_9"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_9"></TD>
                         </TR>
                         
                         <TR>
-                            <TD id="hpTheory_10">null</TD><TD id="hpTheoryName_10"></TD><TD class="left" id="hpTheoryInfo_10"></TD>
+                            <TD class="hpTheory1" id="hpTheory_10">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_10"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_10"></TD>
                         </TR>
                         
                         <TR>
-                            <TD id="hpTheory_11">null</TD><TD id="hpTheoryName_11"></TD><TD class="left" id="hpTheoryInfo_11"></TD>
+                            <TD class="hpTheory1" id="hpTheory_11">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_11"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_11"></TD>
                         </TR>
                         
                         <TR>
-                            <TD id="hpTheory_12">null</TD><TD id="hpTheoryName_12"></TD><TD class="left" id="hpTheoryInfo_12"></TD>
+                            <TD class="hpTheory1" id="hpTheory_12">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_12"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_12"></TD>
                         </TR>
                         
                         <TR>
-                            <TD id="hpTheory_13">null</TD><TD id="hpTheoryName_13"></TD><TD class="left" id="hpTheoryInfo_13"></TD>
+                            <TD class="hpTheory1" id="hpTheory_13">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_13"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_13"></TD>
                         </TR>
                         
                         <TR>
-                            <TD id="hpTheory_14">null</TD><TD id="hpTheoryName_14"></TD><TD class="left" id="hpTheoryInfo_14"></TD>
+                            <TD class="hpTheory1" id="hpTheory_14">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_14"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_14"></TD>
                         </TR>
                         
                         <TR>
-                            <TD id="hpTheory_15">null</TD><TD id="hpTheoryName_15"></TD><TD class="left" id="hpTheoryInfo_15"></TD>
+                            <TD class="hpTheory1" id="hpTheory_15">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_15"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_15"></TD>
                         </TR>
                         
                         <TR>
-                            <TD id="hpTheory_16">null</TD><TD id="hpTheoryName_16"></TD><TD class="left" id="hpTheoryInfo_16"></TD>
+                            <TD class="hpTheory1" id="hpTheory_16">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_16"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_16"></TD>
                         </TR>
                         
                         <TR>
-                            <TD id="hpTheory_17">null</TD><TD id="hpTheoryName_17"></TD><TD class="left" id="hpTheoryInfo_17"></TD>
+                            <TD class="hpTheory1" id="hpTheory_17">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_17"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_17"></TD>
                         </TR>
                         
                     </TABLE>
@@ -2222,7 +2262,7 @@
                 Thx to <a href="https://github.com/select2/select2" target="_blank">Select2</a>, 
                 <a href="https://into-the-program.com/javascript-loader/" target="_blank">ryohei</a><br>
                 Made by <a href="https://twitter.com/nomakun_des" target="_blank">@nomakun_des</a><br>
-                v1.06.3 <a href="update.html" target="_blank">Update Details</a>
+                v1.06.4 <a href="update.html" target="_blank">Update Details</a>
             </div>
         </DIV>
 
