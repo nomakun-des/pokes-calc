@@ -250,7 +250,7 @@ function ANplusB_excess(A, B) {
     while (!Number.isInteger(((HP - minus) - B) / A))
         minus++;
 
-    return "<span style='color:red;'>+" + plus + "</span> / <span style='color:blue;'>-" + minus + "</span>";
+    return "<span style='color:#ef5350;'>+" + plus + "</span> / <span style='color:#1297ff;'>-" + minus + "</span>";
 }
 function ANplusB_excess_3point(A, B1, B2, B3) {
     console.log("ANplusB_excess_3point(" + A + ", " + B1 + ", " + B2 + ", " + B3 + ")");
@@ -297,7 +297,7 @@ function ANplusB_excess_3point(A, B1, B2, B3) {
     if (minus3 <= minus1 && minus3 <= minus2)
         minus = minus3;
 
-    return "<span style='color:red;'>+" + plus + "</span> / <span style='color:blue;'>-" + minus + "</span>";
+    return "<span style='color:#ef5350;'>+" + plus + "</span> / <span style='color:#1297ff;'>-" + minus + "</span>";
 }
 function HPcheck(A, B) {
     console.log("HPcheck(" + A + "," + B + ")");
