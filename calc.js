@@ -51,7 +51,7 @@ function first_setup() {
         document.getElementById("pokename_" + i).innerHTML = pokemon[i][0];
     }
     for (let i = 0; i < pokemon.length; i++) {
-        document.getElementById("pokename2_" + i).innerHTML = pokemon[i][0]+" ("+pokemon[i][6]+")";
+        document.getElementById("pokename2_" + i).innerHTML = pokemon[i][0] + " (" + pokemon[i][6] + ")";
     }
     for (let i = 0; i < speed_skill.length; i++) {
         document.getElementById("s_skill_" + i).innerHTML =
@@ -136,9 +136,9 @@ function setHpInfo() {
 
 function reCalc() {
     console.log("reCalc()");
-    
+
     for (let i = 0; i < 6; i++) {
-        if(document.getElementById("EV_" + stats_name[i]).value==='')
+        if (document.getElementById("EV_" + stats_name[i]).value === '')
             document.getElementById("EV_" + stats_name[i]).value = 0;
     }
 
@@ -467,7 +467,11 @@ function EV_calc(num) {
         while (Stats !== Math.floor((Basestats * 2 + IV + Math.floor(EV / 4)) * lv / 100) + lv + 10) {
             EV += 4;
             if (EV > 252) {
-                EV = 252;
+                if (Math.floor((Basestats * 2 + IV + Math.floor(EV / 4)) * lv / 100) + lv + 10 > Stats) {
+                    EV = 0;
+                } else {
+                    EV = 252;
+                }
                 break;
             }
         }
@@ -489,7 +493,11 @@ function EV_calc(num) {
         while (Stats !== Math.floor((Math.floor((Basestats * 2 + IV + Math.floor(EV / 4)) * lv / 100) + 5) * Nature)) {
             EV += 4;
             if (EV > 252) {
-                EV = 252;
+                if (Math.floor((Math.floor((Basestats * 2 + IV + Math.floor(EV / 4)) * lv / 100) + 5) * Nature) > Stats) {
+                    EV = 0;
+                } else {
+                    EV = 252;
+                }
                 break;
             }
         }
@@ -1025,4 +1033,27 @@ function real_speed() {
         result = Math.floor(result * 2);
 
     document.getElementById("real_Speed").value = result;
+}
+
+function click_arrow(type, num, change) {
+    console.log("click_arrow(" + type + "," + num + "," + change + ")");
+
+    result = Number(document.getElementById(type + "_" + stats_name[num]).value) + Number(change);
+
+    if (type === 'EV') {
+        if (result > 252 || result < 0)
+            result = Number(document.getElementById(type + "_" + stats_name[num]).value);
+    } else if (type === 'IV') {
+        if (result > 31 || result < 0)
+            result = Number(document.getElementById(type + "_" + stats_name[num]).value);
+    }
+
+    document.getElementById(type + "_" + stats_name[num]).value = result;
+
+    if (type === 'Stats') {
+        byStats();
+    } else {
+        reCalc();
+    }
+    return;
 }
