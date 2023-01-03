@@ -56,6 +56,8 @@ div#main > div{
     padding: 0 10px 10px;
 }
 div.arrow{
+    position:relative;
+    left: -2px;
     font-size: 5px;
     display: flex;
     flex-flow: column;
@@ -70,13 +72,28 @@ div.arrow a{
     width: 100%;
 }
 #hpTheory{
+    font-size: 10px;
     display: none;
     margin: 0px 10px;
+    border-spacing: 1px;
+    border: solid 1px #333;
+}
+#hpTheory th, #hpTheory td{
+    border: solid 1px #888;
 }
 #hpTheory th{
     background-color: #ccc;
 }
+.hpTheory1{
+    width: 45px;
+}
+.hpTheory2{
+}
+.hpTheory3{
+    width: 265px;
+}
 #info{
+    font-size: 12px;
     display: none;
     padding: 0px 10px;
 }
@@ -131,4 +148,15 @@ textarea{
 }
 #Bs_total, #poke2_speed{
     -moz-appearance:textfield;
+}
+
+th div{
+    position:relative;
+    top: 6px;
+    font-size: 10px;
+}
+
+.nature_mark{
+    font-weight: bold;
+    font-size: 12px;
 }
