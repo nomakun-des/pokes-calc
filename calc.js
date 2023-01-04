@@ -1,3 +1,6 @@
+var img_no1 = 0;
+var img_no2 = 0;
+
 let stats_name = ['H', 'A', 'B', 'C', 'D', 'S'];
 var Speed_lv50;
 let hpTheory = [
@@ -18,6 +21,11 @@ let hpTheory = [
     'すなあらし、やけど、もうどく等のダメージ最小',
     'ちきゅうなげ等の固定ダメージをより多く耐える',
     'ちきゅうなげ等の固定ダメージをみがわりが耐える'
+];
+
+let type_name = [
+    "null", "normal", "fire", "water", "electric", "grass", "ice", "fighting", "poison", "ground",
+    "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy"
 ];
 
 let speed_skill = [
@@ -148,6 +156,7 @@ function reCalc() {
         document.getElementById("Stats_" + stats_name[i]).value = Stats_calc(i, Number(document.getElementById("lv").value));
     }
     Speed_lv50 = Stats_calc(5, 50);
+    poke1_imgs();
     numCheck();
     real_speed();
     setText();
@@ -903,6 +912,8 @@ function setPoke2_speed(theory) {
     console.log("setPoke2_speed()");
 
     document.getElementById("poke2_speed").value = setPoke2_button(theory);
+
+    poke2_imgs();
     return;
 }
 
@@ -1056,4 +1067,65 @@ function click_arrow(type, num, change) {
         reCalc();
     }
     return;
+}
+
+function poke1_imgs() {
+    console.log("poke1_imgs()");
+
+    if (document.getElementById("pokename").value !== "") {
+        img_no_1 = img[Number(document.getElementById("pokename").value)][0];
+    } else {
+        img_no_1 = 589;
+    }
+
+    set1imgs();
+}
+
+function set1imgs() {
+    document.getElementById("poke1_icon").src =
+            "img/pokes-icon/poke_"
+            + img_no_1 + ".png";
+
+    poke1_types();
+}
+
+function poke2_imgs() {
+    console.log("poke2_imgs()");
+
+    if (document.getElementById("pokename2").value !== "") {
+        img_no_2 = img[Number(document.getElementById("pokename2").value)][0];
+    } else {
+        img_no_2 = 589;
+    }
+    document.getElementById("poke2_icon").src =
+            "img/pokes-icon/poke_"
+            + img_no_2 + ".png";
+}
+
+function poke1_types() {
+    console.log("poke1_types()");
+
+    type1 = type[img_no_1 - 1][0];
+    type2 = type[img_no_1 - 1][1];
+
+    document.getElementById("poke1_type1").src =
+            "img/type-icon/"
+            + type_name[type1] + ".png";
+    document.getElementById("poke1_type2").src =
+            "img/type-icon/"
+            + type_name[type2] + ".png";
+}
+
+function nextIMG() {
+    console.log("nextIMG()");
+
+    if (img[Number(document.getElementById("pokename").value)][1] !== 0) {
+        if (img_no_1 + 1 <= img[Number(document.getElementById("pokename").value)][1]) {
+            img_no_1++;
+        } else {
+            img_no_1 = img[Number(document.getElementById("pokename").value)][0];
+        }
+
+        set1imgs();
+    }
 }
