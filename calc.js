@@ -156,12 +156,12 @@ function reCalc() {
         document.getElementById("Stats_" + stats_name[i]).value = Stats_calc(i, Number(document.getElementById("lv").value));
     }
     Speed_lv50 = Stats_calc(5, 50);
-    poke1_imgs();
     numCheck();
     real_speed();
     setText();
     setTitle();
     HPchecker();
+    poke1_imgs();
 
     return;
 }
