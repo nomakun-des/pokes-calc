@@ -985,11 +985,11 @@ function hpTable_display() {
 
     var change = document.getElementById("hpTheory");
 
-    if (change.style.display === "block") {
+    if (change.style.display === "table") {
         change.style.display = "none";
         document.getElementById("hpTheory_title").innerHTML = "#HP調整表 ▽";
     } else {
-        change.style.display = "block";
+        change.style.display = "table";
         document.getElementById("hpTheory_title").innerHTML = "#HP調整表 △";
     }
 }
