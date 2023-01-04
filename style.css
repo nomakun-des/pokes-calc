@@ -160,3 +160,19 @@ th div{
     font-weight: bold;
     font-size: 12px;
 }
+
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+.flex-col{
+    display: flex;
+    flex-flow: column;
+    flex-wrap: wrap;
+}
+.img{
+    margin: 0 0 0 20px;
+}
+.type{
+    margin: 0 5px;
+}
