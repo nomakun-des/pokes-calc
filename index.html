@@ -8,7 +8,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" type="image/png" href="https://www.pokemon.co.jp/common/images/favi_official.ico">
         <meta name="keyword" content="努力値,個体値,ポケモン,ステータス,計算,calc,pokemon,stats,のーまです,nomakun_des">
-        <meta name="google-site-verification" content="RakXyMCMZOhuuT3igsOA-wbzfvddhdJWg7O59eL3OlY" />
         <title>POKES STATS CALC</title>
         <script type="text/javascript" src="calc.js"></script>
         <script type="text/javascript" src="data.js"></script>
@@ -915,7 +914,7 @@
                             </div></TD>
                         <TD><button id="EV0_H" onClick="setEV(0,0)">0</button>
                             <button id="EV252_H" onClick="setEV(252,0)">252</button></TD>
-                        <TD><input type="number" value="100" min="0" 
+                        <TD><input class="no-spin" type="number" value="100" min="0" 
                                    id="Basestats_H" onChange="reCalc()"></TD>
                         <TD><input class="no-spin" type="number" value="31" min="0" max="31" 
                                    id="IV_H" onChange="reCalc()"></TD>
@@ -948,7 +947,7 @@
                             </div></TD>
                         <TD><button id="EV0_A" onClick="setEV(0,1)">0</button>
                             <button id="EV252_A" onClick="setEV(252,1)">252</button></TD>
-                        <TD><input type="number" value="100" min="0" 
+                        <TD><input class="no-spin" type="number" value="100" min="0" 
                                    id="Basestats_A" onChange="reCalc()"></TD>
                         <TD><input class="no-spin" type="number" value="31" min="0" max="31" 
                                    id="IV_A" onChange="reCalc()"></TD>
@@ -987,7 +986,7 @@
                             </div></TD>
                         <TD><button id="EV0_B" onClick="setEV(0,2)">0</button>
                             <button id="EV252_B" onClick="setEV(252,2)">252</button></TD>
-                        <TD><input type="number" value="100" min="0" 
+                        <TD><input class="no-spin" type="number" value="100" min="0" 
                                    id="Basestats_B" onChange="reCalc()"></TD>
                         <TD><input class="no-spin" type="number" value="31" min="0" max="31" 
                                    id="IV_B" onChange="reCalc()"></TD>
@@ -1026,7 +1025,7 @@
                             </div></TD>
                         <TD><button id="EV0_C" onClick="setEV(0,3)">0</button>
                             <button id="EV252_C" onClick="setEV(252,3)">252</button></TD>
-                        <TD><input type="number" value="100" min="0" 
+                        <TD><input class="no-spin" type="number" value="100" min="0" 
                                    id="Basestats_C" onChange="reCalc()"></TD>
                         <TD><input class="no-spin" type="number" value="31" min="0" max="31" 
                                    id="IV_C" onChange="reCalc()"></TD>
@@ -1065,7 +1064,7 @@
                             </div></TD>
                         <TD><button id="EV0_D" onClick="setEV(0,4)">0</button>
                             <button id="EV252_D" onClick="setEV(252,4)">252</button></TD>
-                        <TD><input type="number" value="100" min="0" 
+                        <TD><input class="no-spin" type="number" value="100" min="0" 
                                    id="Basestats_D" onChange="reCalc()"></TD>
                         <TD><input class="no-spin" type="number" value="31" min="0" max="31" 
                                    id="IV_D" onChange="reCalc()"></TD>
@@ -1104,7 +1103,7 @@
                             </div></TD>
                         <TD><button id="EV0_S" onClick="setEV(0,5)">0</button>
                             <button id="EV252_S" onClick="setEV(252,5)">252</button></TD>
-                        <TD><input type="number" value="100" min="0" 
+                        <TD><input class="no-spin" type="number" value="100" min="0" 
                                    id="Basestats_S" onChange="reCalc()"></TD>
                         <TD><input class="no-spin" type="number" value="31" min="0" max="31" 
                                    id="IV_S" onChange="reCalc()"></TD>
@@ -2123,7 +2122,7 @@
             <DIV>
                 <div id="main_info">
                     <a id="info_button" class="word_button" onclick="info_display()">
-                        <h2 id="info_title">#このサイトについて △</h2>
+                        <h2 id="info_title">#このサイトについて ▲</h2>
                     </a>
                     <div id="info" style="display:block;">
                         ポケモンの実数値を計算するサイトです。<br>
@@ -2142,7 +2141,7 @@
 
                 <div id="main_hp">
                     <a id="hpTheory_button" class="word_button" onclick="hpTable_display()">
-                        <h2 id="hpTheory_title">#HP調整表 ▽</h2>
+                        <h2 id="hpTheory_title">#HP調整表 ▼</h2>
                     </a>
                     <TABLE id="hpTheory">
                         <TR>
@@ -2259,10 +2258,10 @@
 
             <div class="spacer"></div>
             <div>
-                Thx to <a href="https://github.com/select2/select2" target="_blank">Select2</a>, 
-                <a href="https://into-the-program.com/javascript-loader/" target="_blank">ryohei</a><br>
+                Thx to <a href="https://github.com/select2/select2" target="_blank">select2</a>, 
+                <a href="https://tobiasahlin.com/spinkit/" target="_blank">spinkit</a><br>
                 Made by <a href="https://twitter.com/nomakun_des" target="_blank">@nomakun_des</a><br>
-                v2.00.2 <a href="update.html" target="_blank">Update Details</a>
+                v2.01.0 <a href="update.html" target="_blank">Update Details</a>
             </div>
         </DIV>
 
