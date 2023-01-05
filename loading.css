@@ -1,3 +1,6 @@
+
+
+/* default */
 @keyframes fadeOut {
     from {
         opacity: 1;
@@ -12,18 +15,16 @@
 #loader {
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    background-color: #fff;
+    background-color: var(--main-bg);
     z-index: 100;
-    /* 環境によって「z-index」追加 */
 }
-/* 読み込み完了後に「loaded」を付与する */
 #loader.loaded {
     animation: fadeOut 1s forwards;
 }
-/* 以降「SpinKit」で選んだアニメーションのCSSを貼付する */
+/* spinkit */
 .sk-chase {
     z-index: 120;
     width: 120px;
@@ -47,7 +48,7 @@
     display: block;
     width: 35%;
     height: 35%;
-    background-color: #333;
+    background-color: var(--main-text);
     border-radius: 100%;
     animation: sk-chase-dot-before 2.0s infinite ease-in-out both;
 }
