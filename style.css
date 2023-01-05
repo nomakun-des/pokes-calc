@@ -193,6 +193,11 @@ pre{
     margin: 5px 0;
     font-family: "Arial", "メイリオ";
 }
+div#speedcomparison_box {
+    margin: 10px 0;
+    height: 240px;
+    overflow: auto;
+}
 
 td{
     text-align: center;
