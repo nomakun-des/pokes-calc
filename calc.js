@@ -1114,16 +1114,17 @@ function SC_list_add() {
 
     } else {
         result = "<pre>";
-        if((document.getElementById("real_Speed2").value).length>=3){
+        if ((document.getElementById("real_Speed2").value).length >= 3) {
             tab = "&#009;";
-        }else{
+        } else {
             tab = "&#009;&#009;";
         }
         result += document.getElementById("real_Speed2").value + " -" + tab
                 + sc_button + pokemon[Number(document.getElementById("pokename2").value)][0];
-        result += "&ensp;";
-        if (Number(document.getElementById("s_rank2").value) !== 0)
+        if (Number(document.getElementById("s_rank2").value) !== 0) {
+            result += "&ensp;";
             result += document.getElementById("s_rank2").value + "積み";
+        }
 
         if (document.getElementById("s_skill2").value !== ""
                 || document.getElementById("s_item2").value !== ""
