@@ -1,5 +1,7 @@
 var img_no1 = 0;
 var img_no2 = 0;
+var sc_list = [];
+var sc_button = '';
 
 let stats_name = ['H', 'A', 'B', 'C', 'D', 'S'];
 var Speed_lv50;
@@ -65,9 +67,13 @@ function first_setup() {
     for (let i = 0; i < speed_skill.length; i++) {
         document.getElementById("s_skill_" + i).innerHTML =
                 speed_skill[i][0] + "(×" + speed_skill[i][1] + ")";
+        document.getElementById("s_skill2_" + i).innerHTML =
+                speed_skill[i][0] + "(×" + speed_skill[i][1] + ")";
     }
     for (let i = 0; i < speed_item.length; i++) {
         document.getElementById("s_item_" + i).innerHTML =
+                speed_item[i][0] + "(×" + speed_item[i][1] + ")";
+        document.getElementById("s_item2_" + i).innerHTML =
                 speed_item[i][0] + "(×" + speed_item[i][1] + ")";
     }
 
@@ -125,6 +131,14 @@ function first_setup() {
             matcher: customMatcher
         });
         $("#s_item").select2({
+            language: "ja",
+            matcher: customMatcher
+        });
+        $("#s_skill2").select2({
+            language: "ja",
+            matcher: customMatcher
+        });
+        $("#s_item2").select2({
             language: "ja",
             matcher: customMatcher
         });
@@ -524,6 +538,7 @@ function EV_calc(num) {
 function setPokes() {
     console.log("setPokes()");
 
+    SC_list_reset();
     for (let i = 0; i < 6; i++) {
         document.getElementById("Basestats_" + stats_name[i]).value =
                 pokemon[Number(document.getElementById("pokename").value)][i + 1];
@@ -837,6 +852,7 @@ function setPoke2_speed(theory) {
 
     document.getElementById("poke2_speed").value = setPoke2_button(theory);
 
+    real_speed2();
     poke2_imgs();
     return;
 }
@@ -852,30 +868,35 @@ function setPoke2_button(theory) {
         Nature = 1;
         if (theory === 'min') {
             setupSpeedbutton();
+            sc_button = "最遅";
             document.getElementById('poke2_sMin').style.color = 'var(--js-speed-selected)';
             EV = 0;
             IV = 0;
             Nature = 0.9;
         } else if (theory === 'max') {
             setupSpeedbutton();
+            sc_button = "最速";
             document.getElementById('poke2_sMax').style.color = 'var(--js-speed-selected)';
             EV = 252;
             IV = 31;
             Nature = 1.1;
         } else if (theory === 'high') {
             setupSpeedbutton();
+            sc_button = "準速";
             document.getElementById('poke2_sHig').style.color = 'var(--js-speed-selected)';
             EV = 252;
             IV = 31;
             Nature = 1;
         } else if (theory === 'low') {
             setupSpeedbutton();
+            sc_button = "下降";
             document.getElementById('poke2_sLow').style.color = 'var(--js-speed-selected)';
             EV = 0;
             IV = 31;
             Nature = 0.9;
         } else if (theory === 'normal') {
             setupSpeedbutton();
+            sc_button = "無振";
             document.getElementById('poke2_sNor').style.color = 'var(--js-speed-selected)';
             EV = 0;
             IV = 31;
@@ -937,7 +958,7 @@ function real_speed() {
     item = 1;
     if (document.getElementById("s_item").value !== '') {
         if (Number(document.getElementById("s_item").value) === 1) {
-            if (Number(document.getElementById("pokename").value) === 363)
+            if (pokemon[Number(document.getElementById("pokename").value)][0] === 'メタモン')
                 item = Number(speed_item[Number(document.getElementById("s_item").value)][1]);
         } else {
             item = Number(speed_item[Number(document.getElementById("s_item").value)][1]);
@@ -1037,4 +1058,107 @@ function nextIMG() {
 
         set1imgs();
     }
+}
+
+function real_speed2() {
+    console.log("real_speed2()");
+
+    if (document.getElementById("pokename2").value === "") {
+        result = "";
+    } else {
+        result = document.getElementById("poke2_speed").value;
+
+        if (Number(document.getElementById("s_rank2").value) >= 0) {
+            rank = (Number(document.getElementById('s_rank2').value) + 2) / 2;
+        } else {
+            rank = 2 / (2 - Number(document.getElementById('s_rank2').value));
+        }
+        result = Math.floor(result * rank);
+
+        skill = 1;
+        if (document.getElementById("s_skill2").value !== '')
+            skill = Number(speed_skill[Number(document.getElementById("s_skill2").value)][1]);
+        result = Math.floor(result * skill);
+
+        item = 1;
+        if (document.getElementById("s_item2").value !== '') {
+            if (Number(document.getElementById("s_item2").value) === 1) {
+                if (pokemon[Number(document.getElementById("pokename2").value)][0] === 'メタモン')
+                    item = Number(speed_item[Number(document.getElementById("s_item2").value)][1]);
+            } else {
+                item = Number(speed_item[Number(document.getElementById("s_item2").value)][1]);
+            }
+        }
+        result = Math.floor(result * item);
+
+        if (document.getElementById("Paralysis2").checked
+                && Number(document.getElementById("s_skill2").value) !== 6)
+            result = Math.floor(result / 2);
+
+        if (document.getElementById("Tailwind2").checked)
+            result = Math.floor(result * 2);
+    }
+    document.getElementById("real_Speed2").value = result;
+}
+
+function SC_list_set() {
+    result = "";
+    for (let i = 0; i < sc_list.length; i++) {
+        result += "<li>" + sc_list[i] + "</li>";
+    }
+    document.getElementById("speedcomparison_list").innerHTML = result;
+}
+
+function SC_list_add() {
+    if (document.getElementById("pokename2").value === '') {
+
+    } else {
+        result = "<pre>";
+        if((document.getElementById("real_Speed2").value).length>=3){
+            tab = "&#009;";
+        }else{
+            tab = "&#009;&#009;";
+        }
+        result += document.getElementById("real_Speed2").value + " -" + tab
+                + sc_button + pokemon[Number(document.getElementById("pokename2").value)][0];
+        result += "&ensp;";
+        if (Number(document.getElementById("s_rank2").value) !== 0)
+            result += document.getElementById("s_rank2").value + "積み";
+
+        if (document.getElementById("s_skill2").value !== ""
+                || document.getElementById("s_item2").value !== ""
+                || document.getElementById("Paralysis2").checked
+                || document.getElementById("Tailwind2").checked) {
+            result += "<br>&#009;&#009;";
+            if (document.getElementById("s_skill2").value !== "")
+                result += speed_skill[Number(document.getElementById("s_skill2").value)][0];
+            if (document.getElementById("s_item2").value !== "") {
+                if (document.getElementById("s_skill2").value !== "") {
+                    result += " / ";
+                }
+                result += speed_item[Number(document.getElementById("s_item2").value)][0];
+            }
+            if (document.getElementById("Paralysis2").checked
+                    || document.getElementById("Tailwind2").checked) {
+                result += " (";
+                if (document.getElementById("Paralysis2").checked)
+                    result += "麻痺";
+                if (document.getElementById("Tailwind2").checked) {
+                    if (document.getElementById("Paralysis2").checked)
+                        result += ", ";
+                    result += "追い風";
+                }
+                result += ")";
+            }
+        }
+
+        result += "</pre>";
+        sc_list.push(result);
+    }
+    SC_list_set();
+}
+
+function SC_list_reset() {
+    sc_list.length = 0;
+    SC_list_set();
 }
