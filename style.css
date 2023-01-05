@@ -1,20 +1,84 @@
+:root{
+    --main-bg: #fff;
+    --main-text: #333;
+    --shadow: rgba(51, 51, 51, 0.1);
+    --title-text: #000;
+    --anchor-text: #666;
+    --anchor-back: #69c;
+    --anchor-on: #fff;
+    
+    --input-border: #555;
+    --button-bg: #f0f0f0;
+    --button-hover: #ddd;
+    --button-active: #f0f0f0;
+    --button-active-border: #888;
+    
+    --table-head: #ccc;
+    --border-in: #888;
+    --border-out: #333;
+    
+    --scroll-main: #C1C1C1;
+    --scroll-back: #F1F1F1;
+    --scroll-shadow: #333;
+    
+    --selected-bg: #ddd;
+    
+    --js-speed-selected: #000;   /*js color*/
+    --js-speed-none: #888;
+    --js-err-no-text: #f33;
+    --js-err-no-bg: #fdd;
+    --js-hptheory-bg: #ffe3e3;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-bg: #222;
+    --main-text: #ddd;
+    --shadow: rgba(221, 221, 221, 0.1);
+    --title-text: #fff;
+    --anchor-text: #bbb;
+    
+    --input-border: #444;
+    --button-bg: #333;
+    --button-hover: #555;
+    --button-active: #333;
+    --button-active-border: #666;
+    
+    --table-head: #444;
+    --border-in: #333;
+    --border-out: #888;
+    
+    --scroll-main: #686868;
+    --scroll-back: #424242;
+    --scroll-shadow: #333;
+    
+    --selected-bg:#444;
+    
+    --js-speed-selected: #fff;   /*js color*/
+    --js-err-no-text: #800;
+    --js-err-no-bg: #300;
+    --js-hptheory-bg: #633;
+  }
+}
+
 ::-webkit-scrollbar{
     width: 10px;
 }
 ::-webkit-scrollbar-track{
-    background: #F1F1F1;
+    background: var(--scroll-back);
     border: none;
     border-radius: 10px;
-    box-shadow: inset 0 0 1px #333;
+    box-shadow: inset 0 0 1px var(--scroll-shadow);
 }
 ::-webkit-scrollbar-thumb{
-    background: #C1C1C1;
+    background: var(--scroll-main);
     border-radius: 10px;
     box-shadow: none;
 }
 
 html{
-    color: #333;
+    background: var(--main-bg);
+    -webkit-text-size-adjust: 100%;
+    color: var(--main-text);
     font-family: "Arial", "メイリオ";
 }
 button{
@@ -27,20 +91,20 @@ textarea{
 }
 
 a {
-    color: #666;
-    border-bottom: 1px dashed #666;
+    color: var(--anchor-text);
+    border-bottom: 1px dashed var(--anchor-text);
     text-decoration: none;
 }
 a:hover{
-    background-color:#69c;
-    color:#fff;
-    border-bottom:1px dashed #fff;
+    background-color: var(--anchor-back);
+    color: var(--anchor-on);
+    border-bottom:1px dashed var(--anchor-on);
 }
 h1{
-    color: #000;
+    color: var(--title-text);
 }
 h2{
-    color: #000;
+    color: var(--title-text);
     margin: 10px 0px;
     font-size: 15px;
 }
@@ -76,13 +140,13 @@ div.arrow a{
     display: none;
     margin: 0px 10px;
     border-spacing: 1px;
-    border: solid 1px #333;
+    border: solid 1px var(--border-out);
 }
 #hpTheory th, #hpTheory td{
-    border: solid 1px #888;
+    border: solid 1px var(--border-in);
 }
 #hpTheory th{
-    background-color: #ccc;
+    background-color: var(--table-head);
 }
 .hpTheory1{
     width: 45px;
@@ -123,31 +187,36 @@ td.left{
 }
 
 textarea{
+    background: var(--main-bg);
+    color: var(--main-text);
     min-height: 50px;
     min-width: 280px;
     height: 140px;
-    width: 395px;
+    width: 365px;
     max-height: 140px;
-    max-width: 395px;
+    max-width: 365px;
 }
 .no-spin::-webkit-inner-spin-button,
 .no-spin::-webkit-outer-spin-button,
 #EV_total::-webkit-inner-spin-button,
-#EV_total::-webkit-outer-spin-button {
+#EV_total::-webkit-outer-spin-button,
+#Bs_total::-webkit-inner-spin-button,
+#Bs_total::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-.no-spin, #EV_total{
+.no-spin, #EV_total, #Bs_total{
     width: 25px;
+    -moz-appearance:textfield;
 }
 #real_Speed{
     width: 35px;
 }
-.no-spin, #EV_total{
+#poke2_speed{
     -moz-appearance:textfield;
 }
-#Bs_total, #poke2_speed{
-    -moz-appearance:textfield;
+.no-spin{
+    text-align: right;
 }
 
 th div{
@@ -173,6 +242,26 @@ th div{
 .img{
     margin: 0 0 0 20px;
 }
+.img img, .type img{
+    filter: drop-shadow(0 0 10px var(--shadow));
+}
 .type{
     margin: 0 5px;
+}
+
+input, select, button{
+    color: var(--main-text);
+    background: var(--main-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 2px;
+}
+button{
+    background: var(--button-bg);
+}
+button:hover{
+    background: var(--button-hover);
+}
+button:active{
+    background: var(--button-active);
+    border: 1px solid var(--button-active-border);
 }
