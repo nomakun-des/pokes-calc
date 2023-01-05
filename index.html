@@ -19,7 +19,6 @@
         <script src="select2.min.js"></script>
     </head>
     <body>
-
         <h1>POKES STATS CALC</h1>
         <DIV id="main">
             <div>
@@ -1249,9 +1248,13 @@
                         </TD>
                     </TR>
                 </TABLE>
+                <br>
+                <textarea id="text" placeholder="コピペ"></textarea><br>
+            </div>
+            <div id="speedcheck">
                 <DIV class="flex">
                     <div class="flex-col">
-                        S比較<br>
+                        <h3>S比較</h3><br>
                         <div>
                             <select id="pokename2" class="select_search" onchange="setPoke2_speed('max')">
                                 <option value="" disabled selected style="display:none;">ポケモン名</option>
@@ -2116,8 +2119,123 @@
                         </TD>
                     </TR>
                 </TABLE>
-                <br>
-                <textarea id="text" placeholder="コピペ"></textarea><br>
+
+                <TABLE>
+                    <TR>
+                        <TH colspan="2"></TH><TH><div>ランク補正</div></TH><TH></TH>
+                        <TH><div>麻痺</div></TH><TH><div>おいかぜ</div></TH>
+                    </TR>
+                    <TR>
+                        <TD>S</TD>
+                        <TD>
+                            <input id="real_Speed2" value="" readonly>
+                        </TD>
+                        <TD>
+                            <select id="s_rank2" onchange="real_speed2()">
+                                
+                                <option id="s_rank2_6" value="6" 
+                                        >
+                                    +6</option>
+                                    
+                                <option id="s_rank2_5" value="5" 
+                                        >
+                                    +5</option>
+                                    
+                                <option id="s_rank2_4" value="4" 
+                                        >
+                                    +4</option>
+                                    
+                                <option id="s_rank2_3" value="3" 
+                                        >
+                                    +3</option>
+                                    
+                                <option id="s_rank2_2" value="2" 
+                                        >
+                                    +2</option>
+                                    
+                                <option id="s_rank2_1" value="1" 
+                                        >
+                                    +1</option>
+                                    
+                                <option id="s_rank2_0" value="0" 
+                                        selected="selected">
+                                    0</option>
+                                    
+                                <option id="s_rank2_-1" value="-1" 
+                                        >
+                                    -1</option>
+                                    
+                                <option id="s_rank2_-2" value="-2" 
+                                        >
+                                    -2</option>
+                                    
+                                <option id="s_rank2_-3" value="-3" 
+                                        >
+                                    -3</option>
+                                    
+                                <option id="s_rank2_-4" value="-4" 
+                                        >
+                                    -4</option>
+                                    
+                                <option id="s_rank2_-5" value="-5" 
+                                        >
+                                    -5</option>
+                                    
+                                <option id="s_rank2_-6" value="-6" 
+                                        >
+                                    -6</option>
+                                    
+                            </select>
+                        </TD>
+                        <TD class="left">
+                            <select class="select_search" id="s_skill2" onchange="real_speed2()">
+                                <option id="s_skill2_null" value="" selected>
+                                    とくせい</option>
+                                    
+                                <option id="s_skill2_0" value="0">skill[0][0]</option>
+                                
+                                <option id="s_skill2_1" value="1">skill[1][0]</option>
+                                
+                                <option id="s_skill2_2" value="2">skill[2][0]</option>
+                                
+                                <option id="s_skill2_3" value="3">skill[3][0]</option>
+                                
+                                <option id="s_skill2_4" value="4">skill[4][0]</option>
+                                
+                                <option id="s_skill2_5" value="5">skill[5][0]</option>
+                                
+                                <option id="s_skill2_6" value="6">skill[6][0]</option>
+                                
+                                <option id="s_skill2_7" value="7">skill[7][0]</option>
+                                
+                                <option id="s_skill2_8" value="8">skill[8][0]</option>
+                                
+                            </select>
+                        </TD>
+                        <TD>
+                            <input type="checkbox" id="Paralysis2" onchange="real_speed2()">
+                        </TD>
+                        <TD>
+                            <input type="checkbox" id="Tailwind2" onchange="real_speed2()">
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD colspan="3"></TD>
+                        <TD class="left">
+                            <select class="select_search" id="s_item2" onchange="real_speed2()">
+                                <option id="s_item2_null" value="" selected>
+                                    もちもの</option>
+                                    
+                                <option id="s_item2_0" value="0">item[0][0]</option>
+                                
+                                <option id="s_item2_1" value="1">item[1][0]</option>
+                                
+                            </select>
+                        </TD>
+                    </TR>
+                </TABLE>
+                <button id="sc_add" onclick="SC_list_add()">S比較をメモとして追加</button>
+                <div><ul id="speedcomparison_list"></ul></div>
             </div>
             <DIV>
                 <div id="main_info">
@@ -2261,7 +2379,7 @@
                 Thx to <a href="https://github.com/select2/select2" target="_blank">select2</a>, 
                 <a href="https://tobiasahlin.com/spinkit/" target="_blank">spinkit</a><br>
                 Made by <a href="https://twitter.com/nomakun_des" target="_blank">@nomakun_des</a><br>
-                v2.01.0 <a href="update.html" target="_blank">Update Details</a>
+                v3.00.0 <a href="update.html" target="_blank">Update Details</a>
             </div>
         </DIV>
 
