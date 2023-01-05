@@ -108,6 +108,11 @@ h2{
     margin: 10px 0px;
     font-size: 15px;
 }
+h3{
+    color: var(--title-text);
+    margin: 0px;
+    font-size: 15px;
+}
 .word_button{
     user-select: none;
 }
@@ -162,6 +167,10 @@ div.arrow a{
     padding: 0px 10px;
 }
 
+ul#speedcomparison_list{
+    padding: 0 0 0 30px;
+}
+
 input{
     width: 40px;
 }
@@ -176,6 +185,12 @@ button.pokes_S{
 }
 button#all_0{
     width: 50px;
+}
+button#sc_add{
+    width: 155px;
+}
+pre{
+    margin: 5px 0;
 }
 
 td{
@@ -195,6 +210,8 @@ textarea{
     width: 365px;
     max-height: 140px;
     max-width: 365px;
+    border: 1px solid var(--input-border);
+    border-radius: 2px;
 }
 .no-spin::-webkit-inner-spin-button,
 .no-spin::-webkit-outer-spin-button,
