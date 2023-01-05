@@ -55,6 +55,7 @@ window.onload = function () {
 };
 
 function first_setup() {
+
     for (let i = 0; i < pokemon.length; i++) {
         document.getElementById("pokename_" + i).innerHTML = pokemon[i][0];
     }
@@ -70,11 +71,7 @@ function first_setup() {
                 speed_item[i][0] + "(×" + speed_item[i][1] + ")";
     }
 
-    document.getElementById('poke2_sMax').style.color = "#888";
-    document.getElementById('poke2_sHig').style.color = "#888";
-    document.getElementById('poke2_sNor').style.color = "#888";
-    document.getElementById('poke2_sLow').style.color = "#888";
-    document.getElementById('poke2_sMin').style.color = "#888";
+    setupSpeedbutton();
 
     $(document).ready(function () {
         $('.select_search').select2();
@@ -132,6 +129,14 @@ function first_setup() {
             matcher: customMatcher
         });
     });
+}
+
+function setupSpeedbutton() {
+    document.getElementById('poke2_sMax').style.color = 'var(--js-speed-none)';
+    document.getElementById('poke2_sHig').style.color = 'var(--js-speed-none)';
+    document.getElementById('poke2_sNor').style.color = 'var(--js-speed-none)';
+    document.getElementById('poke2_sLow').style.color = 'var(--js-speed-none)';
+    document.getElementById('poke2_sMin').style.color = 'var(--js-speed-none)';
 }
 
 function setHpInfo() {
@@ -329,17 +334,18 @@ function HPcheck_3point(A, B1, B2, B3) {
 function hpTheoryOutPut(no, name, A, B) {
     console.log("hpTheoryOutPut(" + no + "," + name + "," + A + "," + B + ")");
 
+
     if (B === "1~3") {
         document.getElementById("hpTheory_" + no).innerHTML = HPcheck_3point(A, 1, 2, 3);
         if (ANplusB_H(A, 1) || ANplusB_H(A, 2) || ANplusB_H(A, 3)) {
-            document.getElementById("hpTheory_" + no).style.backgroundColor = "#FFE3E3";
+            document.getElementById("hpTheory_" + no).style.backgroundColor = 'var(--js-hptheory-bg)';
         } else {
             document.getElementById("hpTheory_" + no).style.backgroundColor = null;
         }
     } else {
         document.getElementById("hpTheory_" + no).innerHTML = HPcheck(A, B);
         if (ANplusB_H(A, B)) {
-            document.getElementById("hpTheory_" + no).style.backgroundColor = "#FFE3E3";
+            document.getElementById("hpTheory_" + no).style.backgroundColor = 'var(--js-hptheory-bg)';
         } else {
             document.getElementById("hpTheory_" + no).style.backgroundColor = null;
         }
@@ -385,7 +391,7 @@ function HPchecker() {
 
     if (Number(document.getElementById("Stats_H").value) >= 205) {
         document.getElementById("hpTheory_17").innerHTML = "O";//>=205
-        document.getElementById("hpTheory_17").style.backgroundColor = "#FFE3E3";
+        document.getElementById("hpTheory_17").style.backgroundColor = 'var(--js-hptheory-bg)';
     } else {
         document.getElementById("hpTheory_17").innerHTML = "+" + (205 - Number(document.getElementById("Stats_H").value));
         document.getElementById("hpTheory_17").style.backgroundColor = null;
@@ -572,125 +578,49 @@ function setLv(num) {
     reCalc();
 }
 
+function numCheck_parts(name, max, min) {
+    console.log("numCheck_parts(" + name + "," + max + "," + min + ")");
+
+    if (min === undefined) {
+        n = max;
+    } else {
+        n = min;
+    }
+    if (n <= Number(document.getElementById(name).value)
+            && Number(document.getElementById(name).value) <= max) {
+        document.getElementById(name).style.color = null;
+        document.getElementById(name).style.background = null;
+        document.getElementById(name).style.border = null;
+    } else {
+        document.getElementById(name).style.color = 'var(--js-err-no-text)';
+        document.getElementById(name).style.background = 'var(--js-err-no-bg)';
+        document.getElementById(name).style.border = "1px solid var(--js-err-no-text)";
+    }
+}
+
 function numCheck() {
     console.log("numCheck()");
 
-    if (1 <= Number(document.getElementById('lv').value)
-            && Number(document.getElementById('lv').value) <= 100) {
-        document.getElementById('lv').style.color = "black";
-    } else {
-        document.getElementById('lv').style.color = "red";
-    }
-    if (0 <= Number(document.getElementById('EV_H').value)
-            && Number(document.getElementById('EV_H').value) <= 252) {
-        document.getElementById('EV_H').style.color = "black";
-    } else {
-        document.getElementById('EV_H').style.color = "red";
-    }
-    if (0 <= Number(document.getElementById('EV_A').value)
-            && Number(document.getElementById('EV_A').value) <= 252) {
-        document.getElementById('EV_A').style.color = "black";
-    } else {
-        document.getElementById('EV_A').style.color = "red";
-    }
-    if (0 <= Number(document.getElementById('EV_B').value)
-            && Number(document.getElementById('EV_B').value) <= 252) {
-        document.getElementById('EV_B').style.color = "black";
-    } else {
-        document.getElementById('EV_B').style.color = "red";
-    }
-    if (0 <= Number(document.getElementById('EV_C').value)
-            && Number(document.getElementById('EV_C').value) <= 252) {
-        document.getElementById('EV_C').style.color = "black";
-    } else {
-        document.getElementById('EV_C').style.color = "red";
-    }
-    if (0 <= Number(document.getElementById('EV_D').value)
-            && Number(document.getElementById('EV_D').value) <= 252) {
-        document.getElementById('EV_D').style.color = "black";
-    } else {
-        document.getElementById('EV_D').style.color = "red";
-    }
-    if (0 <= Number(document.getElementById('EV_S').value)
-            && Number(document.getElementById('EV_S').value) <= 252) {
-        document.getElementById('EV_S').style.color = "black";
-    } else {
-        document.getElementById('EV_S').style.color = "red";
-    }
-    if (0 <= Number(document.getElementById('EV_total').value)
-            && Number(document.getElementById('EV_total').value) <= 510) {
-        document.getElementById('EV_total').style.color = "black";
-    } else {
-        document.getElementById('EV_total').style.color = "red";
-    }
-    if (Number(document.getElementById('IV_H').value) === 31) {
-        document.getElementById('IV_H').style.color = "black";
-    } else {
-        document.getElementById('IV_H').style.color = "red";
-    }
-    if (Number(document.getElementById('IV_A').value) === 31) {
-        document.getElementById('IV_A').style.color = "black";
-    } else {
-        document.getElementById('IV_A').style.color = "red";
-    }
-    if (Number(document.getElementById('IV_B').value) === 31) {
-        document.getElementById('IV_B').style.color = "black";
-    } else {
-        document.getElementById('IV_B').style.color = "red";
-    }
-    if (Number(document.getElementById('IV_C').value) === 31) {
-        document.getElementById('IV_C').style.color = "black";
-    } else {
-        document.getElementById('IV_C').style.color = "red";
-    }
-    if (Number(document.getElementById('IV_D').value) === 31) {
-        document.getElementById('IV_D').style.color = "black";
-    } else {
-        document.getElementById('IV_D').style.color = "red";
-    }
-    if (Number(document.getElementById('IV_S').value) === 31) {
-        document.getElementById('IV_S').style.color = "black";
-    } else {
-        document.getElementById('IV_S').style.color = "red";
-    }
+    numCheck_parts('lv', 100, 1);
+    numCheck_parts('EV_H', 252, 0);
+    numCheck_parts('EV_A', 252, 0);
+    numCheck_parts('EV_B', 252, 0);
+    numCheck_parts('EV_C', 252, 0);
+    numCheck_parts('EV_D', 252, 0);
+    numCheck_parts('EV_S', 252, 0);
+    numCheck_parts('EV_total', 510, 0);
+    numCheck_parts('IV_H', 31);
+    numCheck_parts('IV_A', 31);
+    numCheck_parts('IV_B', 31);
+    numCheck_parts('IV_C', 31);
+    numCheck_parts('IV_D', 31);
+    numCheck_parts('IV_S', 31);
     if (document.getElementById("pokename").value === "") {
 
     } else {
-        if (Number(document.getElementById('Basestats_H').value) ===
-                pokemon[Number(document.getElementById("pokename").value)][1]) {
-            document.getElementById('Basestats_H').style.color = "black";
-        } else {
-            document.getElementById('Basestats_H').style.color = "red";
-        }
-        if (Number(document.getElementById('Basestats_A').value) ===
-                pokemon[Number(document.getElementById("pokename").value)][2]) {
-            document.getElementById('Basestats_A').style.color = "black";
-        } else {
-            document.getElementById('Basestats_A').style.color = "red";
-        }
-        if (Number(document.getElementById('Basestats_B').value) ===
-                pokemon[Number(document.getElementById("pokename").value)][3]) {
-            document.getElementById('Basestats_B').style.color = "black";
-        } else {
-            document.getElementById('Basestats_B').style.color = "red";
-        }
-        if (Number(document.getElementById('Basestats_C').value) ===
-                pokemon[Number(document.getElementById("pokename").value)][4]) {
-            document.getElementById('Basestats_C').style.color = "black";
-        } else {
-            document.getElementById('Basestats_C').style.color = "red";
-        }
-        if (Number(document.getElementById('Basestats_D').value) ===
-                pokemon[Number(document.getElementById("pokename").value)][5]) {
-            document.getElementById('Basestats_D').style.color = "black";
-        } else {
-            document.getElementById('Basestats_D').style.color = "red";
-        }
-        if (Number(document.getElementById('Basestats_S').value) ===
-                pokemon[Number(document.getElementById("pokename").value)][6]) {
-            document.getElementById('Basestats_S').style.color = "black";
-        } else {
-            document.getElementById('Basestats_S').style.color = "red";
+        for (let i = 0; i < 6; i++) {
+            numCheck_parts('Basestats_' + stats_name[i],
+                    pokemon[Number(document.getElementById("pokename").value)][i + 1]);
         }
     }
 }
@@ -699,12 +629,9 @@ function total_ev() {
     console.log("total_ev()");
 
     result = 0;
-    result += Number(document.getElementById('EV_H').value);
-    result += Number(document.getElementById('EV_A').value);
-    result += Number(document.getElementById('EV_B').value);
-    result += Number(document.getElementById('EV_C').value);
-    result += Number(document.getElementById('EV_D').value);
-    result += Number(document.getElementById('EV_S').value);
+    for (let i = 0; i < 6; i++) {
+        result += Number(document.getElementById('EV_' + stats_name[i]).value);
+    }
 
     return result;
 }
@@ -713,12 +640,9 @@ function total_bs() {
     console.log("total_bs()");
 
     result = 0;
-    result += Number(document.getElementById('Basestats_H').value);
-    result += Number(document.getElementById('Basestats_A').value);
-    result += Number(document.getElementById('Basestats_B').value);
-    result += Number(document.getElementById('Basestats_C').value);
-    result += Number(document.getElementById('Basestats_D').value);
-    result += Number(document.getElementById('Basestats_S').value);
+    for (let i = 0; i < 6; i++) {
+        result += Number(document.getElementById('Basestats_' + stats_name[i]).value);
+    }
 
     return result;
 }
@@ -927,47 +851,32 @@ function setPoke2_button(theory) {
         IV = 0;
         Nature = 1;
         if (theory === 'min') {
-            document.getElementById('poke2_sMax').style.color = "#888";
-            document.getElementById('poke2_sHig').style.color = "#888";
-            document.getElementById('poke2_sNor').style.color = "#888";
-            document.getElementById('poke2_sLow').style.color = "#888";
-            document.getElementById('poke2_sMin').style.color = "#000";
+            setupSpeedbutton();
+            document.getElementById('poke2_sMin').style.color = 'var(--js-speed-selected)';
             EV = 0;
             IV = 0;
             Nature = 0.9;
         } else if (theory === 'max') {
-            document.getElementById('poke2_sMax').style.color = "#000";
-            document.getElementById('poke2_sHig').style.color = "#888";
-            document.getElementById('poke2_sNor').style.color = "#888";
-            document.getElementById('poke2_sLow').style.color = "#888";
-            document.getElementById('poke2_sMin').style.color = "#888";
+            setupSpeedbutton();
+            document.getElementById('poke2_sMax').style.color = 'var(--js-speed-selected)';
             EV = 252;
             IV = 31;
             Nature = 1.1;
         } else if (theory === 'high') {
-            document.getElementById('poke2_sMax').style.color = "#888";
-            document.getElementById('poke2_sHig').style.color = "#000";
-            document.getElementById('poke2_sNor').style.color = "#888";
-            document.getElementById('poke2_sLow').style.color = "#888";
-            document.getElementById('poke2_sMin').style.color = "#888";
+            setupSpeedbutton();
+            document.getElementById('poke2_sHig').style.color = 'var(--js-speed-selected)';
             EV = 252;
             IV = 31;
             Nature = 1;
         } else if (theory === 'low') {
-            document.getElementById('poke2_sMax').style.color = "#888";
-            document.getElementById('poke2_sHig').style.color = "#888";
-            document.getElementById('poke2_sNor').style.color = "#888";
-            document.getElementById('poke2_sLow').style.color = "#000";
-            document.getElementById('poke2_sMin').style.color = "#888";
+            setupSpeedbutton();
+            document.getElementById('poke2_sLow').style.color = 'var(--js-speed-selected)';
             EV = 0;
             IV = 31;
             Nature = 0.9;
         } else if (theory === 'normal') {
-            document.getElementById('poke2_sMax').style.color = "#888";
-            document.getElementById('poke2_sHig').style.color = "#888";
-            document.getElementById('poke2_sNor').style.color = "#000";
-            document.getElementById('poke2_sLow').style.color = "#888";
-            document.getElementById('poke2_sMin').style.color = "#888";
+            setupSpeedbutton();
+            document.getElementById('poke2_sNor').style.color = 'var(--js-speed-selected)';
             EV = 0;
             IV = 31;
             Nature = 1;
@@ -987,10 +896,10 @@ function hpTable_display() {
 
     if (change.style.display === "table") {
         change.style.display = "none";
-        document.getElementById("hpTheory_title").innerHTML = "#HP調整表 ▽";
+        document.getElementById("hpTheory_title").innerHTML = "#HP調整表 ▼";
     } else {
         change.style.display = "table";
-        document.getElementById("hpTheory_title").innerHTML = "#HP調整表 △";
+        document.getElementById("hpTheory_title").innerHTML = "#HP調整表 ▲";
     }
 }
 
@@ -1001,10 +910,10 @@ function info_display() {
 
     if (change.style.display === "block") {
         change.style.display = "none";
-        document.getElementById("info_title").innerHTML = "#このサイトについて ▽";
+        document.getElementById("info_title").innerHTML = "#このサイトについて ▼";
     } else {
         change.style.display = "block";
-        document.getElementById("info_title").innerHTML = "#このサイトについて △";
+        document.getElementById("info_title").innerHTML = "#このサイトについて ▲";
     }
 }
 
