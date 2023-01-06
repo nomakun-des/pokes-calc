@@ -137,10 +137,6 @@ div.arrow a{
     border-bottom: 0;
     text-decoration: none;
 }
-div.arrow a:hover{
-    border-bottom: 0;
-    text-decoration: none;
-}
 .spacer{
     width: 100%;
 }
