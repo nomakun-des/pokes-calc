@@ -6,23 +6,23 @@
     --anchor-text: #666;
     --anchor-back: #69c;
     --anchor-on: #fff;
-    
+
     --input-border: #555;
     --button-bg: #f0f0f0;
     --button-hover: #ddd;
     --button-active: #f0f0f0;
     --button-active-border: #888;
-    
+
     --table-head: #ccc;
     --border-in: #888;
     --border-out: #333;
-    
+
     --scroll-main: #C1C1C1;
     --scroll-back: #F1F1F1;
     --scroll-shadow: #333;
-    
+
     --selected-bg: #ddd;
-    
+
     --js-speed-selected: #000;   /*js color*/
     --js-speed-none: #888;
     --js-err-no-text: #f33;
@@ -30,34 +30,34 @@
     --js-hptheory-bg: #ffe3e3;
 }
 @media (prefers-color-scheme: dark) {
-  :root {
-    --main-bg: #222;
-    --main-text: #ddd;
-    --shadow: rgba(221, 221, 221, 0.1);
-    --title-text: #fff;
-    --anchor-text: #bbb;
-    
-    --input-border: #444;
-    --button-bg: #333;
-    --button-hover: #555;
-    --button-active: #333;
-    --button-active-border: #666;
-    
-    --table-head: #444;
-    --border-in: #333;
-    --border-out: #888;
-    
-    --scroll-main: #686868;
-    --scroll-back: #424242;
-    --scroll-shadow: #333;
-    
-    --selected-bg:#444;
-    
-    --js-speed-selected: #fff;   /*js color*/
-    --js-err-no-text: #800;
-    --js-err-no-bg: #300;
-    --js-hptheory-bg: #633;
-  }
+    :root {
+        --main-bg: #222;
+        --main-text: #ddd;
+        --shadow: rgba(221, 221, 221, 0.1);
+        --title-text: #fff;
+        --anchor-text: #bbb;
+
+        --input-border: #444;
+        --button-bg: #333;
+        --button-hover: #555;
+        --button-active: #333;
+        --button-active-border: #666;
+
+        --table-head: #444;
+        --border-in: #333;
+        --border-out: #888;
+
+        --scroll-main: #686868;
+        --scroll-back: #424242;
+        --scroll-shadow: #333;
+
+        --selected-bg:#444;
+
+        --js-speed-selected: #fff;   /*js color*/
+        --js-err-no-text: #800;
+        --js-err-no-bg: #300;
+        --js-hptheory-bg: #633;
+    }
 }
 
 ::-webkit-scrollbar{
@@ -90,12 +90,12 @@ textarea{
     font-weight: bold;
 }
 
-a {
+a:not(.sc_list) {
     color: var(--anchor-text);
     border-bottom: 1px dashed var(--anchor-text);
     text-decoration: none;
 }
-a:hover{
+a:hover:not(.sc_list){
     background-color: var(--anchor-back);
     color: var(--anchor-on);
     border-bottom:1px dashed var(--anchor-on);
@@ -287,4 +287,10 @@ button:hover{
 button:active{
     background: var(--button-active);
     border: 1px solid var(--button-active-border);
+}
+span.sc_delete{
+    user-select: none;
+    font-size: 5px;
+}
+.sc_list{
 }
