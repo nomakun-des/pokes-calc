@@ -1,5 +1,5 @@
-var img_no_1 = 0;
-var img_no_2 = 0;
+var img_no1 = 0;
+var img_no2 = 0;
 var sc_list = [];
 var sc_list_delete_button = '';
 var sc_button = '';
