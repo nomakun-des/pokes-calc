@@ -28,6 +28,9 @@
     --js-err-no-text: #f33;
     --js-err-no-bg: #fdd;
     --js-hptheory-bg: #ffe3e3;
+    
+    --pk-high-color: #ef5350;
+    --pk-low-color: #03a9f4;
 }
 @media (prefers-color-scheme: dark) {
     :root {
@@ -134,10 +137,6 @@ div.arrow{
 }
 div.arrow a{
     user-select: none;
-    border-bottom: 0;
-    text-decoration: none;
-}
-div.arrow a:hover{
     border-bottom: 0;
     text-decoration: none;
 }
@@ -297,4 +296,128 @@ span.sc_delete{
     font-size: 5px;
 }
 .sc_list{
+}
+
+input#Nature_A_inc,
+input#Nature_B_inc,
+input#Nature_C_inc,
+input#Nature_D_inc,
+input#Nature_S_inc,
+input#Nature_A_dec,
+input#Nature_B_dec,
+input#Nature_C_dec,
+input#Nature_D_dec,
+input#Nature_S_dec {
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input#Nature_A_inc,
+input#Nature_B_inc,
+input#Nature_C_inc,
+input#Nature_D_inc,
+input#Nature_S_inc,
+input#Nature_A_dec,
+input#Nature_B_dec,
+input#Nature_C_dec,
+input#Nature_D_dec,
+input#Nature_S_dec {
+    cursor: pointer;
+    vertical-align: middle;
+    position: relative;
+}
+input#Nature_A_inc::before,
+input#Nature_A_inc::after,
+input#Nature_B_inc::before,
+input#Nature_B_inc::after,
+input#Nature_C_inc::before,
+input#Nature_C_inc::after,
+input#Nature_D_inc::before,
+input#Nature_D_inc::after,
+input#Nature_S_inc::before,
+input#Nature_S_inc::after,
+input#Nature_A_dec::before,
+input#Nature_A_dec::after,
+input#Nature_B_dec::before,
+input#Nature_B_dec::after,
+input#Nature_C_dec::before,
+input#Nature_C_dec::after,
+input#Nature_D_dec::before,
+input#Nature_D_dec::after,
+input#Nature_S_dec::before,
+input#Nature_S_dec::after {
+    content: "";
+    display: block;
+    position: absolute;
+}
+input#Nature_A_inc::before,
+input#Nature_B_inc::before,
+input#Nature_C_inc::before,
+input#Nature_D_inc::before,
+input#Nature_S_inc::before,
+input#Nature_A_dec::before,
+input#Nature_B_dec::before,
+input#Nature_C_dec::before,
+input#Nature_D_dec::before,
+input#Nature_S_dec::before {/*box*/
+    background-color: var(--main-bg);
+    border-radius: 20%;
+    border: 1px solid var(--input-border);
+    width: 10px;
+    height: 10px;
+    transform: translateY(-50%);
+    top: -1px;
+    left: 2px;
+}
+input#Nature_A_inc::after,
+input#Nature_B_inc::after,
+input#Nature_C_inc::after,
+input#Nature_D_inc::after,
+input#Nature_S_inc::after,
+input#Nature_A_dec::after,
+input#Nature_B_dec::after,
+input#Nature_C_dec::after,
+input#Nature_D_dec::after,
+input#Nature_S_dec::after {/*check*/
+    border-bottom: 3px solid #fff;
+    border-left: 3px solid #fff;
+    opacity: 0;
+    height: 3px;
+    width: 5px;
+    transform: rotate(-45deg);
+    top: -5px;
+    left: 3.5px;
+}
+input#Nature_A_inc:checked::before,
+input#Nature_B_inc:checked::before,
+input#Nature_C_inc:checked::before,
+input#Nature_D_inc:checked::before,
+input#Nature_S_inc:checked::before {
+    background-color: #ef5350;
+}
+input#Nature_A_dec:checked::before,
+input#Nature_B_dec:checked::before,
+input#Nature_C_dec:checked::before,
+input#Nature_D_dec:checked::before,
+input#Nature_S_dec:checked::before {
+    background-color: #03a9f4;
+}
+input#Nature_A_inc:checked::after,
+input#Nature_B_inc:checked::after,
+input#Nature_C_inc:checked::after,
+input#Nature_D_inc:checked::after,
+input#Nature_S_inc:checked::after,
+input#Nature_A_dec:checked::after,
+input#Nature_B_dec:checked::after,
+input#Nature_C_dec:checked::after,
+input#Nature_D_dec:checked::after,
+input#Nature_S_dec:checked::after {
+    opacity: 1;
 }
