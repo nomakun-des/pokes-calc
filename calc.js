@@ -40,12 +40,16 @@ let speed_skill = [
     ["すなかき", "2.0"],
     ["はやあし", "1.5"],
     ["ゆきかき", "2.0"],
-    ["ようりょくそ", "2.0"]
+    ["ようりょくそ", "2.0"],
+    ["スロースタート", "0.5"]
 ];
 
 let speed_item = [
     ["こだわりスカーフ", "1.5"],
-    ["スピードパウダー", "2.0"]
+    ["スピードパウダー", "2.0"],
+    ["きょうせいギプス", "0.5"],
+    ["くろいてっきゅう", "0.5"],
+    ["パワー系アイテム", "0.5"]
 ];
 
 window.onload = function () {
@@ -962,7 +966,6 @@ function real_speed() {
             }
         }
     }
-    result = Math.floor(result * skill);
 
     item = 1;
     if (document.getElementById("s_item").value !== '') {
@@ -973,10 +976,21 @@ function real_speed() {
             item = Number(speed_item[Number(document.getElementById("s_item").value)][1]);
         }
     }
-    result = Math.floor(result * item);
+
+    revision = skill * item;
 
     if (document.getElementById("Tailwind").checked)
-        result = Math.floor(result * 2);
+        revision *= 2;
+
+    if (document.getElementById("Wetlands").checked)
+        revision *= 1 / 4;
+
+    roundedup = 0;
+    if ((result * revision) - (Math.floor(result * revision)) >= 0.75) {
+        roundedup = 1;
+    }
+
+    result = Math.floor(result * revision) + roundedup;
 
     if (document.getElementById("Paralysis").checked
             && Number(document.getElementById("s_skill").value) !== 6)
@@ -1095,7 +1109,6 @@ function real_speed2() {
                 }
             }
         }
-        result = Math.floor(result * skill);
 
         item = 1;
         if (document.getElementById("s_item2").value !== '') {
@@ -1106,10 +1119,21 @@ function real_speed2() {
                 item = Number(speed_item[Number(document.getElementById("s_item2").value)][1]);
             }
         }
-        result = Math.floor(result * item);
+
+        revision = skill * item;
 
         if (document.getElementById("Tailwind2").checked)
-            result = Math.floor(result * 2);
+            revision *= 2;
+
+        if (document.getElementById("Wetlands2").checked)
+            revision *= 1 / 4;
+
+        roundedup = 0;
+        if ((result * revision) - (Math.floor(result * revision)) >= 0.75) {
+            roundedup = 1;
+        }
+
+        result = Math.floor(result * revision) + roundedup;
 
         if (document.getElementById("Paralysis2").checked
                 && Number(document.getElementById("s_skill2").value) !== 6)
@@ -1164,7 +1188,8 @@ function SC_list_add() {
         if (document.getElementById("s_skill2").value !== ""
                 || document.getElementById("s_item2").value !== ""
                 || document.getElementById("Paralysis2").checked
-                || document.getElementById("Tailwind2").checked) {
+                || document.getElementById("Tailwind2").checked
+                || document.getElementById("Wetlands2").checked) {
             result += "<br>&#009;&#009;";
             if (document.getElementById("s_skill2").value !== "")
                 result += speed_skill[Number(document.getElementById("s_skill2").value)][0];
@@ -1175,7 +1200,8 @@ function SC_list_add() {
                 result += speed_item[Number(document.getElementById("s_item2").value)][0];
             }
             if (document.getElementById("Paralysis2").checked
-                    || document.getElementById("Tailwind2").checked) {
+                    || document.getElementById("Tailwind2").checked
+                    || document.getElementById("Wetlands2").checked) {
                 result += " (";
                 if (document.getElementById("Paralysis2").checked)
                     result += "麻痺";
@@ -1183,6 +1209,12 @@ function SC_list_add() {
                     if (document.getElementById("Paralysis2").checked)
                         result += ", ";
                     result += "追い風";
+                }
+                if (document.getElementById("Wetlands2").checked) {
+                    if (document.getElementById("Paralysis2").checked
+                            || document.getElementById("Tailwind2").checked)
+                        result += ", ";
+                    result += "湿原";
                 }
                 result += ")";
             }
