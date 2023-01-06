@@ -1,6 +1,7 @@
 var img_no1 = 0;
 var img_no2 = 0;
 var sc_list = [];
+var sc_list_delete_button = '';
 var sc_button = '';
 
 let stats_name = ['H', 'A', 'B', 'C', 'D', 'S'];
@@ -951,8 +952,16 @@ function real_speed() {
     result = Math.floor(result * rank);
 
     skill = 1;
-    if (document.getElementById("s_skill").value !== '')
+    if (document.getElementById("s_skill").value !== '') {
         skill = Number(speed_skill[Number(document.getElementById("s_skill").value)][1]);
+        if (document.getElementById("s_skill").value === '0') {
+            if (document.getElementById("s_item").value === '') {
+                skill = Number(speed_skill[Number(document.getElementById("s_skill").value)][1]);
+            } else {
+                skill = 1;
+            }
+        }
+    }
     result = Math.floor(result * skill);
 
     item = 1;
@@ -966,12 +975,12 @@ function real_speed() {
     }
     result = Math.floor(result * item);
 
+    if (document.getElementById("Tailwind").checked)
+        result = Math.floor(result * 2);
+
     if (document.getElementById("Paralysis").checked
             && Number(document.getElementById("s_skill").value) !== 6)
         result = Math.floor(result / 2);
-
-    if (document.getElementById("Tailwind").checked)
-        result = Math.floor(result * 2);
 
     document.getElementById("real_Speed").value = result;
 }
@@ -1076,8 +1085,16 @@ function real_speed2() {
         result = Math.floor(result * rank);
 
         skill = 1;
-        if (document.getElementById("s_skill2").value !== '')
+        if (document.getElementById("s_skill2").value !== '') {
             skill = Number(speed_skill[Number(document.getElementById("s_skill2").value)][1]);
+            if (document.getElementById("s_skill2").value === '0') {
+                if (document.getElementById("s_item2").value === '') {
+                    skill = Number(speed_skill[Number(document.getElementById("s_skill2").value)][1]);
+                } else {
+                    skill = 1;
+                }
+            }
+        }
         result = Math.floor(result * skill);
 
         item = 1;
@@ -1091,29 +1108,47 @@ function real_speed2() {
         }
         result = Math.floor(result * item);
 
+        if (document.getElementById("Tailwind2").checked)
+            result = Math.floor(result * 2);
+
         if (document.getElementById("Paralysis2").checked
                 && Number(document.getElementById("s_skill2").value) !== 6)
             result = Math.floor(result / 2);
-
-        if (document.getElementById("Tailwind2").checked)
-            result = Math.floor(result * 2);
     }
     document.getElementById("real_Speed2").value = result;
 }
 
-function SC_list_set() {
+function SC_list_set(num) {
+    console.log("SC_list_set(" + num + ")");
+
+    if (num === undefined) {
+        add = 0;
+    } else {
+        add = 1;
+    }
+
     result = "";
     for (let i = 0; i < sc_list.length; i++) {
-        result += "<li>" + sc_list[i] + "</li>";
+        if (add === 1 && i === num) {
+            result += "<pre><li>" + "deleted" + "</li></pre>";
+        }
+        result += "<pre><li><a class='sc_list' onclick='deleteon(" + i + ")'>" + sc_list[i] + "</a>";
+        if (sc_list_delete_button === i) {
+            result += "<span class='sc_delete'> / <a onclick='SC_list_delete(" +
+                    i + ")'>DELETE</a></span>";
+        }
+        result += "</li></pre>";
     }
     document.getElementById("speedcomparison_list").innerHTML = result;
 }
 
 function SC_list_add() {
+    console.log("SC_list_add()");
+
     if (document.getElementById("pokename2").value === '') {
 
     } else {
-        result = "<pre>";
+        result = "";
         if ((document.getElementById("real_Speed2").value).length >= 3) {
             tab = "&#009;";
         } else {
@@ -1153,13 +1188,36 @@ function SC_list_add() {
             }
         }
 
-        result += "</pre>";
         sc_list.push(result);
     }
     SC_list_set();
 }
 
 function SC_list_reset() {
+    console.log("SC_list_reset()");
+
     sc_list.length = 0;
+    SC_list_set();
+}
+
+function SC_list_delete(num) {
+    console.log("SC_list_delete(" + num + ")");
+
+    sc_list_delete_button = '';
+
+    if (num === 0) {
+        sc_list.shift();
+    } else {
+        sc_list.splice(num, 1);
+    }
+    SC_list_set();
+}
+
+function deleteon(num) {
+    if (sc_list_delete_button === num) {
+        sc_list_delete_button = '';
+    } else {
+        sc_list_delete_button = num;
+    }
     SC_list_set();
 }
