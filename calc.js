@@ -1,5 +1,5 @@
-var img_no1 = 0;
-var img_no2 = 0;
+var img_no_1 = 0;
+var img_no_2 = 0;
 var sc_list = [];
 var sc_list_delete_button = '';
 var sc_button = '';
@@ -1002,7 +1002,11 @@ function real_speed() {
 function click_arrow(type, num, change) {
     console.log("click_arrow(" + type + "," + num + "," + change + ")");
 
-    result = Number(document.getElementById(type + "_" + stats_name[num]).value) + Number(change);
+    if (type === 'lv') {
+        result = Number(document.getElementById(type).value) + Number(change);
+    } else {
+        result = Number(document.getElementById(type + "_" + stats_name[num]).value) + Number(change);
+    }
 
     if (type === 'EV') {
         if (result > 252 || result < 0)
@@ -1010,9 +1014,19 @@ function click_arrow(type, num, change) {
     } else if (type === 'IV') {
         if (result > 31 || result < 0)
             result = Number(document.getElementById(type + "_" + stats_name[num]).value);
+    } else if (type === 'lv') {
+        if (result > 100 || result < 1)
+            result = Number(document.getElementById(type).value);
+    } else if (type === 'Basestats') {
+        if (result > 999 || result < 1)
+            result = Number(document.getElementById(type + "_" + stats_name[num]).value);
     }
 
-    document.getElementById(type + "_" + stats_name[num]).value = result;
+    if (type === 'lv') {
+        document.getElementById(type).value = result;
+    } else {
+        document.getElementById(type + "_" + stats_name[num]).value = result;
+    }
 
     if (type === 'Stats') {
         byStats();
@@ -1042,6 +1056,12 @@ function set1imgs() {
     poke1_types();
 }
 
+function set2imgs() {
+    document.getElementById("poke2_icon").src =
+            "img/pokes-icon/poke_"
+            + img_no_2 + ".png";
+}
+
 function poke2_imgs() {
     console.log("poke2_imgs()");
 
@@ -1050,9 +1070,7 @@ function poke2_imgs() {
     } else {
         img_no_2 = 589;
     }
-    document.getElementById("poke2_icon").src =
-            "img/pokes-icon/poke_"
-            + img_no_2 + ".png";
+    set2imgs();
 }
 
 function poke1_types() {
@@ -1080,7 +1098,93 @@ function nextIMG() {
         }
 
         set1imgs();
+    } else {
+        if (nextPOKE(document.getElementById("pokename").value) !== null) {
+            $('#pokename').val(Number(nextPOKE(document.getElementById("pokename").value))).trigger('change');
+            console.log("change:" + pokemon[Number(nextPOKE(document.getElementById("pokename").value))][0]);
+            setPokes();
+        }
     }
+}
+
+function nextIMG2() {
+    console.log("nextIMG2()");
+
+    if (img[Number(document.getElementById("pokename2").value)][1] !== 0) {
+        if (img_no_2 + 1 <= img[Number(document.getElementById("pokename2").value)][1]) {
+            img_no_2++;
+        } else {
+            img_no_2 = img[Number(document.getElementById("pokename2").value)][0];
+        }
+
+        set2imgs();
+    } else {
+        if (nextPOKE(document.getElementById("pokename2").value) !== null) {
+            $('#pokename2').val(Number(nextPOKE(document.getElementById("pokename2").value))).trigger('change');
+            console.log("change:" + pokemon[Number(nextPOKE(document.getElementById("pokename2").value))][0]);
+            setPoke2_speed('max');
+        }
+    }
+}
+
+function nextPOKE(num) {
+    result = null;
+    if (pokemon[Number(num)][0] === 'イエッサン♀') {
+        result = pokesNo_search('イエッサン♂');
+    } else if (pokemon[Number(num)][0] === 'イエッサン♂') {
+        result = pokesNo_search('イエッサン♀');
+    } else if (pokemon[Number(num)][0] === 'イルカマン(ナイーブ)') {
+        result = pokesNo_search('イルカマン(マイティ)');
+    } else if (pokemon[Number(num)][0] === 'イルカマン(マイティ)') {
+        result = pokesNo_search('イルカマン(ナイーブ)');
+    } else if (pokemon[Number(num)][0] === 'コオリッポ(アイス)') {
+        result = pokesNo_search('コオリッポ(ナイス)');
+    } else if (pokemon[Number(num)][0] === 'コオリッポ(ナイス)') {
+        result = pokesNo_search('コオリッポ(アイス)');
+    } else if (pokemon[Number(num)][0] === 'ニャース') {
+        result = pokesNo_search('ガラルニャース');
+    } else if (pokemon[Number(num)][0] === 'ガラルニャース') {
+        result = pokesNo_search('ニャース');
+    } else if (pokemon[Number(num)][0] === 'ウパー') {
+        result = pokesNo_search('パルデアウパー');
+    } else if (pokemon[Number(num)][0] === 'パルデアウパー') {
+        result = pokesNo_search('ウパー');
+    } else if (pokemon[Number(num)][0] === 'パフュートン♀') {
+        result = pokesNo_search('パフュートン♂');
+    } else if (pokemon[Number(num)][0] === 'パフュートン♂') {
+        result = pokesNo_search('パフュートン♀');
+    } else if (pokemon[Number(num)][0] === '真昼ルガルガン') {
+        result = pokesNo_search('真夜中ルガルガン');
+    } else if (pokemon[Number(num)][0] === '真夜中ルガルガン') {
+        result = pokesNo_search('黄昏ルガルガン');
+    } else if (pokemon[Number(num)][0] === '黄昏ルガルガン') {
+        result = pokesNo_search('真昼ルガルガン');
+    } else if (pokemon[Number(num)][0] === 'ロトム') {
+        result = pokesNo_search('ヒートロトム');
+    } else if (pokemon[Number(num)][0] === 'ヒートロトム') {
+        result = pokesNo_search('ウォッシュロトム');
+    } else if (pokemon[Number(num)][0] === 'ウォッシュロトム') {
+        result = pokesNo_search('フロストロトム');
+    } else if (pokemon[Number(num)][0] === 'フロストロトム') {
+        result = pokesNo_search('スピンロトム');
+    } else if (pokemon[Number(num)][0] === 'スピンロトム') {
+        result = pokesNo_search('カットロトム');
+    } else if (pokemon[Number(num)][0] === 'カットロトム') {
+        result = pokesNo_search('ロトム');
+    }
+
+    return result;
+}
+
+function pokesNo_search(name) {
+    result = 0;
+    pokemon.forEach((row, i) => {
+        let colIndex = row.indexOf(name);
+        if (colIndex >= 0) {
+            result = i;
+        }
+    });
+    return result;
 }
 
 function real_speed2() {
