@@ -1,8 +1,7 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html>
-<%
-    String[] stats_name = {"H", "A", "B", "C", "D", "S"};
-%>
+
 
 <html lang="ja">
     <head>
@@ -28,9 +27,843 @@
                     <div>
                         <select id="pokename" class="select_search" onchange="setPokes()">
                             <option value="" disabled selected style="display:none;">ポケモン名</option>
-                            <% for (int i = 0; i < 418; i++) {%>
-                            <option id="pokename_<%=i%>" value="<%=i%>">pokemon[<%=i%>][0]</option>
-                            <% }%>
+                            
+                            <option id="pokename_0" value="0">pokemon[0][0]</option>
+                            
+                            <option id="pokename_1" value="1">pokemon[1][0]</option>
+                            
+                            <option id="pokename_2" value="2">pokemon[2][0]</option>
+                            
+                            <option id="pokename_3" value="3">pokemon[3][0]</option>
+                            
+                            <option id="pokename_4" value="4">pokemon[4][0]</option>
+                            
+                            <option id="pokename_5" value="5">pokemon[5][0]</option>
+                            
+                            <option id="pokename_6" value="6">pokemon[6][0]</option>
+                            
+                            <option id="pokename_7" value="7">pokemon[7][0]</option>
+                            
+                            <option id="pokename_8" value="8">pokemon[8][0]</option>
+                            
+                            <option id="pokename_9" value="9">pokemon[9][0]</option>
+                            
+                            <option id="pokename_10" value="10">pokemon[10][0]</option>
+                            
+                            <option id="pokename_11" value="11">pokemon[11][0]</option>
+                            
+                            <option id="pokename_12" value="12">pokemon[12][0]</option>
+                            
+                            <option id="pokename_13" value="13">pokemon[13][0]</option>
+                            
+                            <option id="pokename_14" value="14">pokemon[14][0]</option>
+                            
+                            <option id="pokename_15" value="15">pokemon[15][0]</option>
+                            
+                            <option id="pokename_16" value="16">pokemon[16][0]</option>
+                            
+                            <option id="pokename_17" value="17">pokemon[17][0]</option>
+                            
+                            <option id="pokename_18" value="18">pokemon[18][0]</option>
+                            
+                            <option id="pokename_19" value="19">pokemon[19][0]</option>
+                            
+                            <option id="pokename_20" value="20">pokemon[20][0]</option>
+                            
+                            <option id="pokename_21" value="21">pokemon[21][0]</option>
+                            
+                            <option id="pokename_22" value="22">pokemon[22][0]</option>
+                            
+                            <option id="pokename_23" value="23">pokemon[23][0]</option>
+                            
+                            <option id="pokename_24" value="24">pokemon[24][0]</option>
+                            
+                            <option id="pokename_25" value="25">pokemon[25][0]</option>
+                            
+                            <option id="pokename_26" value="26">pokemon[26][0]</option>
+                            
+                            <option id="pokename_27" value="27">pokemon[27][0]</option>
+                            
+                            <option id="pokename_28" value="28">pokemon[28][0]</option>
+                            
+                            <option id="pokename_29" value="29">pokemon[29][0]</option>
+                            
+                            <option id="pokename_30" value="30">pokemon[30][0]</option>
+                            
+                            <option id="pokename_31" value="31">pokemon[31][0]</option>
+                            
+                            <option id="pokename_32" value="32">pokemon[32][0]</option>
+                            
+                            <option id="pokename_33" value="33">pokemon[33][0]</option>
+                            
+                            <option id="pokename_34" value="34">pokemon[34][0]</option>
+                            
+                            <option id="pokename_35" value="35">pokemon[35][0]</option>
+                            
+                            <option id="pokename_36" value="36">pokemon[36][0]</option>
+                            
+                            <option id="pokename_37" value="37">pokemon[37][0]</option>
+                            
+                            <option id="pokename_38" value="38">pokemon[38][0]</option>
+                            
+                            <option id="pokename_39" value="39">pokemon[39][0]</option>
+                            
+                            <option id="pokename_40" value="40">pokemon[40][0]</option>
+                            
+                            <option id="pokename_41" value="41">pokemon[41][0]</option>
+                            
+                            <option id="pokename_42" value="42">pokemon[42][0]</option>
+                            
+                            <option id="pokename_43" value="43">pokemon[43][0]</option>
+                            
+                            <option id="pokename_44" value="44">pokemon[44][0]</option>
+                            
+                            <option id="pokename_45" value="45">pokemon[45][0]</option>
+                            
+                            <option id="pokename_46" value="46">pokemon[46][0]</option>
+                            
+                            <option id="pokename_47" value="47">pokemon[47][0]</option>
+                            
+                            <option id="pokename_48" value="48">pokemon[48][0]</option>
+                            
+                            <option id="pokename_49" value="49">pokemon[49][0]</option>
+                            
+                            <option id="pokename_50" value="50">pokemon[50][0]</option>
+                            
+                            <option id="pokename_51" value="51">pokemon[51][0]</option>
+                            
+                            <option id="pokename_52" value="52">pokemon[52][0]</option>
+                            
+                            <option id="pokename_53" value="53">pokemon[53][0]</option>
+                            
+                            <option id="pokename_54" value="54">pokemon[54][0]</option>
+                            
+                            <option id="pokename_55" value="55">pokemon[55][0]</option>
+                            
+                            <option id="pokename_56" value="56">pokemon[56][0]</option>
+                            
+                            <option id="pokename_57" value="57">pokemon[57][0]</option>
+                            
+                            <option id="pokename_58" value="58">pokemon[58][0]</option>
+                            
+                            <option id="pokename_59" value="59">pokemon[59][0]</option>
+                            
+                            <option id="pokename_60" value="60">pokemon[60][0]</option>
+                            
+                            <option id="pokename_61" value="61">pokemon[61][0]</option>
+                            
+                            <option id="pokename_62" value="62">pokemon[62][0]</option>
+                            
+                            <option id="pokename_63" value="63">pokemon[63][0]</option>
+                            
+                            <option id="pokename_64" value="64">pokemon[64][0]</option>
+                            
+                            <option id="pokename_65" value="65">pokemon[65][0]</option>
+                            
+                            <option id="pokename_66" value="66">pokemon[66][0]</option>
+                            
+                            <option id="pokename_67" value="67">pokemon[67][0]</option>
+                            
+                            <option id="pokename_68" value="68">pokemon[68][0]</option>
+                            
+                            <option id="pokename_69" value="69">pokemon[69][0]</option>
+                            
+                            <option id="pokename_70" value="70">pokemon[70][0]</option>
+                            
+                            <option id="pokename_71" value="71">pokemon[71][0]</option>
+                            
+                            <option id="pokename_72" value="72">pokemon[72][0]</option>
+                            
+                            <option id="pokename_73" value="73">pokemon[73][0]</option>
+                            
+                            <option id="pokename_74" value="74">pokemon[74][0]</option>
+                            
+                            <option id="pokename_75" value="75">pokemon[75][0]</option>
+                            
+                            <option id="pokename_76" value="76">pokemon[76][0]</option>
+                            
+                            <option id="pokename_77" value="77">pokemon[77][0]</option>
+                            
+                            <option id="pokename_78" value="78">pokemon[78][0]</option>
+                            
+                            <option id="pokename_79" value="79">pokemon[79][0]</option>
+                            
+                            <option id="pokename_80" value="80">pokemon[80][0]</option>
+                            
+                            <option id="pokename_81" value="81">pokemon[81][0]</option>
+                            
+                            <option id="pokename_82" value="82">pokemon[82][0]</option>
+                            
+                            <option id="pokename_83" value="83">pokemon[83][0]</option>
+                            
+                            <option id="pokename_84" value="84">pokemon[84][0]</option>
+                            
+                            <option id="pokename_85" value="85">pokemon[85][0]</option>
+                            
+                            <option id="pokename_86" value="86">pokemon[86][0]</option>
+                            
+                            <option id="pokename_87" value="87">pokemon[87][0]</option>
+                            
+                            <option id="pokename_88" value="88">pokemon[88][0]</option>
+                            
+                            <option id="pokename_89" value="89">pokemon[89][0]</option>
+                            
+                            <option id="pokename_90" value="90">pokemon[90][0]</option>
+                            
+                            <option id="pokename_91" value="91">pokemon[91][0]</option>
+                            
+                            <option id="pokename_92" value="92">pokemon[92][0]</option>
+                            
+                            <option id="pokename_93" value="93">pokemon[93][0]</option>
+                            
+                            <option id="pokename_94" value="94">pokemon[94][0]</option>
+                            
+                            <option id="pokename_95" value="95">pokemon[95][0]</option>
+                            
+                            <option id="pokename_96" value="96">pokemon[96][0]</option>
+                            
+                            <option id="pokename_97" value="97">pokemon[97][0]</option>
+                            
+                            <option id="pokename_98" value="98">pokemon[98][0]</option>
+                            
+                            <option id="pokename_99" value="99">pokemon[99][0]</option>
+                            
+                            <option id="pokename_100" value="100">pokemon[100][0]</option>
+                            
+                            <option id="pokename_101" value="101">pokemon[101][0]</option>
+                            
+                            <option id="pokename_102" value="102">pokemon[102][0]</option>
+                            
+                            <option id="pokename_103" value="103">pokemon[103][0]</option>
+                            
+                            <option id="pokename_104" value="104">pokemon[104][0]</option>
+                            
+                            <option id="pokename_105" value="105">pokemon[105][0]</option>
+                            
+                            <option id="pokename_106" value="106">pokemon[106][0]</option>
+                            
+                            <option id="pokename_107" value="107">pokemon[107][0]</option>
+                            
+                            <option id="pokename_108" value="108">pokemon[108][0]</option>
+                            
+                            <option id="pokename_109" value="109">pokemon[109][0]</option>
+                            
+                            <option id="pokename_110" value="110">pokemon[110][0]</option>
+                            
+                            <option id="pokename_111" value="111">pokemon[111][0]</option>
+                            
+                            <option id="pokename_112" value="112">pokemon[112][0]</option>
+                            
+                            <option id="pokename_113" value="113">pokemon[113][0]</option>
+                            
+                            <option id="pokename_114" value="114">pokemon[114][0]</option>
+                            
+                            <option id="pokename_115" value="115">pokemon[115][0]</option>
+                            
+                            <option id="pokename_116" value="116">pokemon[116][0]</option>
+                            
+                            <option id="pokename_117" value="117">pokemon[117][0]</option>
+                            
+                            <option id="pokename_118" value="118">pokemon[118][0]</option>
+                            
+                            <option id="pokename_119" value="119">pokemon[119][0]</option>
+                            
+                            <option id="pokename_120" value="120">pokemon[120][0]</option>
+                            
+                            <option id="pokename_121" value="121">pokemon[121][0]</option>
+                            
+                            <option id="pokename_122" value="122">pokemon[122][0]</option>
+                            
+                            <option id="pokename_123" value="123">pokemon[123][0]</option>
+                            
+                            <option id="pokename_124" value="124">pokemon[124][0]</option>
+                            
+                            <option id="pokename_125" value="125">pokemon[125][0]</option>
+                            
+                            <option id="pokename_126" value="126">pokemon[126][0]</option>
+                            
+                            <option id="pokename_127" value="127">pokemon[127][0]</option>
+                            
+                            <option id="pokename_128" value="128">pokemon[128][0]</option>
+                            
+                            <option id="pokename_129" value="129">pokemon[129][0]</option>
+                            
+                            <option id="pokename_130" value="130">pokemon[130][0]</option>
+                            
+                            <option id="pokename_131" value="131">pokemon[131][0]</option>
+                            
+                            <option id="pokename_132" value="132">pokemon[132][0]</option>
+                            
+                            <option id="pokename_133" value="133">pokemon[133][0]</option>
+                            
+                            <option id="pokename_134" value="134">pokemon[134][0]</option>
+                            
+                            <option id="pokename_135" value="135">pokemon[135][0]</option>
+                            
+                            <option id="pokename_136" value="136">pokemon[136][0]</option>
+                            
+                            <option id="pokename_137" value="137">pokemon[137][0]</option>
+                            
+                            <option id="pokename_138" value="138">pokemon[138][0]</option>
+                            
+                            <option id="pokename_139" value="139">pokemon[139][0]</option>
+                            
+                            <option id="pokename_140" value="140">pokemon[140][0]</option>
+                            
+                            <option id="pokename_141" value="141">pokemon[141][0]</option>
+                            
+                            <option id="pokename_142" value="142">pokemon[142][0]</option>
+                            
+                            <option id="pokename_143" value="143">pokemon[143][0]</option>
+                            
+                            <option id="pokename_144" value="144">pokemon[144][0]</option>
+                            
+                            <option id="pokename_145" value="145">pokemon[145][0]</option>
+                            
+                            <option id="pokename_146" value="146">pokemon[146][0]</option>
+                            
+                            <option id="pokename_147" value="147">pokemon[147][0]</option>
+                            
+                            <option id="pokename_148" value="148">pokemon[148][0]</option>
+                            
+                            <option id="pokename_149" value="149">pokemon[149][0]</option>
+                            
+                            <option id="pokename_150" value="150">pokemon[150][0]</option>
+                            
+                            <option id="pokename_151" value="151">pokemon[151][0]</option>
+                            
+                            <option id="pokename_152" value="152">pokemon[152][0]</option>
+                            
+                            <option id="pokename_153" value="153">pokemon[153][0]</option>
+                            
+                            <option id="pokename_154" value="154">pokemon[154][0]</option>
+                            
+                            <option id="pokename_155" value="155">pokemon[155][0]</option>
+                            
+                            <option id="pokename_156" value="156">pokemon[156][0]</option>
+                            
+                            <option id="pokename_157" value="157">pokemon[157][0]</option>
+                            
+                            <option id="pokename_158" value="158">pokemon[158][0]</option>
+                            
+                            <option id="pokename_159" value="159">pokemon[159][0]</option>
+                            
+                            <option id="pokename_160" value="160">pokemon[160][0]</option>
+                            
+                            <option id="pokename_161" value="161">pokemon[161][0]</option>
+                            
+                            <option id="pokename_162" value="162">pokemon[162][0]</option>
+                            
+                            <option id="pokename_163" value="163">pokemon[163][0]</option>
+                            
+                            <option id="pokename_164" value="164">pokemon[164][0]</option>
+                            
+                            <option id="pokename_165" value="165">pokemon[165][0]</option>
+                            
+                            <option id="pokename_166" value="166">pokemon[166][0]</option>
+                            
+                            <option id="pokename_167" value="167">pokemon[167][0]</option>
+                            
+                            <option id="pokename_168" value="168">pokemon[168][0]</option>
+                            
+                            <option id="pokename_169" value="169">pokemon[169][0]</option>
+                            
+                            <option id="pokename_170" value="170">pokemon[170][0]</option>
+                            
+                            <option id="pokename_171" value="171">pokemon[171][0]</option>
+                            
+                            <option id="pokename_172" value="172">pokemon[172][0]</option>
+                            
+                            <option id="pokename_173" value="173">pokemon[173][0]</option>
+                            
+                            <option id="pokename_174" value="174">pokemon[174][0]</option>
+                            
+                            <option id="pokename_175" value="175">pokemon[175][0]</option>
+                            
+                            <option id="pokename_176" value="176">pokemon[176][0]</option>
+                            
+                            <option id="pokename_177" value="177">pokemon[177][0]</option>
+                            
+                            <option id="pokename_178" value="178">pokemon[178][0]</option>
+                            
+                            <option id="pokename_179" value="179">pokemon[179][0]</option>
+                            
+                            <option id="pokename_180" value="180">pokemon[180][0]</option>
+                            
+                            <option id="pokename_181" value="181">pokemon[181][0]</option>
+                            
+                            <option id="pokename_182" value="182">pokemon[182][0]</option>
+                            
+                            <option id="pokename_183" value="183">pokemon[183][0]</option>
+                            
+                            <option id="pokename_184" value="184">pokemon[184][0]</option>
+                            
+                            <option id="pokename_185" value="185">pokemon[185][0]</option>
+                            
+                            <option id="pokename_186" value="186">pokemon[186][0]</option>
+                            
+                            <option id="pokename_187" value="187">pokemon[187][0]</option>
+                            
+                            <option id="pokename_188" value="188">pokemon[188][0]</option>
+                            
+                            <option id="pokename_189" value="189">pokemon[189][0]</option>
+                            
+                            <option id="pokename_190" value="190">pokemon[190][0]</option>
+                            
+                            <option id="pokename_191" value="191">pokemon[191][0]</option>
+                            
+                            <option id="pokename_192" value="192">pokemon[192][0]</option>
+                            
+                            <option id="pokename_193" value="193">pokemon[193][0]</option>
+                            
+                            <option id="pokename_194" value="194">pokemon[194][0]</option>
+                            
+                            <option id="pokename_195" value="195">pokemon[195][0]</option>
+                            
+                            <option id="pokename_196" value="196">pokemon[196][0]</option>
+                            
+                            <option id="pokename_197" value="197">pokemon[197][0]</option>
+                            
+                            <option id="pokename_198" value="198">pokemon[198][0]</option>
+                            
+                            <option id="pokename_199" value="199">pokemon[199][0]</option>
+                            
+                            <option id="pokename_200" value="200">pokemon[200][0]</option>
+                            
+                            <option id="pokename_201" value="201">pokemon[201][0]</option>
+                            
+                            <option id="pokename_202" value="202">pokemon[202][0]</option>
+                            
+                            <option id="pokename_203" value="203">pokemon[203][0]</option>
+                            
+                            <option id="pokename_204" value="204">pokemon[204][0]</option>
+                            
+                            <option id="pokename_205" value="205">pokemon[205][0]</option>
+                            
+                            <option id="pokename_206" value="206">pokemon[206][0]</option>
+                            
+                            <option id="pokename_207" value="207">pokemon[207][0]</option>
+                            
+                            <option id="pokename_208" value="208">pokemon[208][0]</option>
+                            
+                            <option id="pokename_209" value="209">pokemon[209][0]</option>
+                            
+                            <option id="pokename_210" value="210">pokemon[210][0]</option>
+                            
+                            <option id="pokename_211" value="211">pokemon[211][0]</option>
+                            
+                            <option id="pokename_212" value="212">pokemon[212][0]</option>
+                            
+                            <option id="pokename_213" value="213">pokemon[213][0]</option>
+                            
+                            <option id="pokename_214" value="214">pokemon[214][0]</option>
+                            
+                            <option id="pokename_215" value="215">pokemon[215][0]</option>
+                            
+                            <option id="pokename_216" value="216">pokemon[216][0]</option>
+                            
+                            <option id="pokename_217" value="217">pokemon[217][0]</option>
+                            
+                            <option id="pokename_218" value="218">pokemon[218][0]</option>
+                            
+                            <option id="pokename_219" value="219">pokemon[219][0]</option>
+                            
+                            <option id="pokename_220" value="220">pokemon[220][0]</option>
+                            
+                            <option id="pokename_221" value="221">pokemon[221][0]</option>
+                            
+                            <option id="pokename_222" value="222">pokemon[222][0]</option>
+                            
+                            <option id="pokename_223" value="223">pokemon[223][0]</option>
+                            
+                            <option id="pokename_224" value="224">pokemon[224][0]</option>
+                            
+                            <option id="pokename_225" value="225">pokemon[225][0]</option>
+                            
+                            <option id="pokename_226" value="226">pokemon[226][0]</option>
+                            
+                            <option id="pokename_227" value="227">pokemon[227][0]</option>
+                            
+                            <option id="pokename_228" value="228">pokemon[228][0]</option>
+                            
+                            <option id="pokename_229" value="229">pokemon[229][0]</option>
+                            
+                            <option id="pokename_230" value="230">pokemon[230][0]</option>
+                            
+                            <option id="pokename_231" value="231">pokemon[231][0]</option>
+                            
+                            <option id="pokename_232" value="232">pokemon[232][0]</option>
+                            
+                            <option id="pokename_233" value="233">pokemon[233][0]</option>
+                            
+                            <option id="pokename_234" value="234">pokemon[234][0]</option>
+                            
+                            <option id="pokename_235" value="235">pokemon[235][0]</option>
+                            
+                            <option id="pokename_236" value="236">pokemon[236][0]</option>
+                            
+                            <option id="pokename_237" value="237">pokemon[237][0]</option>
+                            
+                            <option id="pokename_238" value="238">pokemon[238][0]</option>
+                            
+                            <option id="pokename_239" value="239">pokemon[239][0]</option>
+                            
+                            <option id="pokename_240" value="240">pokemon[240][0]</option>
+                            
+                            <option id="pokename_241" value="241">pokemon[241][0]</option>
+                            
+                            <option id="pokename_242" value="242">pokemon[242][0]</option>
+                            
+                            <option id="pokename_243" value="243">pokemon[243][0]</option>
+                            
+                            <option id="pokename_244" value="244">pokemon[244][0]</option>
+                            
+                            <option id="pokename_245" value="245">pokemon[245][0]</option>
+                            
+                            <option id="pokename_246" value="246">pokemon[246][0]</option>
+                            
+                            <option id="pokename_247" value="247">pokemon[247][0]</option>
+                            
+                            <option id="pokename_248" value="248">pokemon[248][0]</option>
+                            
+                            <option id="pokename_249" value="249">pokemon[249][0]</option>
+                            
+                            <option id="pokename_250" value="250">pokemon[250][0]</option>
+                            
+                            <option id="pokename_251" value="251">pokemon[251][0]</option>
+                            
+                            <option id="pokename_252" value="252">pokemon[252][0]</option>
+                            
+                            <option id="pokename_253" value="253">pokemon[253][0]</option>
+                            
+                            <option id="pokename_254" value="254">pokemon[254][0]</option>
+                            
+                            <option id="pokename_255" value="255">pokemon[255][0]</option>
+                            
+                            <option id="pokename_256" value="256">pokemon[256][0]</option>
+                            
+                            <option id="pokename_257" value="257">pokemon[257][0]</option>
+                            
+                            <option id="pokename_258" value="258">pokemon[258][0]</option>
+                            
+                            <option id="pokename_259" value="259">pokemon[259][0]</option>
+                            
+                            <option id="pokename_260" value="260">pokemon[260][0]</option>
+                            
+                            <option id="pokename_261" value="261">pokemon[261][0]</option>
+                            
+                            <option id="pokename_262" value="262">pokemon[262][0]</option>
+                            
+                            <option id="pokename_263" value="263">pokemon[263][0]</option>
+                            
+                            <option id="pokename_264" value="264">pokemon[264][0]</option>
+                            
+                            <option id="pokename_265" value="265">pokemon[265][0]</option>
+                            
+                            <option id="pokename_266" value="266">pokemon[266][0]</option>
+                            
+                            <option id="pokename_267" value="267">pokemon[267][0]</option>
+                            
+                            <option id="pokename_268" value="268">pokemon[268][0]</option>
+                            
+                            <option id="pokename_269" value="269">pokemon[269][0]</option>
+                            
+                            <option id="pokename_270" value="270">pokemon[270][0]</option>
+                            
+                            <option id="pokename_271" value="271">pokemon[271][0]</option>
+                            
+                            <option id="pokename_272" value="272">pokemon[272][0]</option>
+                            
+                            <option id="pokename_273" value="273">pokemon[273][0]</option>
+                            
+                            <option id="pokename_274" value="274">pokemon[274][0]</option>
+                            
+                            <option id="pokename_275" value="275">pokemon[275][0]</option>
+                            
+                            <option id="pokename_276" value="276">pokemon[276][0]</option>
+                            
+                            <option id="pokename_277" value="277">pokemon[277][0]</option>
+                            
+                            <option id="pokename_278" value="278">pokemon[278][0]</option>
+                            
+                            <option id="pokename_279" value="279">pokemon[279][0]</option>
+                            
+                            <option id="pokename_280" value="280">pokemon[280][0]</option>
+                            
+                            <option id="pokename_281" value="281">pokemon[281][0]</option>
+                            
+                            <option id="pokename_282" value="282">pokemon[282][0]</option>
+                            
+                            <option id="pokename_283" value="283">pokemon[283][0]</option>
+                            
+                            <option id="pokename_284" value="284">pokemon[284][0]</option>
+                            
+                            <option id="pokename_285" value="285">pokemon[285][0]</option>
+                            
+                            <option id="pokename_286" value="286">pokemon[286][0]</option>
+                            
+                            <option id="pokename_287" value="287">pokemon[287][0]</option>
+                            
+                            <option id="pokename_288" value="288">pokemon[288][0]</option>
+                            
+                            <option id="pokename_289" value="289">pokemon[289][0]</option>
+                            
+                            <option id="pokename_290" value="290">pokemon[290][0]</option>
+                            
+                            <option id="pokename_291" value="291">pokemon[291][0]</option>
+                            
+                            <option id="pokename_292" value="292">pokemon[292][0]</option>
+                            
+                            <option id="pokename_293" value="293">pokemon[293][0]</option>
+                            
+                            <option id="pokename_294" value="294">pokemon[294][0]</option>
+                            
+                            <option id="pokename_295" value="295">pokemon[295][0]</option>
+                            
+                            <option id="pokename_296" value="296">pokemon[296][0]</option>
+                            
+                            <option id="pokename_297" value="297">pokemon[297][0]</option>
+                            
+                            <option id="pokename_298" value="298">pokemon[298][0]</option>
+                            
+                            <option id="pokename_299" value="299">pokemon[299][0]</option>
+                            
+                            <option id="pokename_300" value="300">pokemon[300][0]</option>
+                            
+                            <option id="pokename_301" value="301">pokemon[301][0]</option>
+                            
+                            <option id="pokename_302" value="302">pokemon[302][0]</option>
+                            
+                            <option id="pokename_303" value="303">pokemon[303][0]</option>
+                            
+                            <option id="pokename_304" value="304">pokemon[304][0]</option>
+                            
+                            <option id="pokename_305" value="305">pokemon[305][0]</option>
+                            
+                            <option id="pokename_306" value="306">pokemon[306][0]</option>
+                            
+                            <option id="pokename_307" value="307">pokemon[307][0]</option>
+                            
+                            <option id="pokename_308" value="308">pokemon[308][0]</option>
+                            
+                            <option id="pokename_309" value="309">pokemon[309][0]</option>
+                            
+                            <option id="pokename_310" value="310">pokemon[310][0]</option>
+                            
+                            <option id="pokename_311" value="311">pokemon[311][0]</option>
+                            
+                            <option id="pokename_312" value="312">pokemon[312][0]</option>
+                            
+                            <option id="pokename_313" value="313">pokemon[313][0]</option>
+                            
+                            <option id="pokename_314" value="314">pokemon[314][0]</option>
+                            
+                            <option id="pokename_315" value="315">pokemon[315][0]</option>
+                            
+                            <option id="pokename_316" value="316">pokemon[316][0]</option>
+                            
+                            <option id="pokename_317" value="317">pokemon[317][0]</option>
+                            
+                            <option id="pokename_318" value="318">pokemon[318][0]</option>
+                            
+                            <option id="pokename_319" value="319">pokemon[319][0]</option>
+                            
+                            <option id="pokename_320" value="320">pokemon[320][0]</option>
+                            
+                            <option id="pokename_321" value="321">pokemon[321][0]</option>
+                            
+                            <option id="pokename_322" value="322">pokemon[322][0]</option>
+                            
+                            <option id="pokename_323" value="323">pokemon[323][0]</option>
+                            
+                            <option id="pokename_324" value="324">pokemon[324][0]</option>
+                            
+                            <option id="pokename_325" value="325">pokemon[325][0]</option>
+                            
+                            <option id="pokename_326" value="326">pokemon[326][0]</option>
+                            
+                            <option id="pokename_327" value="327">pokemon[327][0]</option>
+                            
+                            <option id="pokename_328" value="328">pokemon[328][0]</option>
+                            
+                            <option id="pokename_329" value="329">pokemon[329][0]</option>
+                            
+                            <option id="pokename_330" value="330">pokemon[330][0]</option>
+                            
+                            <option id="pokename_331" value="331">pokemon[331][0]</option>
+                            
+                            <option id="pokename_332" value="332">pokemon[332][0]</option>
+                            
+                            <option id="pokename_333" value="333">pokemon[333][0]</option>
+                            
+                            <option id="pokename_334" value="334">pokemon[334][0]</option>
+                            
+                            <option id="pokename_335" value="335">pokemon[335][0]</option>
+                            
+                            <option id="pokename_336" value="336">pokemon[336][0]</option>
+                            
+                            <option id="pokename_337" value="337">pokemon[337][0]</option>
+                            
+                            <option id="pokename_338" value="338">pokemon[338][0]</option>
+                            
+                            <option id="pokename_339" value="339">pokemon[339][0]</option>
+                            
+                            <option id="pokename_340" value="340">pokemon[340][0]</option>
+                            
+                            <option id="pokename_341" value="341">pokemon[341][0]</option>
+                            
+                            <option id="pokename_342" value="342">pokemon[342][0]</option>
+                            
+                            <option id="pokename_343" value="343">pokemon[343][0]</option>
+                            
+                            <option id="pokename_344" value="344">pokemon[344][0]</option>
+                            
+                            <option id="pokename_345" value="345">pokemon[345][0]</option>
+                            
+                            <option id="pokename_346" value="346">pokemon[346][0]</option>
+                            
+                            <option id="pokename_347" value="347">pokemon[347][0]</option>
+                            
+                            <option id="pokename_348" value="348">pokemon[348][0]</option>
+                            
+                            <option id="pokename_349" value="349">pokemon[349][0]</option>
+                            
+                            <option id="pokename_350" value="350">pokemon[350][0]</option>
+                            
+                            <option id="pokename_351" value="351">pokemon[351][0]</option>
+                            
+                            <option id="pokename_352" value="352">pokemon[352][0]</option>
+                            
+                            <option id="pokename_353" value="353">pokemon[353][0]</option>
+                            
+                            <option id="pokename_354" value="354">pokemon[354][0]</option>
+                            
+                            <option id="pokename_355" value="355">pokemon[355][0]</option>
+                            
+                            <option id="pokename_356" value="356">pokemon[356][0]</option>
+                            
+                            <option id="pokename_357" value="357">pokemon[357][0]</option>
+                            
+                            <option id="pokename_358" value="358">pokemon[358][0]</option>
+                            
+                            <option id="pokename_359" value="359">pokemon[359][0]</option>
+                            
+                            <option id="pokename_360" value="360">pokemon[360][0]</option>
+                            
+                            <option id="pokename_361" value="361">pokemon[361][0]</option>
+                            
+                            <option id="pokename_362" value="362">pokemon[362][0]</option>
+                            
+                            <option id="pokename_363" value="363">pokemon[363][0]</option>
+                            
+                            <option id="pokename_364" value="364">pokemon[364][0]</option>
+                            
+                            <option id="pokename_365" value="365">pokemon[365][0]</option>
+                            
+                            <option id="pokename_366" value="366">pokemon[366][0]</option>
+                            
+                            <option id="pokename_367" value="367">pokemon[367][0]</option>
+                            
+                            <option id="pokename_368" value="368">pokemon[368][0]</option>
+                            
+                            <option id="pokename_369" value="369">pokemon[369][0]</option>
+                            
+                            <option id="pokename_370" value="370">pokemon[370][0]</option>
+                            
+                            <option id="pokename_371" value="371">pokemon[371][0]</option>
+                            
+                            <option id="pokename_372" value="372">pokemon[372][0]</option>
+                            
+                            <option id="pokename_373" value="373">pokemon[373][0]</option>
+                            
+                            <option id="pokename_374" value="374">pokemon[374][0]</option>
+                            
+                            <option id="pokename_375" value="375">pokemon[375][0]</option>
+                            
+                            <option id="pokename_376" value="376">pokemon[376][0]</option>
+                            
+                            <option id="pokename_377" value="377">pokemon[377][0]</option>
+                            
+                            <option id="pokename_378" value="378">pokemon[378][0]</option>
+                            
+                            <option id="pokename_379" value="379">pokemon[379][0]</option>
+                            
+                            <option id="pokename_380" value="380">pokemon[380][0]</option>
+                            
+                            <option id="pokename_381" value="381">pokemon[381][0]</option>
+                            
+                            <option id="pokename_382" value="382">pokemon[382][0]</option>
+                            
+                            <option id="pokename_383" value="383">pokemon[383][0]</option>
+                            
+                            <option id="pokename_384" value="384">pokemon[384][0]</option>
+                            
+                            <option id="pokename_385" value="385">pokemon[385][0]</option>
+                            
+                            <option id="pokename_386" value="386">pokemon[386][0]</option>
+                            
+                            <option id="pokename_387" value="387">pokemon[387][0]</option>
+                            
+                            <option id="pokename_388" value="388">pokemon[388][0]</option>
+                            
+                            <option id="pokename_389" value="389">pokemon[389][0]</option>
+                            
+                            <option id="pokename_390" value="390">pokemon[390][0]</option>
+                            
+                            <option id="pokename_391" value="391">pokemon[391][0]</option>
+                            
+                            <option id="pokename_392" value="392">pokemon[392][0]</option>
+                            
+                            <option id="pokename_393" value="393">pokemon[393][0]</option>
+                            
+                            <option id="pokename_394" value="394">pokemon[394][0]</option>
+                            
+                            <option id="pokename_395" value="395">pokemon[395][0]</option>
+                            
+                            <option id="pokename_396" value="396">pokemon[396][0]</option>
+                            
+                            <option id="pokename_397" value="397">pokemon[397][0]</option>
+                            
+                            <option id="pokename_398" value="398">pokemon[398][0]</option>
+                            
+                            <option id="pokename_399" value="399">pokemon[399][0]</option>
+                            
+                            <option id="pokename_400" value="400">pokemon[400][0]</option>
+                            
+                            <option id="pokename_401" value="401">pokemon[401][0]</option>
+                            
+                            <option id="pokename_402" value="402">pokemon[402][0]</option>
+                            
+                            <option id="pokename_403" value="403">pokemon[403][0]</option>
+                            
+                            <option id="pokename_404" value="404">pokemon[404][0]</option>
+                            
+                            <option id="pokename_405" value="405">pokemon[405][0]</option>
+                            
+                            <option id="pokename_406" value="406">pokemon[406][0]</option>
+                            
+                            <option id="pokename_407" value="407">pokemon[407][0]</option>
+                            
+                            <option id="pokename_408" value="408">pokemon[408][0]</option>
+                            
+                            <option id="pokename_409" value="409">pokemon[409][0]</option>
+                            
+                            <option id="pokename_410" value="410">pokemon[410][0]</option>
+                            
+                            <option id="pokename_411" value="411">pokemon[411][0]</option>
+                            
+                            <option id="pokename_412" value="412">pokemon[412][0]</option>
+                            
+                            <option id="pokename_413" value="413">pokemon[413][0]</option>
+                            
+                            <option id="pokename_414" value="414">pokemon[414][0]</option>
+                            
+                            <option id="pokename_415" value="415">pokemon[415][0]</option>
+                            
+                            <option id="pokename_416" value="416">pokemon[416][0]</option>
+                            
+                            <option id="pokename_417" value="417">pokemon[417][0]</option>
+                            
                         </select>
                         <table>
                             <tr>
@@ -69,53 +902,259 @@
                         <TH colspan="2"><div>個体値</div></TH><TH></TH>
                         <TH colspan="2"><div>性格</div></TH>
                     </TR>
-                    <% for (int i = 0; i < 6; i++) {%>
+                    
                     <TR>
-                        <TD><%=stats_name[i]%></TD>
-                        <TD><input class="no-spin" type="number" value="<% if (i == 0) {%>175<% } else {%>120<% }%>" min="0" 
-                                   id="Stats_<%=stats_name[i]%>" onChange="byStats()"></TD>
+                        <TD>H</TD>
+                        <TD><input class="no-spin" type="number" value="175" min="0" 
+                                   id="Stats_H" onChange="byStats()"></TD>
                         <TD><div class="arrow">
-                                <div><a onclick="click_arrow('Stats',<%= i%>, 1)">▲</a></div>
-                                <div><a onclick="click_arrow('Stats',<%= i%>, -1)">▼</a></div>
+                                <div><a onclick="click_arrow('Stats',0, 1)">▲</a></div>
+                                <div><a onclick="click_arrow('Stats',0, -1)">▼</a></div>
                             </div></TD>
                         <TD><input class="no-spin" type="number" value="0" min="0" max="252" step="4" 
-                                   id="EV_<%=stats_name[i]%>" onChange="reCalc()"></TD>
+                                   id="EV_H" onChange="reCalc()"></TD>
                         <TD><div class="arrow">
-                                <div><a onclick="click_arrow('EV',<%= i%>, 4)">▲</a></div>
-                                <div><a onclick="click_arrow('EV',<%= i%>, -4)">▼</a></div>
+                                <div><a onclick="click_arrow('EV',0, 4)">▲</a></div>
+                                <div><a onclick="click_arrow('EV',0, -4)">▼</a></div>
                             </div></TD>
-                        <TD><button id="EV0_<%=stats_name[i]%>" onClick="setEV(0,<%= i%>)">0</button>
-                            <button id="EV252_<%=stats_name[i]%>" onClick="setEV(252,<%= i%>)">252</button></TD>
+                        <TD><button id="EV0_H" onClick="setEV(0,0)">0</button>
+                            <button id="EV252_H" onClick="setEV(252,0)">252</button></TD>
                         <TD><input class="no-spin" type="number" value="100" min="0" 
-                                   id="Basestats_<%=stats_name[i]%>" onChange="reCalc()"></TD>
+                                   id="Basestats_H" onChange="reCalc()"></TD>
                         <TD><div class="arrow">
-                                <div><a onclick="click_arrow('Basestats',<%= i%>, 1)">▲</a></div>
-                                <div><a onclick="click_arrow('Basestats',<%= i%>, -1)">▼</a></div>
+                                <div><a onclick="click_arrow('Basestats',0, 1)">▲</a></div>
+                                <div><a onclick="click_arrow('Basestats',0, -1)">▼</a></div>
                             </div></TD>
                         <TD><input class="no-spin" type="number" value="31" min="0" max="31" 
-                                   id="IV_<%=stats_name[i]%>" onChange="reCalc()"></TD>
+                                   id="IV_H" onChange="reCalc()"></TD>
                         <TD><div class="arrow">
-                                <div><a onclick="click_arrow('IV',<%= i%>, 1)">▲</a></div>
-                                <div><a onclick="click_arrow('IV',<%= i%>, -1)">▼</a></div>
+                                <div><a onclick="click_arrow('IV',0, 1)">▲</a></div>
+                                <div><a onclick="click_arrow('IV',0, -1)">▼</a></div>
                             </div></TD>
-                        <TD><button id="IV0_<%=stats_name[i]%>" onClick="setIV(0,<%= i%>)">0</button>
-                            <button id="IV31_<%=stats_name[i]%>" onClick="setIV(31,<%= i%>)">31</button></TD>
+                        <TD><button id="IV0_H" onClick="setIV(0,0)">0</button>
+                            <button id="IV31_H" onClick="setIV(31,0)">31</button></TD>
 
-                        <% if (i == 0) {%>
+                        
                         <TD class="nature_mark" style="color:#ef5350;">＋</TD>
                         <TD class="nature_mark" style="color:#1297ff;">－</TD>
-                            <% } else {%>
+                            
+                    </TR>
+                    
+                    <TR>
+                        <TD>A</TD>
+                        <TD><input class="no-spin" type="number" value="120" min="0" 
+                                   id="Stats_A" onChange="byStats()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('Stats',1, 1)">▲</a></div>
+                                <div><a onclick="click_arrow('Stats',1, -1)">▼</a></div>
+                            </div></TD>
+                        <TD><input class="no-spin" type="number" value="0" min="0" max="252" step="4" 
+                                   id="EV_A" onChange="reCalc()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('EV',1, 4)">▲</a></div>
+                                <div><a onclick="click_arrow('EV',1, -4)">▼</a></div>
+                            </div></TD>
+                        <TD><button id="EV0_A" onClick="setEV(0,1)">0</button>
+                            <button id="EV252_A" onClick="setEV(252,1)">252</button></TD>
+                        <TD><input class="no-spin" type="number" value="100" min="0" 
+                                   id="Basestats_A" onChange="reCalc()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('Basestats',1, 1)">▲</a></div>
+                                <div><a onclick="click_arrow('Basestats',1, -1)">▼</a></div>
+                            </div></TD>
+                        <TD><input class="no-spin" type="number" value="31" min="0" max="31" 
+                                   id="IV_A" onChange="reCalc()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('IV',1, 1)">▲</a></div>
+                                <div><a onclick="click_arrow('IV',1, -1)">▼</a></div>
+                            </div></TD>
+                        <TD><button id="IV0_A" onClick="setIV(0,1)">0</button>
+                            <button id="IV31_A" onClick="setIV(31,1)">31</button></TD>
+
+                        
                         <TD>
                             <input type="checkbox" name="inc" class="rd" value="0" style="accent-color:#ef5350;"
-                                   id="Nature_<%=stats_name[i]%>_inc"
-                                   onChange="set_Nature(0,<%=i%>)"></TD>
+                                   id="Nature_A_inc"
+                                   onChange="set_Nature(0,1)"></TD>
                         <TD>
                             <input type="checkbox" name="dec" class="rd" value="0" style="accent-color:#1297ff;"
-                                   id="Nature_<%=stats_name[i]%>_dec"
-                                   onChange="set_Nature(1,<%=i%>)"></TD>
-                            <% }%>
+                                   id="Nature_A_dec"
+                                   onChange="set_Nature(1,1)"></TD>
+                            
                     </TR>
-                    <% }%>
+                    
+                    <TR>
+                        <TD>B</TD>
+                        <TD><input class="no-spin" type="number" value="120" min="0" 
+                                   id="Stats_B" onChange="byStats()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('Stats',2, 1)">▲</a></div>
+                                <div><a onclick="click_arrow('Stats',2, -1)">▼</a></div>
+                            </div></TD>
+                        <TD><input class="no-spin" type="number" value="0" min="0" max="252" step="4" 
+                                   id="EV_B" onChange="reCalc()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('EV',2, 4)">▲</a></div>
+                                <div><a onclick="click_arrow('EV',2, -4)">▼</a></div>
+                            </div></TD>
+                        <TD><button id="EV0_B" onClick="setEV(0,2)">0</button>
+                            <button id="EV252_B" onClick="setEV(252,2)">252</button></TD>
+                        <TD><input class="no-spin" type="number" value="100" min="0" 
+                                   id="Basestats_B" onChange="reCalc()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('Basestats',2, 1)">▲</a></div>
+                                <div><a onclick="click_arrow('Basestats',2, -1)">▼</a></div>
+                            </div></TD>
+                        <TD><input class="no-spin" type="number" value="31" min="0" max="31" 
+                                   id="IV_B" onChange="reCalc()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('IV',2, 1)">▲</a></div>
+                                <div><a onclick="click_arrow('IV',2, -1)">▼</a></div>
+                            </div></TD>
+                        <TD><button id="IV0_B" onClick="setIV(0,2)">0</button>
+                            <button id="IV31_B" onClick="setIV(31,2)">31</button></TD>
+
+                        
+                        <TD>
+                            <input type="checkbox" name="inc" class="rd" value="0" style="accent-color:#ef5350;"
+                                   id="Nature_B_inc"
+                                   onChange="set_Nature(0,2)"></TD>
+                        <TD>
+                            <input type="checkbox" name="dec" class="rd" value="0" style="accent-color:#1297ff;"
+                                   id="Nature_B_dec"
+                                   onChange="set_Nature(1,2)"></TD>
+                            
+                    </TR>
+                    
+                    <TR>
+                        <TD>C</TD>
+                        <TD><input class="no-spin" type="number" value="120" min="0" 
+                                   id="Stats_C" onChange="byStats()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('Stats',3, 1)">▲</a></div>
+                                <div><a onclick="click_arrow('Stats',3, -1)">▼</a></div>
+                            </div></TD>
+                        <TD><input class="no-spin" type="number" value="0" min="0" max="252" step="4" 
+                                   id="EV_C" onChange="reCalc()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('EV',3, 4)">▲</a></div>
+                                <div><a onclick="click_arrow('EV',3, -4)">▼</a></div>
+                            </div></TD>
+                        <TD><button id="EV0_C" onClick="setEV(0,3)">0</button>
+                            <button id="EV252_C" onClick="setEV(252,3)">252</button></TD>
+                        <TD><input class="no-spin" type="number" value="100" min="0" 
+                                   id="Basestats_C" onChange="reCalc()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('Basestats',3, 1)">▲</a></div>
+                                <div><a onclick="click_arrow('Basestats',3, -1)">▼</a></div>
+                            </div></TD>
+                        <TD><input class="no-spin" type="number" value="31" min="0" max="31" 
+                                   id="IV_C" onChange="reCalc()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('IV',3, 1)">▲</a></div>
+                                <div><a onclick="click_arrow('IV',3, -1)">▼</a></div>
+                            </div></TD>
+                        <TD><button id="IV0_C" onClick="setIV(0,3)">0</button>
+                            <button id="IV31_C" onClick="setIV(31,3)">31</button></TD>
+
+                        
+                        <TD>
+                            <input type="checkbox" name="inc" class="rd" value="0" style="accent-color:#ef5350;"
+                                   id="Nature_C_inc"
+                                   onChange="set_Nature(0,3)"></TD>
+                        <TD>
+                            <input type="checkbox" name="dec" class="rd" value="0" style="accent-color:#1297ff;"
+                                   id="Nature_C_dec"
+                                   onChange="set_Nature(1,3)"></TD>
+                            
+                    </TR>
+                    
+                    <TR>
+                        <TD>D</TD>
+                        <TD><input class="no-spin" type="number" value="120" min="0" 
+                                   id="Stats_D" onChange="byStats()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('Stats',4, 1)">▲</a></div>
+                                <div><a onclick="click_arrow('Stats',4, -1)">▼</a></div>
+                            </div></TD>
+                        <TD><input class="no-spin" type="number" value="0" min="0" max="252" step="4" 
+                                   id="EV_D" onChange="reCalc()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('EV',4, 4)">▲</a></div>
+                                <div><a onclick="click_arrow('EV',4, -4)">▼</a></div>
+                            </div></TD>
+                        <TD><button id="EV0_D" onClick="setEV(0,4)">0</button>
+                            <button id="EV252_D" onClick="setEV(252,4)">252</button></TD>
+                        <TD><input class="no-spin" type="number" value="100" min="0" 
+                                   id="Basestats_D" onChange="reCalc()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('Basestats',4, 1)">▲</a></div>
+                                <div><a onclick="click_arrow('Basestats',4, -1)">▼</a></div>
+                            </div></TD>
+                        <TD><input class="no-spin" type="number" value="31" min="0" max="31" 
+                                   id="IV_D" onChange="reCalc()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('IV',4, 1)">▲</a></div>
+                                <div><a onclick="click_arrow('IV',4, -1)">▼</a></div>
+                            </div></TD>
+                        <TD><button id="IV0_D" onClick="setIV(0,4)">0</button>
+                            <button id="IV31_D" onClick="setIV(31,4)">31</button></TD>
+
+                        
+                        <TD>
+                            <input type="checkbox" name="inc" class="rd" value="0" style="accent-color:#ef5350;"
+                                   id="Nature_D_inc"
+                                   onChange="set_Nature(0,4)"></TD>
+                        <TD>
+                            <input type="checkbox" name="dec" class="rd" value="0" style="accent-color:#1297ff;"
+                                   id="Nature_D_dec"
+                                   onChange="set_Nature(1,4)"></TD>
+                            
+                    </TR>
+                    
+                    <TR>
+                        <TD>S</TD>
+                        <TD><input class="no-spin" type="number" value="120" min="0" 
+                                   id="Stats_S" onChange="byStats()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('Stats',5, 1)">▲</a></div>
+                                <div><a onclick="click_arrow('Stats',5, -1)">▼</a></div>
+                            </div></TD>
+                        <TD><input class="no-spin" type="number" value="0" min="0" max="252" step="4" 
+                                   id="EV_S" onChange="reCalc()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('EV',5, 4)">▲</a></div>
+                                <div><a onclick="click_arrow('EV',5, -4)">▼</a></div>
+                            </div></TD>
+                        <TD><button id="EV0_S" onClick="setEV(0,5)">0</button>
+                            <button id="EV252_S" onClick="setEV(252,5)">252</button></TD>
+                        <TD><input class="no-spin" type="number" value="100" min="0" 
+                                   id="Basestats_S" onChange="reCalc()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('Basestats',5, 1)">▲</a></div>
+                                <div><a onclick="click_arrow('Basestats',5, -1)">▼</a></div>
+                            </div></TD>
+                        <TD><input class="no-spin" type="number" value="31" min="0" max="31" 
+                                   id="IV_S" onChange="reCalc()"></TD>
+                        <TD><div class="arrow">
+                                <div><a onclick="click_arrow('IV',5, 1)">▲</a></div>
+                                <div><a onclick="click_arrow('IV',5, -1)">▼</a></div>
+                            </div></TD>
+                        <TD><button id="IV0_S" onClick="setIV(0,5)">0</button>
+                            <button id="IV31_S" onClick="setIV(31,5)">31</button></TD>
+
+                        
+                        <TD>
+                            <input type="checkbox" name="inc" class="rd" value="0" style="accent-color:#ef5350;"
+                                   id="Nature_S_inc"
+                                   onChange="set_Nature(0,5)"></TD>
+                        <TD>
+                            <input type="checkbox" name="dec" class="rd" value="0" style="accent-color:#1297ff;"
+                                   id="Nature_S_dec"
+                                   onChange="set_Nature(1,5)"></TD>
+                            
+                    </TR>
+                    
                     <TR>
                         <TD></TD>
                         <TD colspan="2">合計</TD>
@@ -137,20 +1176,86 @@
                         </TD>
                         <TD>
                             <select id="s_rank" onchange="real_speed()">
-                                <% for (int i = 6; i > (-7); i--) {%>
-                                <option id="s_rank_<%=i%>" value="<%=i%>" 
-                                        <% if (i == 0) {%>selected="selected"<% }%>>
-                                    <%if (i > 0) {%>+<% }%><%=i%></option>
-                                    <% }%>
+                                
+                                <option id="s_rank_6" value="6" 
+                                        >
+                                    +6</option>
+                                    
+                                <option id="s_rank_5" value="5" 
+                                        >
+                                    +5</option>
+                                    
+                                <option id="s_rank_4" value="4" 
+                                        >
+                                    +4</option>
+                                    
+                                <option id="s_rank_3" value="3" 
+                                        >
+                                    +3</option>
+                                    
+                                <option id="s_rank_2" value="2" 
+                                        >
+                                    +2</option>
+                                    
+                                <option id="s_rank_1" value="1" 
+                                        >
+                                    +1</option>
+                                    
+                                <option id="s_rank_0" value="0" 
+                                        selected="selected">
+                                    0</option>
+                                    
+                                <option id="s_rank_-1" value="-1" 
+                                        >
+                                    -1</option>
+                                    
+                                <option id="s_rank_-2" value="-2" 
+                                        >
+                                    -2</option>
+                                    
+                                <option id="s_rank_-3" value="-3" 
+                                        >
+                                    -3</option>
+                                    
+                                <option id="s_rank_-4" value="-4" 
+                                        >
+                                    -4</option>
+                                    
+                                <option id="s_rank_-5" value="-5" 
+                                        >
+                                    -5</option>
+                                    
+                                <option id="s_rank_-6" value="-6" 
+                                        >
+                                    -6</option>
+                                    
                             </select>
                         </TD>
                         <TD class="left">
                             <select class="select_search" id="s_skill" onchange="real_speed()">
                                 <option id="s_skill_null" value="" selected>
                                     とくせい</option>
-                                    <% for (int i = 0; i < 10; i++) {%>
-                                <option id="s_skill_<%=i%>" value="<%=i%>">skill[<%=i%>][0]</option>
-                                <% }%>
+                                    
+                                <option id="s_skill_0" value="0">skill[0][0]</option>
+                                
+                                <option id="s_skill_1" value="1">skill[1][0]</option>
+                                
+                                <option id="s_skill_2" value="2">skill[2][0]</option>
+                                
+                                <option id="s_skill_3" value="3">skill[3][0]</option>
+                                
+                                <option id="s_skill_4" value="4">skill[4][0]</option>
+                                
+                                <option id="s_skill_5" value="5">skill[5][0]</option>
+                                
+                                <option id="s_skill_6" value="6">skill[6][0]</option>
+                                
+                                <option id="s_skill_7" value="7">skill[7][0]</option>
+                                
+                                <option id="s_skill_8" value="8">skill[8][0]</option>
+                                
+                                <option id="s_skill_9" value="9">skill[9][0]</option>
+                                
                             </select>
                         </TD>
                         <TD>
@@ -169,9 +1274,17 @@
                             <select class="select_search" id="s_item" onchange="real_speed()">
                                 <option id="s_item_null" value="" selected>
                                     もちもの</option>
-                                    <% for (int i = 0; i < 5; i++) {%>
-                                <option id="s_item_<%=i%>" value="<%=i%>">item[<%=i%>][0]</option>
-                                <% }%>
+                                    
+                                <option id="s_item_0" value="0">item[0][0]</option>
+                                
+                                <option id="s_item_1" value="1">item[1][0]</option>
+                                
+                                <option id="s_item_2" value="2">item[2][0]</option>
+                                
+                                <option id="s_item_3" value="3">item[3][0]</option>
+                                
+                                <option id="s_item_4" value="4">item[4][0]</option>
+                                
                             </select>
                         </TD>
                     </TR>
@@ -186,9 +1299,843 @@
                         <div>
                             <select id="pokename2" class="select_search" onchange="setPoke2_speed('max')">
                                 <option value="" disabled selected style="display:none;">ポケモン名</option>
-                                <% for (int i = 0; i < 418; i++) {%>
-                                <option id="pokename2_<%=i%>" value="<%=i%>">pokemon[<%=i%>][0]</option>
-                                <% }%>
+                                
+                                <option id="pokename2_0" value="0">pokemon[0][0]</option>
+                                
+                                <option id="pokename2_1" value="1">pokemon[1][0]</option>
+                                
+                                <option id="pokename2_2" value="2">pokemon[2][0]</option>
+                                
+                                <option id="pokename2_3" value="3">pokemon[3][0]</option>
+                                
+                                <option id="pokename2_4" value="4">pokemon[4][0]</option>
+                                
+                                <option id="pokename2_5" value="5">pokemon[5][0]</option>
+                                
+                                <option id="pokename2_6" value="6">pokemon[6][0]</option>
+                                
+                                <option id="pokename2_7" value="7">pokemon[7][0]</option>
+                                
+                                <option id="pokename2_8" value="8">pokemon[8][0]</option>
+                                
+                                <option id="pokename2_9" value="9">pokemon[9][0]</option>
+                                
+                                <option id="pokename2_10" value="10">pokemon[10][0]</option>
+                                
+                                <option id="pokename2_11" value="11">pokemon[11][0]</option>
+                                
+                                <option id="pokename2_12" value="12">pokemon[12][0]</option>
+                                
+                                <option id="pokename2_13" value="13">pokemon[13][0]</option>
+                                
+                                <option id="pokename2_14" value="14">pokemon[14][0]</option>
+                                
+                                <option id="pokename2_15" value="15">pokemon[15][0]</option>
+                                
+                                <option id="pokename2_16" value="16">pokemon[16][0]</option>
+                                
+                                <option id="pokename2_17" value="17">pokemon[17][0]</option>
+                                
+                                <option id="pokename2_18" value="18">pokemon[18][0]</option>
+                                
+                                <option id="pokename2_19" value="19">pokemon[19][0]</option>
+                                
+                                <option id="pokename2_20" value="20">pokemon[20][0]</option>
+                                
+                                <option id="pokename2_21" value="21">pokemon[21][0]</option>
+                                
+                                <option id="pokename2_22" value="22">pokemon[22][0]</option>
+                                
+                                <option id="pokename2_23" value="23">pokemon[23][0]</option>
+                                
+                                <option id="pokename2_24" value="24">pokemon[24][0]</option>
+                                
+                                <option id="pokename2_25" value="25">pokemon[25][0]</option>
+                                
+                                <option id="pokename2_26" value="26">pokemon[26][0]</option>
+                                
+                                <option id="pokename2_27" value="27">pokemon[27][0]</option>
+                                
+                                <option id="pokename2_28" value="28">pokemon[28][0]</option>
+                                
+                                <option id="pokename2_29" value="29">pokemon[29][0]</option>
+                                
+                                <option id="pokename2_30" value="30">pokemon[30][0]</option>
+                                
+                                <option id="pokename2_31" value="31">pokemon[31][0]</option>
+                                
+                                <option id="pokename2_32" value="32">pokemon[32][0]</option>
+                                
+                                <option id="pokename2_33" value="33">pokemon[33][0]</option>
+                                
+                                <option id="pokename2_34" value="34">pokemon[34][0]</option>
+                                
+                                <option id="pokename2_35" value="35">pokemon[35][0]</option>
+                                
+                                <option id="pokename2_36" value="36">pokemon[36][0]</option>
+                                
+                                <option id="pokename2_37" value="37">pokemon[37][0]</option>
+                                
+                                <option id="pokename2_38" value="38">pokemon[38][0]</option>
+                                
+                                <option id="pokename2_39" value="39">pokemon[39][0]</option>
+                                
+                                <option id="pokename2_40" value="40">pokemon[40][0]</option>
+                                
+                                <option id="pokename2_41" value="41">pokemon[41][0]</option>
+                                
+                                <option id="pokename2_42" value="42">pokemon[42][0]</option>
+                                
+                                <option id="pokename2_43" value="43">pokemon[43][0]</option>
+                                
+                                <option id="pokename2_44" value="44">pokemon[44][0]</option>
+                                
+                                <option id="pokename2_45" value="45">pokemon[45][0]</option>
+                                
+                                <option id="pokename2_46" value="46">pokemon[46][0]</option>
+                                
+                                <option id="pokename2_47" value="47">pokemon[47][0]</option>
+                                
+                                <option id="pokename2_48" value="48">pokemon[48][0]</option>
+                                
+                                <option id="pokename2_49" value="49">pokemon[49][0]</option>
+                                
+                                <option id="pokename2_50" value="50">pokemon[50][0]</option>
+                                
+                                <option id="pokename2_51" value="51">pokemon[51][0]</option>
+                                
+                                <option id="pokename2_52" value="52">pokemon[52][0]</option>
+                                
+                                <option id="pokename2_53" value="53">pokemon[53][0]</option>
+                                
+                                <option id="pokename2_54" value="54">pokemon[54][0]</option>
+                                
+                                <option id="pokename2_55" value="55">pokemon[55][0]</option>
+                                
+                                <option id="pokename2_56" value="56">pokemon[56][0]</option>
+                                
+                                <option id="pokename2_57" value="57">pokemon[57][0]</option>
+                                
+                                <option id="pokename2_58" value="58">pokemon[58][0]</option>
+                                
+                                <option id="pokename2_59" value="59">pokemon[59][0]</option>
+                                
+                                <option id="pokename2_60" value="60">pokemon[60][0]</option>
+                                
+                                <option id="pokename2_61" value="61">pokemon[61][0]</option>
+                                
+                                <option id="pokename2_62" value="62">pokemon[62][0]</option>
+                                
+                                <option id="pokename2_63" value="63">pokemon[63][0]</option>
+                                
+                                <option id="pokename2_64" value="64">pokemon[64][0]</option>
+                                
+                                <option id="pokename2_65" value="65">pokemon[65][0]</option>
+                                
+                                <option id="pokename2_66" value="66">pokemon[66][0]</option>
+                                
+                                <option id="pokename2_67" value="67">pokemon[67][0]</option>
+                                
+                                <option id="pokename2_68" value="68">pokemon[68][0]</option>
+                                
+                                <option id="pokename2_69" value="69">pokemon[69][0]</option>
+                                
+                                <option id="pokename2_70" value="70">pokemon[70][0]</option>
+                                
+                                <option id="pokename2_71" value="71">pokemon[71][0]</option>
+                                
+                                <option id="pokename2_72" value="72">pokemon[72][0]</option>
+                                
+                                <option id="pokename2_73" value="73">pokemon[73][0]</option>
+                                
+                                <option id="pokename2_74" value="74">pokemon[74][0]</option>
+                                
+                                <option id="pokename2_75" value="75">pokemon[75][0]</option>
+                                
+                                <option id="pokename2_76" value="76">pokemon[76][0]</option>
+                                
+                                <option id="pokename2_77" value="77">pokemon[77][0]</option>
+                                
+                                <option id="pokename2_78" value="78">pokemon[78][0]</option>
+                                
+                                <option id="pokename2_79" value="79">pokemon[79][0]</option>
+                                
+                                <option id="pokename2_80" value="80">pokemon[80][0]</option>
+                                
+                                <option id="pokename2_81" value="81">pokemon[81][0]</option>
+                                
+                                <option id="pokename2_82" value="82">pokemon[82][0]</option>
+                                
+                                <option id="pokename2_83" value="83">pokemon[83][0]</option>
+                                
+                                <option id="pokename2_84" value="84">pokemon[84][0]</option>
+                                
+                                <option id="pokename2_85" value="85">pokemon[85][0]</option>
+                                
+                                <option id="pokename2_86" value="86">pokemon[86][0]</option>
+                                
+                                <option id="pokename2_87" value="87">pokemon[87][0]</option>
+                                
+                                <option id="pokename2_88" value="88">pokemon[88][0]</option>
+                                
+                                <option id="pokename2_89" value="89">pokemon[89][0]</option>
+                                
+                                <option id="pokename2_90" value="90">pokemon[90][0]</option>
+                                
+                                <option id="pokename2_91" value="91">pokemon[91][0]</option>
+                                
+                                <option id="pokename2_92" value="92">pokemon[92][0]</option>
+                                
+                                <option id="pokename2_93" value="93">pokemon[93][0]</option>
+                                
+                                <option id="pokename2_94" value="94">pokemon[94][0]</option>
+                                
+                                <option id="pokename2_95" value="95">pokemon[95][0]</option>
+                                
+                                <option id="pokename2_96" value="96">pokemon[96][0]</option>
+                                
+                                <option id="pokename2_97" value="97">pokemon[97][0]</option>
+                                
+                                <option id="pokename2_98" value="98">pokemon[98][0]</option>
+                                
+                                <option id="pokename2_99" value="99">pokemon[99][0]</option>
+                                
+                                <option id="pokename2_100" value="100">pokemon[100][0]</option>
+                                
+                                <option id="pokename2_101" value="101">pokemon[101][0]</option>
+                                
+                                <option id="pokename2_102" value="102">pokemon[102][0]</option>
+                                
+                                <option id="pokename2_103" value="103">pokemon[103][0]</option>
+                                
+                                <option id="pokename2_104" value="104">pokemon[104][0]</option>
+                                
+                                <option id="pokename2_105" value="105">pokemon[105][0]</option>
+                                
+                                <option id="pokename2_106" value="106">pokemon[106][0]</option>
+                                
+                                <option id="pokename2_107" value="107">pokemon[107][0]</option>
+                                
+                                <option id="pokename2_108" value="108">pokemon[108][0]</option>
+                                
+                                <option id="pokename2_109" value="109">pokemon[109][0]</option>
+                                
+                                <option id="pokename2_110" value="110">pokemon[110][0]</option>
+                                
+                                <option id="pokename2_111" value="111">pokemon[111][0]</option>
+                                
+                                <option id="pokename2_112" value="112">pokemon[112][0]</option>
+                                
+                                <option id="pokename2_113" value="113">pokemon[113][0]</option>
+                                
+                                <option id="pokename2_114" value="114">pokemon[114][0]</option>
+                                
+                                <option id="pokename2_115" value="115">pokemon[115][0]</option>
+                                
+                                <option id="pokename2_116" value="116">pokemon[116][0]</option>
+                                
+                                <option id="pokename2_117" value="117">pokemon[117][0]</option>
+                                
+                                <option id="pokename2_118" value="118">pokemon[118][0]</option>
+                                
+                                <option id="pokename2_119" value="119">pokemon[119][0]</option>
+                                
+                                <option id="pokename2_120" value="120">pokemon[120][0]</option>
+                                
+                                <option id="pokename2_121" value="121">pokemon[121][0]</option>
+                                
+                                <option id="pokename2_122" value="122">pokemon[122][0]</option>
+                                
+                                <option id="pokename2_123" value="123">pokemon[123][0]</option>
+                                
+                                <option id="pokename2_124" value="124">pokemon[124][0]</option>
+                                
+                                <option id="pokename2_125" value="125">pokemon[125][0]</option>
+                                
+                                <option id="pokename2_126" value="126">pokemon[126][0]</option>
+                                
+                                <option id="pokename2_127" value="127">pokemon[127][0]</option>
+                                
+                                <option id="pokename2_128" value="128">pokemon[128][0]</option>
+                                
+                                <option id="pokename2_129" value="129">pokemon[129][0]</option>
+                                
+                                <option id="pokename2_130" value="130">pokemon[130][0]</option>
+                                
+                                <option id="pokename2_131" value="131">pokemon[131][0]</option>
+                                
+                                <option id="pokename2_132" value="132">pokemon[132][0]</option>
+                                
+                                <option id="pokename2_133" value="133">pokemon[133][0]</option>
+                                
+                                <option id="pokename2_134" value="134">pokemon[134][0]</option>
+                                
+                                <option id="pokename2_135" value="135">pokemon[135][0]</option>
+                                
+                                <option id="pokename2_136" value="136">pokemon[136][0]</option>
+                                
+                                <option id="pokename2_137" value="137">pokemon[137][0]</option>
+                                
+                                <option id="pokename2_138" value="138">pokemon[138][0]</option>
+                                
+                                <option id="pokename2_139" value="139">pokemon[139][0]</option>
+                                
+                                <option id="pokename2_140" value="140">pokemon[140][0]</option>
+                                
+                                <option id="pokename2_141" value="141">pokemon[141][0]</option>
+                                
+                                <option id="pokename2_142" value="142">pokemon[142][0]</option>
+                                
+                                <option id="pokename2_143" value="143">pokemon[143][0]</option>
+                                
+                                <option id="pokename2_144" value="144">pokemon[144][0]</option>
+                                
+                                <option id="pokename2_145" value="145">pokemon[145][0]</option>
+                                
+                                <option id="pokename2_146" value="146">pokemon[146][0]</option>
+                                
+                                <option id="pokename2_147" value="147">pokemon[147][0]</option>
+                                
+                                <option id="pokename2_148" value="148">pokemon[148][0]</option>
+                                
+                                <option id="pokename2_149" value="149">pokemon[149][0]</option>
+                                
+                                <option id="pokename2_150" value="150">pokemon[150][0]</option>
+                                
+                                <option id="pokename2_151" value="151">pokemon[151][0]</option>
+                                
+                                <option id="pokename2_152" value="152">pokemon[152][0]</option>
+                                
+                                <option id="pokename2_153" value="153">pokemon[153][0]</option>
+                                
+                                <option id="pokename2_154" value="154">pokemon[154][0]</option>
+                                
+                                <option id="pokename2_155" value="155">pokemon[155][0]</option>
+                                
+                                <option id="pokename2_156" value="156">pokemon[156][0]</option>
+                                
+                                <option id="pokename2_157" value="157">pokemon[157][0]</option>
+                                
+                                <option id="pokename2_158" value="158">pokemon[158][0]</option>
+                                
+                                <option id="pokename2_159" value="159">pokemon[159][0]</option>
+                                
+                                <option id="pokename2_160" value="160">pokemon[160][0]</option>
+                                
+                                <option id="pokename2_161" value="161">pokemon[161][0]</option>
+                                
+                                <option id="pokename2_162" value="162">pokemon[162][0]</option>
+                                
+                                <option id="pokename2_163" value="163">pokemon[163][0]</option>
+                                
+                                <option id="pokename2_164" value="164">pokemon[164][0]</option>
+                                
+                                <option id="pokename2_165" value="165">pokemon[165][0]</option>
+                                
+                                <option id="pokename2_166" value="166">pokemon[166][0]</option>
+                                
+                                <option id="pokename2_167" value="167">pokemon[167][0]</option>
+                                
+                                <option id="pokename2_168" value="168">pokemon[168][0]</option>
+                                
+                                <option id="pokename2_169" value="169">pokemon[169][0]</option>
+                                
+                                <option id="pokename2_170" value="170">pokemon[170][0]</option>
+                                
+                                <option id="pokename2_171" value="171">pokemon[171][0]</option>
+                                
+                                <option id="pokename2_172" value="172">pokemon[172][0]</option>
+                                
+                                <option id="pokename2_173" value="173">pokemon[173][0]</option>
+                                
+                                <option id="pokename2_174" value="174">pokemon[174][0]</option>
+                                
+                                <option id="pokename2_175" value="175">pokemon[175][0]</option>
+                                
+                                <option id="pokename2_176" value="176">pokemon[176][0]</option>
+                                
+                                <option id="pokename2_177" value="177">pokemon[177][0]</option>
+                                
+                                <option id="pokename2_178" value="178">pokemon[178][0]</option>
+                                
+                                <option id="pokename2_179" value="179">pokemon[179][0]</option>
+                                
+                                <option id="pokename2_180" value="180">pokemon[180][0]</option>
+                                
+                                <option id="pokename2_181" value="181">pokemon[181][0]</option>
+                                
+                                <option id="pokename2_182" value="182">pokemon[182][0]</option>
+                                
+                                <option id="pokename2_183" value="183">pokemon[183][0]</option>
+                                
+                                <option id="pokename2_184" value="184">pokemon[184][0]</option>
+                                
+                                <option id="pokename2_185" value="185">pokemon[185][0]</option>
+                                
+                                <option id="pokename2_186" value="186">pokemon[186][0]</option>
+                                
+                                <option id="pokename2_187" value="187">pokemon[187][0]</option>
+                                
+                                <option id="pokename2_188" value="188">pokemon[188][0]</option>
+                                
+                                <option id="pokename2_189" value="189">pokemon[189][0]</option>
+                                
+                                <option id="pokename2_190" value="190">pokemon[190][0]</option>
+                                
+                                <option id="pokename2_191" value="191">pokemon[191][0]</option>
+                                
+                                <option id="pokename2_192" value="192">pokemon[192][0]</option>
+                                
+                                <option id="pokename2_193" value="193">pokemon[193][0]</option>
+                                
+                                <option id="pokename2_194" value="194">pokemon[194][0]</option>
+                                
+                                <option id="pokename2_195" value="195">pokemon[195][0]</option>
+                                
+                                <option id="pokename2_196" value="196">pokemon[196][0]</option>
+                                
+                                <option id="pokename2_197" value="197">pokemon[197][0]</option>
+                                
+                                <option id="pokename2_198" value="198">pokemon[198][0]</option>
+                                
+                                <option id="pokename2_199" value="199">pokemon[199][0]</option>
+                                
+                                <option id="pokename2_200" value="200">pokemon[200][0]</option>
+                                
+                                <option id="pokename2_201" value="201">pokemon[201][0]</option>
+                                
+                                <option id="pokename2_202" value="202">pokemon[202][0]</option>
+                                
+                                <option id="pokename2_203" value="203">pokemon[203][0]</option>
+                                
+                                <option id="pokename2_204" value="204">pokemon[204][0]</option>
+                                
+                                <option id="pokename2_205" value="205">pokemon[205][0]</option>
+                                
+                                <option id="pokename2_206" value="206">pokemon[206][0]</option>
+                                
+                                <option id="pokename2_207" value="207">pokemon[207][0]</option>
+                                
+                                <option id="pokename2_208" value="208">pokemon[208][0]</option>
+                                
+                                <option id="pokename2_209" value="209">pokemon[209][0]</option>
+                                
+                                <option id="pokename2_210" value="210">pokemon[210][0]</option>
+                                
+                                <option id="pokename2_211" value="211">pokemon[211][0]</option>
+                                
+                                <option id="pokename2_212" value="212">pokemon[212][0]</option>
+                                
+                                <option id="pokename2_213" value="213">pokemon[213][0]</option>
+                                
+                                <option id="pokename2_214" value="214">pokemon[214][0]</option>
+                                
+                                <option id="pokename2_215" value="215">pokemon[215][0]</option>
+                                
+                                <option id="pokename2_216" value="216">pokemon[216][0]</option>
+                                
+                                <option id="pokename2_217" value="217">pokemon[217][0]</option>
+                                
+                                <option id="pokename2_218" value="218">pokemon[218][0]</option>
+                                
+                                <option id="pokename2_219" value="219">pokemon[219][0]</option>
+                                
+                                <option id="pokename2_220" value="220">pokemon[220][0]</option>
+                                
+                                <option id="pokename2_221" value="221">pokemon[221][0]</option>
+                                
+                                <option id="pokename2_222" value="222">pokemon[222][0]</option>
+                                
+                                <option id="pokename2_223" value="223">pokemon[223][0]</option>
+                                
+                                <option id="pokename2_224" value="224">pokemon[224][0]</option>
+                                
+                                <option id="pokename2_225" value="225">pokemon[225][0]</option>
+                                
+                                <option id="pokename2_226" value="226">pokemon[226][0]</option>
+                                
+                                <option id="pokename2_227" value="227">pokemon[227][0]</option>
+                                
+                                <option id="pokename2_228" value="228">pokemon[228][0]</option>
+                                
+                                <option id="pokename2_229" value="229">pokemon[229][0]</option>
+                                
+                                <option id="pokename2_230" value="230">pokemon[230][0]</option>
+                                
+                                <option id="pokename2_231" value="231">pokemon[231][0]</option>
+                                
+                                <option id="pokename2_232" value="232">pokemon[232][0]</option>
+                                
+                                <option id="pokename2_233" value="233">pokemon[233][0]</option>
+                                
+                                <option id="pokename2_234" value="234">pokemon[234][0]</option>
+                                
+                                <option id="pokename2_235" value="235">pokemon[235][0]</option>
+                                
+                                <option id="pokename2_236" value="236">pokemon[236][0]</option>
+                                
+                                <option id="pokename2_237" value="237">pokemon[237][0]</option>
+                                
+                                <option id="pokename2_238" value="238">pokemon[238][0]</option>
+                                
+                                <option id="pokename2_239" value="239">pokemon[239][0]</option>
+                                
+                                <option id="pokename2_240" value="240">pokemon[240][0]</option>
+                                
+                                <option id="pokename2_241" value="241">pokemon[241][0]</option>
+                                
+                                <option id="pokename2_242" value="242">pokemon[242][0]</option>
+                                
+                                <option id="pokename2_243" value="243">pokemon[243][0]</option>
+                                
+                                <option id="pokename2_244" value="244">pokemon[244][0]</option>
+                                
+                                <option id="pokename2_245" value="245">pokemon[245][0]</option>
+                                
+                                <option id="pokename2_246" value="246">pokemon[246][0]</option>
+                                
+                                <option id="pokename2_247" value="247">pokemon[247][0]</option>
+                                
+                                <option id="pokename2_248" value="248">pokemon[248][0]</option>
+                                
+                                <option id="pokename2_249" value="249">pokemon[249][0]</option>
+                                
+                                <option id="pokename2_250" value="250">pokemon[250][0]</option>
+                                
+                                <option id="pokename2_251" value="251">pokemon[251][0]</option>
+                                
+                                <option id="pokename2_252" value="252">pokemon[252][0]</option>
+                                
+                                <option id="pokename2_253" value="253">pokemon[253][0]</option>
+                                
+                                <option id="pokename2_254" value="254">pokemon[254][0]</option>
+                                
+                                <option id="pokename2_255" value="255">pokemon[255][0]</option>
+                                
+                                <option id="pokename2_256" value="256">pokemon[256][0]</option>
+                                
+                                <option id="pokename2_257" value="257">pokemon[257][0]</option>
+                                
+                                <option id="pokename2_258" value="258">pokemon[258][0]</option>
+                                
+                                <option id="pokename2_259" value="259">pokemon[259][0]</option>
+                                
+                                <option id="pokename2_260" value="260">pokemon[260][0]</option>
+                                
+                                <option id="pokename2_261" value="261">pokemon[261][0]</option>
+                                
+                                <option id="pokename2_262" value="262">pokemon[262][0]</option>
+                                
+                                <option id="pokename2_263" value="263">pokemon[263][0]</option>
+                                
+                                <option id="pokename2_264" value="264">pokemon[264][0]</option>
+                                
+                                <option id="pokename2_265" value="265">pokemon[265][0]</option>
+                                
+                                <option id="pokename2_266" value="266">pokemon[266][0]</option>
+                                
+                                <option id="pokename2_267" value="267">pokemon[267][0]</option>
+                                
+                                <option id="pokename2_268" value="268">pokemon[268][0]</option>
+                                
+                                <option id="pokename2_269" value="269">pokemon[269][0]</option>
+                                
+                                <option id="pokename2_270" value="270">pokemon[270][0]</option>
+                                
+                                <option id="pokename2_271" value="271">pokemon[271][0]</option>
+                                
+                                <option id="pokename2_272" value="272">pokemon[272][0]</option>
+                                
+                                <option id="pokename2_273" value="273">pokemon[273][0]</option>
+                                
+                                <option id="pokename2_274" value="274">pokemon[274][0]</option>
+                                
+                                <option id="pokename2_275" value="275">pokemon[275][0]</option>
+                                
+                                <option id="pokename2_276" value="276">pokemon[276][0]</option>
+                                
+                                <option id="pokename2_277" value="277">pokemon[277][0]</option>
+                                
+                                <option id="pokename2_278" value="278">pokemon[278][0]</option>
+                                
+                                <option id="pokename2_279" value="279">pokemon[279][0]</option>
+                                
+                                <option id="pokename2_280" value="280">pokemon[280][0]</option>
+                                
+                                <option id="pokename2_281" value="281">pokemon[281][0]</option>
+                                
+                                <option id="pokename2_282" value="282">pokemon[282][0]</option>
+                                
+                                <option id="pokename2_283" value="283">pokemon[283][0]</option>
+                                
+                                <option id="pokename2_284" value="284">pokemon[284][0]</option>
+                                
+                                <option id="pokename2_285" value="285">pokemon[285][0]</option>
+                                
+                                <option id="pokename2_286" value="286">pokemon[286][0]</option>
+                                
+                                <option id="pokename2_287" value="287">pokemon[287][0]</option>
+                                
+                                <option id="pokename2_288" value="288">pokemon[288][0]</option>
+                                
+                                <option id="pokename2_289" value="289">pokemon[289][0]</option>
+                                
+                                <option id="pokename2_290" value="290">pokemon[290][0]</option>
+                                
+                                <option id="pokename2_291" value="291">pokemon[291][0]</option>
+                                
+                                <option id="pokename2_292" value="292">pokemon[292][0]</option>
+                                
+                                <option id="pokename2_293" value="293">pokemon[293][0]</option>
+                                
+                                <option id="pokename2_294" value="294">pokemon[294][0]</option>
+                                
+                                <option id="pokename2_295" value="295">pokemon[295][0]</option>
+                                
+                                <option id="pokename2_296" value="296">pokemon[296][0]</option>
+                                
+                                <option id="pokename2_297" value="297">pokemon[297][0]</option>
+                                
+                                <option id="pokename2_298" value="298">pokemon[298][0]</option>
+                                
+                                <option id="pokename2_299" value="299">pokemon[299][0]</option>
+                                
+                                <option id="pokename2_300" value="300">pokemon[300][0]</option>
+                                
+                                <option id="pokename2_301" value="301">pokemon[301][0]</option>
+                                
+                                <option id="pokename2_302" value="302">pokemon[302][0]</option>
+                                
+                                <option id="pokename2_303" value="303">pokemon[303][0]</option>
+                                
+                                <option id="pokename2_304" value="304">pokemon[304][0]</option>
+                                
+                                <option id="pokename2_305" value="305">pokemon[305][0]</option>
+                                
+                                <option id="pokename2_306" value="306">pokemon[306][0]</option>
+                                
+                                <option id="pokename2_307" value="307">pokemon[307][0]</option>
+                                
+                                <option id="pokename2_308" value="308">pokemon[308][0]</option>
+                                
+                                <option id="pokename2_309" value="309">pokemon[309][0]</option>
+                                
+                                <option id="pokename2_310" value="310">pokemon[310][0]</option>
+                                
+                                <option id="pokename2_311" value="311">pokemon[311][0]</option>
+                                
+                                <option id="pokename2_312" value="312">pokemon[312][0]</option>
+                                
+                                <option id="pokename2_313" value="313">pokemon[313][0]</option>
+                                
+                                <option id="pokename2_314" value="314">pokemon[314][0]</option>
+                                
+                                <option id="pokename2_315" value="315">pokemon[315][0]</option>
+                                
+                                <option id="pokename2_316" value="316">pokemon[316][0]</option>
+                                
+                                <option id="pokename2_317" value="317">pokemon[317][0]</option>
+                                
+                                <option id="pokename2_318" value="318">pokemon[318][0]</option>
+                                
+                                <option id="pokename2_319" value="319">pokemon[319][0]</option>
+                                
+                                <option id="pokename2_320" value="320">pokemon[320][0]</option>
+                                
+                                <option id="pokename2_321" value="321">pokemon[321][0]</option>
+                                
+                                <option id="pokename2_322" value="322">pokemon[322][0]</option>
+                                
+                                <option id="pokename2_323" value="323">pokemon[323][0]</option>
+                                
+                                <option id="pokename2_324" value="324">pokemon[324][0]</option>
+                                
+                                <option id="pokename2_325" value="325">pokemon[325][0]</option>
+                                
+                                <option id="pokename2_326" value="326">pokemon[326][0]</option>
+                                
+                                <option id="pokename2_327" value="327">pokemon[327][0]</option>
+                                
+                                <option id="pokename2_328" value="328">pokemon[328][0]</option>
+                                
+                                <option id="pokename2_329" value="329">pokemon[329][0]</option>
+                                
+                                <option id="pokename2_330" value="330">pokemon[330][0]</option>
+                                
+                                <option id="pokename2_331" value="331">pokemon[331][0]</option>
+                                
+                                <option id="pokename2_332" value="332">pokemon[332][0]</option>
+                                
+                                <option id="pokename2_333" value="333">pokemon[333][0]</option>
+                                
+                                <option id="pokename2_334" value="334">pokemon[334][0]</option>
+                                
+                                <option id="pokename2_335" value="335">pokemon[335][0]</option>
+                                
+                                <option id="pokename2_336" value="336">pokemon[336][0]</option>
+                                
+                                <option id="pokename2_337" value="337">pokemon[337][0]</option>
+                                
+                                <option id="pokename2_338" value="338">pokemon[338][0]</option>
+                                
+                                <option id="pokename2_339" value="339">pokemon[339][0]</option>
+                                
+                                <option id="pokename2_340" value="340">pokemon[340][0]</option>
+                                
+                                <option id="pokename2_341" value="341">pokemon[341][0]</option>
+                                
+                                <option id="pokename2_342" value="342">pokemon[342][0]</option>
+                                
+                                <option id="pokename2_343" value="343">pokemon[343][0]</option>
+                                
+                                <option id="pokename2_344" value="344">pokemon[344][0]</option>
+                                
+                                <option id="pokename2_345" value="345">pokemon[345][0]</option>
+                                
+                                <option id="pokename2_346" value="346">pokemon[346][0]</option>
+                                
+                                <option id="pokename2_347" value="347">pokemon[347][0]</option>
+                                
+                                <option id="pokename2_348" value="348">pokemon[348][0]</option>
+                                
+                                <option id="pokename2_349" value="349">pokemon[349][0]</option>
+                                
+                                <option id="pokename2_350" value="350">pokemon[350][0]</option>
+                                
+                                <option id="pokename2_351" value="351">pokemon[351][0]</option>
+                                
+                                <option id="pokename2_352" value="352">pokemon[352][0]</option>
+                                
+                                <option id="pokename2_353" value="353">pokemon[353][0]</option>
+                                
+                                <option id="pokename2_354" value="354">pokemon[354][0]</option>
+                                
+                                <option id="pokename2_355" value="355">pokemon[355][0]</option>
+                                
+                                <option id="pokename2_356" value="356">pokemon[356][0]</option>
+                                
+                                <option id="pokename2_357" value="357">pokemon[357][0]</option>
+                                
+                                <option id="pokename2_358" value="358">pokemon[358][0]</option>
+                                
+                                <option id="pokename2_359" value="359">pokemon[359][0]</option>
+                                
+                                <option id="pokename2_360" value="360">pokemon[360][0]</option>
+                                
+                                <option id="pokename2_361" value="361">pokemon[361][0]</option>
+                                
+                                <option id="pokename2_362" value="362">pokemon[362][0]</option>
+                                
+                                <option id="pokename2_363" value="363">pokemon[363][0]</option>
+                                
+                                <option id="pokename2_364" value="364">pokemon[364][0]</option>
+                                
+                                <option id="pokename2_365" value="365">pokemon[365][0]</option>
+                                
+                                <option id="pokename2_366" value="366">pokemon[366][0]</option>
+                                
+                                <option id="pokename2_367" value="367">pokemon[367][0]</option>
+                                
+                                <option id="pokename2_368" value="368">pokemon[368][0]</option>
+                                
+                                <option id="pokename2_369" value="369">pokemon[369][0]</option>
+                                
+                                <option id="pokename2_370" value="370">pokemon[370][0]</option>
+                                
+                                <option id="pokename2_371" value="371">pokemon[371][0]</option>
+                                
+                                <option id="pokename2_372" value="372">pokemon[372][0]</option>
+                                
+                                <option id="pokename2_373" value="373">pokemon[373][0]</option>
+                                
+                                <option id="pokename2_374" value="374">pokemon[374][0]</option>
+                                
+                                <option id="pokename2_375" value="375">pokemon[375][0]</option>
+                                
+                                <option id="pokename2_376" value="376">pokemon[376][0]</option>
+                                
+                                <option id="pokename2_377" value="377">pokemon[377][0]</option>
+                                
+                                <option id="pokename2_378" value="378">pokemon[378][0]</option>
+                                
+                                <option id="pokename2_379" value="379">pokemon[379][0]</option>
+                                
+                                <option id="pokename2_380" value="380">pokemon[380][0]</option>
+                                
+                                <option id="pokename2_381" value="381">pokemon[381][0]</option>
+                                
+                                <option id="pokename2_382" value="382">pokemon[382][0]</option>
+                                
+                                <option id="pokename2_383" value="383">pokemon[383][0]</option>
+                                
+                                <option id="pokename2_384" value="384">pokemon[384][0]</option>
+                                
+                                <option id="pokename2_385" value="385">pokemon[385][0]</option>
+                                
+                                <option id="pokename2_386" value="386">pokemon[386][0]</option>
+                                
+                                <option id="pokename2_387" value="387">pokemon[387][0]</option>
+                                
+                                <option id="pokename2_388" value="388">pokemon[388][0]</option>
+                                
+                                <option id="pokename2_389" value="389">pokemon[389][0]</option>
+                                
+                                <option id="pokename2_390" value="390">pokemon[390][0]</option>
+                                
+                                <option id="pokename2_391" value="391">pokemon[391][0]</option>
+                                
+                                <option id="pokename2_392" value="392">pokemon[392][0]</option>
+                                
+                                <option id="pokename2_393" value="393">pokemon[393][0]</option>
+                                
+                                <option id="pokename2_394" value="394">pokemon[394][0]</option>
+                                
+                                <option id="pokename2_395" value="395">pokemon[395][0]</option>
+                                
+                                <option id="pokename2_396" value="396">pokemon[396][0]</option>
+                                
+                                <option id="pokename2_397" value="397">pokemon[397][0]</option>
+                                
+                                <option id="pokename2_398" value="398">pokemon[398][0]</option>
+                                
+                                <option id="pokename2_399" value="399">pokemon[399][0]</option>
+                                
+                                <option id="pokename2_400" value="400">pokemon[400][0]</option>
+                                
+                                <option id="pokename2_401" value="401">pokemon[401][0]</option>
+                                
+                                <option id="pokename2_402" value="402">pokemon[402][0]</option>
+                                
+                                <option id="pokename2_403" value="403">pokemon[403][0]</option>
+                                
+                                <option id="pokename2_404" value="404">pokemon[404][0]</option>
+                                
+                                <option id="pokename2_405" value="405">pokemon[405][0]</option>
+                                
+                                <option id="pokename2_406" value="406">pokemon[406][0]</option>
+                                
+                                <option id="pokename2_407" value="407">pokemon[407][0]</option>
+                                
+                                <option id="pokename2_408" value="408">pokemon[408][0]</option>
+                                
+                                <option id="pokename2_409" value="409">pokemon[409][0]</option>
+                                
+                                <option id="pokename2_410" value="410">pokemon[410][0]</option>
+                                
+                                <option id="pokename2_411" value="411">pokemon[411][0]</option>
+                                
+                                <option id="pokename2_412" value="412">pokemon[412][0]</option>
+                                
+                                <option id="pokename2_413" value="413">pokemon[413][0]</option>
+                                
+                                <option id="pokename2_414" value="414">pokemon[414][0]</option>
+                                
+                                <option id="pokename2_415" value="415">pokemon[415][0]</option>
+                                
+                                <option id="pokename2_416" value="416">pokemon[416][0]</option>
+                                
+                                <option id="pokename2_417" value="417">pokemon[417][0]</option>
+                                
                             </select>
                         </div>
                     </div>
@@ -227,20 +2174,86 @@
                         </TD>
                         <TD>
                             <select id="s_rank2" onchange="real_speed2()">
-                                <% for (int i = 6; i > (-7); i--) {%>
-                                <option id="s_rank2_<%=i%>" value="<%=i%>" 
-                                        <% if (i == 0) {%>selected="selected"<% }%>>
-                                    <%if (i > 0) {%>+<% }%><%=i%></option>
-                                    <% }%>
+                                
+                                <option id="s_rank2_6" value="6" 
+                                        >
+                                    +6</option>
+                                    
+                                <option id="s_rank2_5" value="5" 
+                                        >
+                                    +5</option>
+                                    
+                                <option id="s_rank2_4" value="4" 
+                                        >
+                                    +4</option>
+                                    
+                                <option id="s_rank2_3" value="3" 
+                                        >
+                                    +3</option>
+                                    
+                                <option id="s_rank2_2" value="2" 
+                                        >
+                                    +2</option>
+                                    
+                                <option id="s_rank2_1" value="1" 
+                                        >
+                                    +1</option>
+                                    
+                                <option id="s_rank2_0" value="0" 
+                                        selected="selected">
+                                    0</option>
+                                    
+                                <option id="s_rank2_-1" value="-1" 
+                                        >
+                                    -1</option>
+                                    
+                                <option id="s_rank2_-2" value="-2" 
+                                        >
+                                    -2</option>
+                                    
+                                <option id="s_rank2_-3" value="-3" 
+                                        >
+                                    -3</option>
+                                    
+                                <option id="s_rank2_-4" value="-4" 
+                                        >
+                                    -4</option>
+                                    
+                                <option id="s_rank2_-5" value="-5" 
+                                        >
+                                    -5</option>
+                                    
+                                <option id="s_rank2_-6" value="-6" 
+                                        >
+                                    -6</option>
+                                    
                             </select>
                         </TD>
                         <TD class="left">
                             <select class="select_search" id="s_skill2" onchange="real_speed2()">
                                 <option id="s_skill2_null" value="" selected>
                                     とくせい</option>
-                                    <% for (int i = 0; i < 10; i++) {%>
-                                <option id="s_skill2_<%=i%>" value="<%=i%>">skill[<%=i%>][0]</option>
-                                <% }%>
+                                    
+                                <option id="s_skill2_0" value="0">skill[0][0]</option>
+                                
+                                <option id="s_skill2_1" value="1">skill[1][0]</option>
+                                
+                                <option id="s_skill2_2" value="2">skill[2][0]</option>
+                                
+                                <option id="s_skill2_3" value="3">skill[3][0]</option>
+                                
+                                <option id="s_skill2_4" value="4">skill[4][0]</option>
+                                
+                                <option id="s_skill2_5" value="5">skill[5][0]</option>
+                                
+                                <option id="s_skill2_6" value="6">skill[6][0]</option>
+                                
+                                <option id="s_skill2_7" value="7">skill[7][0]</option>
+                                
+                                <option id="s_skill2_8" value="8">skill[8][0]</option>
+                                
+                                <option id="s_skill2_9" value="9">skill[9][0]</option>
+                                
                             </select>
                         </TD>
                         <TD>
@@ -259,9 +2272,17 @@
                             <select class="select_search" id="s_item2" onchange="real_speed2()">
                                 <option id="s_item2_null" value="" selected>
                                     もちもの</option>
-                                    <% for (int i = 0; i < 5; i++) {%>
-                                <option id="s_item2_<%=i%>" value="<%=i%>">item[<%=i%>][0]</option>
-                                <% }%>
+                                    
+                                <option id="s_item2_0" value="0">item[0][0]</option>
+                                
+                                <option id="s_item2_1" value="1">item[1][0]</option>
+                                
+                                <option id="s_item2_2" value="2">item[2][0]</option>
+                                
+                                <option id="s_item2_3" value="3">item[3][0]</option>
+                                
+                                <option id="s_item2_4" value="4">item[4][0]</option>
+                                
                             </select>
                         </TD>
                     </TR>
@@ -305,13 +2326,109 @@
                             <TH class="hpTheory2">調整</TH>
                             <TH class="hpTheory3">内容</TH>
                         </TR>
-                        <% for (int i = 1; i < 18; i++) {%>
+                        
                         <TR>
-                            <TD class="hpTheory1" id="hpTheory_<%=i%>">null</TD>
-                            <TD class="hpTheory2" id="hpTheoryName_<%=i%>"></TD>
-                            <TD class="hpTheory3, left" id="hpTheoryInfo_<%=i%>"></TD>
+                            <TD class="hpTheory1" id="hpTheory_1">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_1"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_1"></TD>
                         </TR>
-                        <% }%>
+                        
+                        <TR>
+                            <TD class="hpTheory1" id="hpTheory_2">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_2"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_2"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD class="hpTheory1" id="hpTheory_3">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_3"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_3"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD class="hpTheory1" id="hpTheory_4">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_4"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_4"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD class="hpTheory1" id="hpTheory_5">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_5"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_5"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD class="hpTheory1" id="hpTheory_6">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_6"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_6"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD class="hpTheory1" id="hpTheory_7">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_7"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_7"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD class="hpTheory1" id="hpTheory_8">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_8"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_8"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD class="hpTheory1" id="hpTheory_9">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_9"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_9"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD class="hpTheory1" id="hpTheory_10">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_10"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_10"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD class="hpTheory1" id="hpTheory_11">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_11"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_11"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD class="hpTheory1" id="hpTheory_12">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_12"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_12"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD class="hpTheory1" id="hpTheory_13">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_13"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_13"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD class="hpTheory1" id="hpTheory_14">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_14"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_14"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD class="hpTheory1" id="hpTheory_15">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_15"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_15"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD class="hpTheory1" id="hpTheory_16">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_16"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_16"></TD>
+                        </TR>
+                        
+                        <TR>
+                            <TD class="hpTheory1" id="hpTheory_17">null</TD>
+                            <TD class="hpTheory2" id="hpTheoryName_17"></TD>
+                            <TD class="hpTheory3, left" id="hpTheoryInfo_17"></TD>
+                        </TR>
+                        
                     </TABLE>
                 </div>
             </DIV>
