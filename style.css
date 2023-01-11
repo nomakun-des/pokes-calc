@@ -22,6 +22,8 @@
     --scroll-shadow: #333;
 
     --selected-bg: #ddd;
+    
+    --checkbox-checked: #555;
 
     --js-speed-selected: #000;   /*js color*/
     --js-speed-none: #888;
@@ -55,6 +57,8 @@
         --scroll-shadow: #333;
 
         --selected-bg:#444;
+        
+        --checkbox-checked: #888;
 
         --js-speed-selected: #fff;   /*js color*/
         --js-err-no-text: #800;
@@ -137,6 +141,10 @@ div.arrow{
 }
 div.arrow a{
     user-select: none;
+    border-bottom: 0;
+    text-decoration: none;
+}
+div.arrow a:hover{
     border-bottom: 0;
     text-decoration: none;
 }
@@ -307,7 +315,14 @@ input#Nature_A_dec,
 input#Nature_B_dec,
 input#Nature_C_dec,
 input#Nature_D_dec,
-input#Nature_S_dec {
+input#Nature_S_dec,
+
+input#Paralysis,
+input#Paralysis2,
+input#Tailwind,
+input#Tailwind2,
+input#Wetlands,
+input#Wetlands2{
     margin: 0;
     padding: 0;
     background: none;
@@ -328,7 +343,14 @@ input#Nature_A_dec,
 input#Nature_B_dec,
 input#Nature_C_dec,
 input#Nature_D_dec,
-input#Nature_S_dec {
+input#Nature_S_dec,
+
+input#Paralysis,
+input#Paralysis2,
+input#Tailwind,
+input#Tailwind2,
+input#Wetlands,
+input#Wetlands2 {
     cursor: pointer;
     vertical-align: middle;
     position: relative;
@@ -352,9 +374,22 @@ input#Nature_C_dec::after,
 input#Nature_D_dec::before,
 input#Nature_D_dec::after,
 input#Nature_S_dec::before,
-input#Nature_S_dec::after {
+input#Nature_S_dec::after,
+
+input#Paralysis::before,
+input#Paralysis::after,
+input#Paralysis2::before,
+input#Paralysis2::after,
+input#Tailwind::before,
+input#Tailwind::after,
+input#Tailwind2::before,
+input#Tailwind2::after,
+input#Wetlands::before,
+input#Wetlands::after,
+input#Wetlands2::before,
+input#Wetlands2::after {
     content: "";
-    display: block;
+    display: inline-block;
     position: absolute;
 }
 input#Nature_A_inc::before,
@@ -366,7 +401,14 @@ input#Nature_A_dec::before,
 input#Nature_B_dec::before,
 input#Nature_C_dec::before,
 input#Nature_D_dec::before,
-input#Nature_S_dec::before {/*box*/
+input#Nature_S_dec::before,
+
+input#Paralysis::before,
+input#Paralysis2::before,
+input#Tailwind::before,
+input#Tailwind2::before,
+input#Wetlands::before,
+input#Wetlands2::before {/*box*/
     background-color: var(--main-bg);
     border-radius: 20%;
     border: 1px solid var(--input-border);
@@ -374,7 +416,7 @@ input#Nature_S_dec::before {/*box*/
     height: 10px;
     transform: translateY(-50%);
     top: -1px;
-    left: 2px;
+    left: calc(50% - 5px);
 }
 input#Nature_A_inc::after,
 input#Nature_B_inc::after,
@@ -385,7 +427,14 @@ input#Nature_A_dec::after,
 input#Nature_B_dec::after,
 input#Nature_C_dec::after,
 input#Nature_D_dec::after,
-input#Nature_S_dec::after {/*check*/
+input#Nature_S_dec::after,
+
+input#Paralysis::after,
+input#Paralysis2::after,
+input#Tailwind::after,
+input#Tailwind2::after,
+input#Wetlands::after,
+input#Wetlands2::after {/*check*/
     border-bottom: 3px solid #fff;
     border-left: 3px solid #fff;
     opacity: 0;
@@ -393,21 +442,33 @@ input#Nature_S_dec::after {/*check*/
     width: 5px;
     transform: rotate(-45deg);
     top: -5px;
-    left: 3.5px;
+    left: calc(50% - 3.5px);
 }
 input#Nature_A_inc:checked::before,
 input#Nature_B_inc:checked::before,
 input#Nature_C_inc:checked::before,
 input#Nature_D_inc:checked::before,
 input#Nature_S_inc:checked::before {
-    background-color: #ef5350;
+    background-color: var(--pk-high-color);
 }
 input#Nature_A_dec:checked::before,
 input#Nature_B_dec:checked::before,
 input#Nature_C_dec:checked::before,
 input#Nature_D_dec:checked::before,
 input#Nature_S_dec:checked::before {
-    background-color: #03a9f4;
+    background-color: var(--pk-low-color);
+}
+input#Paralysis:checked::before,
+input#Paralysis2:checked::before{
+    background-color: var(--checkbox-checked);
+}
+input#Tailwind:checked::before,
+input#Tailwind2:checked::before{
+    background-color: var(--checkbox-checked);
+}
+input#Wetlands:checked::before,
+input#Wetlands2:checked::before{
+    background-color: var(--checkbox-checked);
 }
 input#Nature_A_inc:checked::after,
 input#Nature_B_inc:checked::after,
@@ -418,6 +479,13 @@ input#Nature_A_dec:checked::after,
 input#Nature_B_dec:checked::after,
 input#Nature_C_dec:checked::after,
 input#Nature_D_dec:checked::after,
-input#Nature_S_dec:checked::after {
+input#Nature_S_dec:checked::after,
+
+input#Paralysis:checked::after,
+input#Paralysis2:checked::after,
+input#Tailwind:checked::after,
+input#Tailwind2:checked::after,
+input#Wetlands:checked::after,
+input#Wetlands2:checked::after {
     opacity: 1;
 }
