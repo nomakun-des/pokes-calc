@@ -22,7 +22,7 @@
     --scroll-shadow: #333;
 
     --selected-bg: #ddd;
-    
+
     --checkbox-checked: #555;
 
     --js-speed-selected: #000;   /*js color*/
@@ -30,7 +30,8 @@
     --js-err-no-text: #f33;
     --js-err-no-bg: #fdd;
     --js-hptheory-bg: #ffe3e3;
-    
+    --js-x-color: #bbb;
+
     --pk-high-color: #ef5350;
     --pk-low-color: #03a9f4;
 }
@@ -57,13 +58,14 @@
         --scroll-shadow: #333;
 
         --selected-bg:#444;
-        
+
         --checkbox-checked: #888;
 
         --js-speed-selected: #fff;   /*js color*/
         --js-err-no-text: #800;
         --js-err-no-bg: #300;
         --js-hptheory-bg: #633;
+        --js-x-color: #555;
     }
 }
 
@@ -304,6 +306,15 @@ span.sc_delete{
     font-size: 5px;
 }
 .sc_list{
+}
+
+#IV0_H,#IV31_H,#x_H,
+#IV0_A,#IV31_A,#x_A,
+#IV0_B,#IV31_B,#x_B,
+#IV0_C,#IV31_C,#x_C,
+#IV0_D,#IV31_D,#x_D,
+#IV0_S,#IV31_S,#x_S {
+    width: 25px;
 }
 
 input#Nature_A_inc,
