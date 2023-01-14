@@ -1,8 +1,23 @@
+var black = '\u001b[30m';
+var red = '\u001b[31m';
+var green = '\u001b[32m';
+var yellow = '\u001b[33m';
+var blue = '\u001b[34m';
+var magenta = '\u001b[35m';
+var cyan = '\u001b[36m';
+var white = '\u001b[37m';
+
+var reset = '\u001b[0m';
+
 var img_no1 = 0;
 var img_no2 = 0;
 var sc_list = [];
 var sc_list_delete_button = '';
 var sc_button = '';
+var x_list = [0, 0, 0, 0, 0, 0];
+var numcheck_list =
+        [0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0];
 
 let stats_name = ['H', 'A', 'B', 'C', 'D', 'S'];
 var Speed_lv50;
@@ -62,6 +77,7 @@ window.onload = function () {
 };
 
 function first_setup() {
+    console.log("first_setup()");
 
     for (let i = 0; i < pokemon.length; i++) {
         document.getElementById("pokename_" + i).innerHTML = pokemon[i][0];
@@ -170,8 +186,12 @@ function reCalc() {
     console.log("reCalc()");
 
     for (let i = 0; i < 6; i++) {
-        if (document.getElementById("EV_" + stats_name[i]).value === '')
+        if (document.getElementById("EV_" + stats_name[i]).value === '') {
             document.getElementById("EV_" + stats_name[i]).value = 0;
+        }
+        if (x_list[i] === 1) {
+            document.getElementById("EV_" + stats_name[i]).value = 0;
+        }
     }
 
     document.getElementById("EV_total").value = total_ev();
@@ -186,6 +206,7 @@ function reCalc() {
     setTitle();
     HPchecker();
     poke1_imgs();
+    color();
 
     return;
 }
@@ -440,11 +461,18 @@ function setText() {
         document.getElementById("text").value = "";
     } else {
         name = pokemon[Number(document.getElementById("pokename").value)][0];
-        EV = "";
+        Stats = "";
         for (let i = 0; i < 6; i++) {
-            EV += stats_name[i] + ":" + document.getElementById("EV_" + stats_name[i]).value;
+            if (x_list[i] === 0) {
+                Stats += Stats_calc(i, 50);
+                if (Number(document.getElementById("EV_" + stats_name[i]).value) !== 0) {
+                    Stats += "(" + document.getElementById("EV_" + stats_name[i]).value + ")";
+                }
+            } else {
+                Stats += "x";
+            }
             if (i !== 5)
-                EV += ", ";
+                Stats += "-";
         }
         Nature = getNature();
 
@@ -456,7 +484,19 @@ function setText() {
             tab1 = "\t";
         }
 
-        document.getElementById("text").value = name + "\n" + EV + "\n" + Nature + tab1 + "S実数値: " + Speed_lv50;
+        EV = "";
+        for (let i = 0; i < 6; i++) {
+            if (Number(document.getElementById("EV_" + stats_name[i]).value) !== 0) {
+                if (i !== 0) {
+                    if (Number(document.getElementById("EV_" + stats_name[i - 1]).value) !== 0) {
+                        EV += " ";
+                    }
+                }
+                EV += stats_name[i] + document.getElementById("EV_" + stats_name[i]).value;
+            }
+        }
+
+        document.getElementById("text").value = name + "\n" + Stats + "\n" + Nature + tab1 + EV;
     }
 }
 
@@ -548,6 +588,8 @@ function setPokes() {
         document.getElementById("Basestats_" + stats_name[i]).value =
                 pokemon[Number(document.getElementById("pokename").value)][i + 1];
     }
+    
+    x_list = [0,0,0,0,0,0];
 
     reCalc();
 }
@@ -616,25 +658,28 @@ function numCheck_parts(name, max, min) {
         document.getElementById(name).style.background = 'var(--js-err-no-bg)';
         document.getElementById(name).style.border = "1px solid var(--js-err-no-text)";
     }
+
+    return (!(n <= Number(document.getElementById(name).value)
+            && Number(document.getElementById(name).value) <= max));
 }
 
 function numCheck() {
     console.log("numCheck()");
 
     numCheck_parts('lv', 100, 1);
-    numCheck_parts('EV_H', 252, 0);
-    numCheck_parts('EV_A', 252, 0);
-    numCheck_parts('EV_B', 252, 0);
-    numCheck_parts('EV_C', 252, 0);
-    numCheck_parts('EV_D', 252, 0);
-    numCheck_parts('EV_S', 252, 0);
+    numcheck_list[0] = numCheck_parts('EV_H', 252, 0);
+    numcheck_list[1] = numCheck_parts('EV_A', 252, 0);
+    numcheck_list[2] = numCheck_parts('EV_B', 252, 0);
+    numcheck_list[3] = numCheck_parts('EV_C', 252, 0);
+    numcheck_list[4] = numCheck_parts('EV_D', 252, 0);
+    numcheck_list[5] = numCheck_parts('EV_S', 252, 0);
     numCheck_parts('EV_total', 510, 0);
-    numCheck_parts('IV_H', 31);
-    numCheck_parts('IV_A', 31);
-    numCheck_parts('IV_B', 31);
-    numCheck_parts('IV_C', 31);
-    numCheck_parts('IV_D', 31);
-    numCheck_parts('IV_S', 31);
+    numcheck_list[6] = numCheck_parts('IV_H', 31);
+    numcheck_list[7] = numCheck_parts('IV_A', 31);
+    numcheck_list[8] = numCheck_parts('IV_B', 31);
+    numcheck_list[9] = numCheck_parts('IV_C', 31);
+    numcheck_list[10] = numCheck_parts('IV_D', 31);
+    numcheck_list[11] = numCheck_parts('IV_S', 31);
     if (document.getElementById("pokename").value === "") {
 
     } else {
@@ -1356,4 +1401,41 @@ function deleteon(num) {
         sc_list_delete_button = num;
     }
     SC_list_set();
+}
+
+function setX(num) {
+    console.log("setX(" + num + ")");
+
+    x_list[num] = Math.abs(x_list[num] - 1);
+
+    reCalc();
+
+    numCheck();
+    color();
+}
+
+function color() {
+    console.log("color()");
+
+    for (let i = 0; i < 6; i++) {
+        if (x_list[i] === 1) {
+            document.getElementById("Stats_" + stats_name[i]).style.color = 'var(--js-x-color)';
+            document.getElementById("Stats_" + stats_name[i]).style.background = null;
+            document.getElementById("Stats_" + stats_name[i]).style.border = null;
+            document.getElementById("EV_" + stats_name[i]).style.color = 'var(--js-x-color)';
+            document.getElementById("EV_" + stats_name[i]).style.background = null;
+            document.getElementById("EV_" + stats_name[i]).style.border = null;
+            document.getElementById("IV_" + stats_name[i]).style.color = 'var(--js-x-color)';
+            document.getElementById("IV_" + stats_name[i]).style.background = null;
+            document.getElementById("IV_" + stats_name[i]).style.border = null;
+        } else {
+            document.getElementById("Stats_" + stats_name[i]).style.color = null;
+            if (!numcheck_list[i]) {
+                document.getElementById("EV_" + stats_name[i]).style.color = null;
+            }
+            if (!numcheck_list[i + 6]) {
+                document.getElementById("IV_" + stats_name[i]).style.color = null;
+            }
+        }
+    }
 }
