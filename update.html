@@ -9,6 +9,14 @@
 			border-collapse:collapse;
 			color:#444;
 		}
+		th{
+		    position: sticky;
+		    top: 0;
+		    left: 0;
+		}
+		td{
+			white-space:nowrap;
+		}
 		table tr td:nth-of-type(3){
 			color:#666;
 		}
@@ -18,13 +26,20 @@
 		table tr:nth-child(odd) td {
 			background: #ddd;
 		}
+		div#main{
+			overflow:auto;
+			width: 100%;
+			height: 500px;
+		}
 	</style>	
 </head>
   <body>
 	  こちらのページの方が更新頻度が早いためアップデートのズレが確認できた場合はメインページにてスーパーリロード(Shift+再読み込み)を実行することで最新の情報に更新できます<br>
 	  <br>
+	  <div id="main">
 	<table>
 		<tr>
+			<th>Version</th><th>内容</th>
 			<td>v1.00.0</td><td> - </td><td>サイト設立</td></tr><tr>
 			<td>v1.01.0</td><td> - </td><td>努力値ボタンがより快適になるようにしました(252入らない場合に自動計算,無駄な努力値も省く)</td></tr><tr>
 			<td>v1.01.1</td><td> - </td><td>更新内容が表示されるようになりました</td></tr><tr>
@@ -82,5 +97,6 @@
 			<td></td><td> - </td><td>大きなアップデートが全て完了したのでキャッシュの保持時間を1日に設定しました</td>
 		</tr>
 	  </table>
+		  </div>
     </body>
 </html>
