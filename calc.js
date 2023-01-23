@@ -211,13 +211,13 @@ function reCalc() {
     return;
 }
 
-function byStats() {
-    console.log("byStats()");
+function byStats(change) {
+    console.log("byStats("+change+")");
 
     for (let i = 0; i < 6; i++) {
-        if (EV_calc(i) >= 0)
-            document.getElementById("EV_" + stats_name[i]).value = EV_calc(i);
-        console.log(EV_calc(i));
+        if (EV_calc(i,change) >= 0)
+            document.getElementById("EV_" + stats_name[i]).value = EV_calc(i,change);
+        console.log(EV_calc(i,change));
     }
 
     reCalc();
@@ -528,8 +528,8 @@ function Stats_calc(num, lv) {
     }
 }
 
-function EV_calc(num) {
-    console.log("EV_calc(" + num + ")");
+function EV_calc(num, sign) {
+    console.log("EV_calc(" + num + sign + ")");
 
     lv = Number(document.getElementById("lv").value);
     if (num === 0) {
@@ -564,15 +564,37 @@ function EV_calc(num) {
         Stats = Number(document.getElementById("Stats_" + stats_name[num]).value);   //実数値
 
         EV = 0;
+        EV_all = [];
+        EV_check = 0;
         while (Stats !== Math.floor((Math.floor((Basestats * 2 + IV + Math.floor(EV / 4)) * lv / 100) + 5) * Nature)) {
             EV += 4;
+            EV_all[(EV / 4) - 1] = Math.floor((Math.floor((Basestats * 2 + IV + Math.floor(EV / 4)) * lv / 100) + 5) * Nature);
             if (EV > 252) {
+                EV_check = 1;
                 if (Math.floor((Math.floor((Basestats * 2 + IV + Math.floor(EV / 4)) * lv / 100) + 5) * Nature) > Stats) {
                     EV = 0;
                 } else {
                     EV = 252;
                 }
                 break;
+            }
+        }
+
+        if (EV_check === 1) {
+            if (sign > 0) {
+                for (let i = 0; i < EV_all.length; i++) {
+                    if (Stats < EV_all[i]) {
+                        EV = (i + 1) * 4;
+                        break
+                    }
+                }
+            } else {
+                for (let i = (EV_all.length - 1); i > 0; i--) {
+                    if (Stats > EV_all[i]) {
+                        EV = (i + 1) * 4;
+                        break
+                    }
+                }
             }
         }
 
@@ -588,8 +610,8 @@ function setPokes() {
         document.getElementById("Basestats_" + stats_name[i]).value =
                 pokemon[Number(document.getElementById("pokename").value)][i + 1];
     }
-    
-    x_list = [0,0,0,0,0,0];
+
+    x_list = [0, 0, 0, 0, 0, 0];
 
     reCalc();
 }
@@ -1074,7 +1096,7 @@ function click_arrow(type, num, change) {
     }
 
     if (type === 'Stats') {
-        byStats();
+        byStats(change);
     } else {
         reCalc();
     }
