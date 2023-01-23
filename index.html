@@ -5,7 +5,7 @@
 
 <html lang="ja">
     <head>
-        <meta http-equiv="Expires" content="86400">
+        <meta http-equiv="Expires" content="90">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" type="image/png" href="https://www.pokemon.co.jp/common/images/favi_official.ico">
         <meta name="keyword" content="努力値,個体値,ポケモン,ステータス,計算,calc,pokemon,stats,のーまです,nomakun_des">
@@ -2159,11 +2159,11 @@
                             <input type="number" id="poke2_speed" readonly>
                         </TD>
                         <TD>
-                            <button class="pokes_S" id="poke2_sMax" onclick="setPoke2_speed('max')">最速</button>
-                            <button class="pokes_S" id="poke2_sHig" onclick="setPoke2_speed('high')">準速</button>
-                            <button class="pokes_S" id="poke2_sNor" onclick="setPoke2_speed('normal')">無振</button>
-                            <button class="pokes_S" id="poke2_sLow" onclick="setPoke2_speed('low')">下降</button>
-                            <button class="pokes_S" id="poke2_sMin" onclick="setPoke2_speed('min')">最遅</button>
+                            <button class="pokes_S , tooltip" id="poke2_sMax" onclick="setPoke2_speed('max')"><span class="tooltip-text">個体値:31, 努力値:252, 性格補正1.1</span>最速</button>
+                            <button class="pokes_S , tooltip" id="poke2_sHig" onclick="setPoke2_speed('high')"><span class="tooltip-text">個体値:31, 努力値:252, 性格補正なし</span>準速</button>
+                            <button class="pokes_S , tooltip" id="poke2_sNor" onclick="setPoke2_speed('normal')"><span class="tooltip-text">個体値:31, 努力値:0, 性格補正なし</span>無振</button>
+                            <button class="pokes_S , tooltip" id="poke2_sLow" onclick="setPoke2_speed('low')"><span class="tooltip-text">個体値:31, 努力値:0, 性格補正0.9</span>下降</button>
+                            <button class="pokes_S , tooltip" id="poke2_sMin" onclick="setPoke2_speed('min')"><span class="tooltip-text">個体値:0, 努力値:0, 性格補正0.9</span>最遅</button>
                         </TD>
                     </TR>
                 </TABLE>
