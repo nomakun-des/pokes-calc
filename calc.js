@@ -9,8 +9,8 @@ var white = '\u001b[37m';
 
 var reset = '\u001b[0m';
 
-var img_no1 = 0;
-var img_no2 = 0;
+var img_no_1 = 0;
+var img_no_2 = 0;
 var sc_list = [];
 var sc_list_delete_button = '';
 var sc_button = '';
@@ -79,11 +79,20 @@ window.onload = function () {
 function first_setup() {
     console.log("first_setup()");
 
+    j = 0;
     for (let i = 0; i < pokemon.length; i++) {
-        document.getElementById("pokename_" + i).innerHTML = pokemon[i][0];
-    }
-    for (let i = 0; i < pokemon.length; i++) {
-        document.getElementById("pokename2_" + i).innerHTML = pokemon[i][0] + " (" + pokemon[i][6] + ")";
+        if (list[i][0] !== 0) {
+            if (pokemon[i][1] !== "") {
+                detail = "(" + pokemon[i][1] + ")";
+            } else {
+                detail = "";
+            }
+            document.getElementById("pokename_" + j).innerHTML = pokemon[i][0] + detail;
+            document.getElementById("pokename_" + j).value = i;
+            document.getElementById("pokename2_" + j).innerHTML = pokemon[i][0] + detail+" ("+pokemon[i][7]+")";
+            document.getElementById("pokename2_" + j).value = i;
+            j++;
+        }
     }
     for (let i = 0; i < speed_skill.length; i++) {
         document.getElementById("s_skill_" + i).innerHTML =
@@ -212,12 +221,12 @@ function reCalc() {
 }
 
 function byStats(change) {
-    console.log("byStats("+change+")");
+    console.log("byStats(" + change + ")");
 
     for (let i = 0; i < 6; i++) {
-        if (EV_calc(i,change) >= 0)
-            document.getElementById("EV_" + stats_name[i]).value = EV_calc(i,change);
-        console.log(EV_calc(i,change));
+        if (EV_calc(i, change) >= 0)
+            document.getElementById("EV_" + stats_name[i]).value = EV_calc(i, change);
+        console.log(EV_calc(i, change));
     }
 
     reCalc();
@@ -608,7 +617,7 @@ function setPokes() {
     SC_list_reset();
     for (let i = 0; i < 6; i++) {
         document.getElementById("Basestats_" + stats_name[i]).value =
-                pokemon[Number(document.getElementById("pokename").value)][i + 1];
+                pokemon[Number(document.getElementById("pokename").value)][i + 2];
     }
 
     x_list = [0, 0, 0, 0, 0, 0];
@@ -707,7 +716,7 @@ function numCheck() {
     } else {
         for (let i = 0; i < 6; i++) {
             numCheck_parts('Basestats_' + stats_name[i],
-                    pokemon[Number(document.getElementById("pokename").value)][i + 1]);
+                    pokemon[Number(document.getElementById("pokename").value)][i + 2]);
         }
     }
 }
@@ -816,7 +825,7 @@ function set_Nature(crease, num) {
 }
 
 function getStats(num, lv, EV, IV, Basestats, Nature) {
-    console.log("getStats(" + num + "," + lv + "," + EV + "," + IV + "," + Basestats + Nature + ")");
+    console.log("getStats(" + num + "," + lv + "," + EV + "," + IV + "," + Basestats +","+ Nature + ")");
 
     if (num === 0) {
         if (EV === "")
@@ -921,11 +930,12 @@ function getNature() {
 
 function setPoke2_speed(theory) {
     console.log("setPoke2_speed()");
-
+    
+    poke2_imgs();
+    
     document.getElementById("poke2_speed").value = setPoke2_button(theory);
 
     real_speed2();
-    poke2_imgs();
     return;
 }
 
@@ -975,7 +985,7 @@ function setPoke2_button(theory) {
             Nature = 1;
         }
 
-        speed = pokemon[Number(document.getElementById("pokename2").value)][6];
+        speed = pokemon[img_no_2][7];
         result = getStats(5, 50, EV, IV, speed, Nature);
 
         return result;
@@ -1107,35 +1117,44 @@ function poke1_imgs() {
     console.log("poke1_imgs()");
 
     if (document.getElementById("pokename").value !== "") {
-        img_no_1 = img[Number(document.getElementById("pokename").value)][0];
+        img_no_1 = Number(document.getElementById("pokename").value);
     } else {
-        img_no_1 = 589;
+        img_no_1 = -1;
     }
 
     set1imgs();
 }
 
 function set1imgs() {
-    document.getElementById("poke1_icon").src =
-            "img/pokes-icon/poke_"
-            + img_no_1 + ".png";
-
+    if (img_no_1 === -1||img[Number(img_no_1)][2]===0) {
+        document.getElementById("poke1_icon").src =
+                "img/pokes-icon/poke_null.png";
+    } else {
+        document.getElementById("poke1_icon").src =
+                "img/pokes-icon/poke_"
+                + img[img_no_1][0] + ".png";
+    }
     poke1_types();
 }
 
 function set2imgs() {
-    document.getElementById("poke2_icon").src =
-            "img/pokes-icon/poke_"
-            + img_no_2 + ".png";
+    if (img_no_2 === -1||img[Number(img_no_2)][2]===0) {
+        document.getElementById("poke2_icon").src =
+                "img/pokes-icon/poke_null.png";
+    } else {
+        document.getElementById("poke2_icon").src =
+                "img/pokes-icon/poke_"
+                + img[img_no_2][0] + ".png";
+    }
 }
 
 function poke2_imgs() {
     console.log("poke2_imgs()");
 
     if (document.getElementById("pokename2").value !== "") {
-        img_no_2 = img[Number(document.getElementById("pokename2").value)][0];
+        img_no_2 = Number(document.getElementById("pokename2").value);
     } else {
-        img_no_2 = 589;
+        img_no_2 = -1;
     }
     set2imgs();
 }
@@ -1143,8 +1162,13 @@ function poke2_imgs() {
 function poke1_types() {
     console.log("poke1_types()");
 
-    type1 = type[img_no_1 - 1][0];
-    type2 = type[img_no_1 - 1][1];
+    if (img_no_1 === -1) {
+        type1 = 0;
+        type2 = 0;
+    } else {
+        type1 = type[img_no_1][0];
+        type2 = type[img_no_1][1];
+    }
 
     document.getElementById("poke1_type1").src =
             "img/type-icon/"
@@ -1157,18 +1181,14 @@ function poke1_types() {
 function nextIMG() {
     console.log("nextIMG()");
 
-    if (img[Number(document.getElementById("pokename").value)][1] !== 0) {
-        if (img_no_1 + 1 <= img[Number(document.getElementById("pokename").value)][1]) {
-            img_no_1++;
-        } else {
-            img_no_1 = img[Number(document.getElementById("pokename").value)][0];
-        }
+    if (img[img_no_1][1] !== 0&&list[img_no_1 + img[img_no_1][1]][0] === 0) {
+        img_no_1 = img_no_1 + img[img_no_1][1];
 
         set1imgs();
     } else {
-        if (nextPOKE(document.getElementById("pokename").value) !== null) {
-            $('#pokename').val(Number(nextPOKE(document.getElementById("pokename").value))).trigger('change');
-            console.log("change:" + pokemon[Number(nextPOKE(document.getElementById("pokename").value))][0]);
+        if (img[img_no_1][1] !== 0&&list[img_no_1 + img[img_no_1][1]][0] === 1) {
+            $('#pokename').val(img_no_1 + img[img_no_1][1]).trigger('change');
+            console.log("change:" + pokemon[img_no_1 + img[img_no_1][1]][0]);
             setPokes();
         }
     }
@@ -1177,70 +1197,17 @@ function nextIMG() {
 function nextIMG2() {
     console.log("nextIMG2()");
 
-    if (img[Number(document.getElementById("pokename2").value)][1] !== 0) {
-        if (img_no_2 + 1 <= img[Number(document.getElementById("pokename2").value)][1]) {
-            img_no_2++;
-        } else {
-            img_no_2 = img[Number(document.getElementById("pokename2").value)][0];
-        }
+    if (img[img_no_2][1] !== 0&&list[img_no_2 + img[img_no_2][1]][0] === 0) {
+        img_no_2 = img_no_2 + img[img_no_2][1];
 
         set2imgs();
     } else {
-        if (nextPOKE(document.getElementById("pokename2").value) !== null) {
-            $('#pokename2').val(Number(nextPOKE(document.getElementById("pokename2").value))).trigger('change');
-            console.log("change:" + pokemon[Number(nextPOKE(document.getElementById("pokename2").value))][0]);
+        if (img[img_no_2][1] !== 0&&list[img_no_2 + img[img_no_2][1]][0] === 1) {
+            $('#pokename2').val(img_no_2 + img[img_no_2][1]).trigger('change');
+            console.log("change:" + pokemon[img_no_1 + img[img_no_1][1]][0]);
             setPoke2_speed('max');
         }
     }
-}
-
-function nextPOKE(num) {
-    result = null;
-    if (pokemon[Number(num)][0] === 'イエッサン♀') {
-        result = pokesNo_search('イエッサン♂');
-    } else if (pokemon[Number(num)][0] === 'イエッサン♂') {
-        result = pokesNo_search('イエッサン♀');
-    } else if (pokemon[Number(num)][0] === 'イルカマン(ナイーブ)') {
-        result = pokesNo_search('イルカマン(マイティ)');
-    } else if (pokemon[Number(num)][0] === 'イルカマン(マイティ)') {
-        result = pokesNo_search('イルカマン(ナイーブ)');
-    } else if (pokemon[Number(num)][0] === 'コオリッポ(アイス)') {
-        result = pokesNo_search('コオリッポ(ナイス)');
-    } else if (pokemon[Number(num)][0] === 'コオリッポ(ナイス)') {
-        result = pokesNo_search('コオリッポ(アイス)');
-    } else if (pokemon[Number(num)][0] === 'ニャース') {
-        result = pokesNo_search('ガラルニャース');
-    } else if (pokemon[Number(num)][0] === 'ガラルニャース') {
-        result = pokesNo_search('ニャース');
-    } else if (pokemon[Number(num)][0] === 'ウパー') {
-        result = pokesNo_search('パルデアウパー');
-    } else if (pokemon[Number(num)][0] === 'パルデアウパー') {
-        result = pokesNo_search('ウパー');
-    } else if (pokemon[Number(num)][0] === 'パフュートン♀') {
-        result = pokesNo_search('パフュートン♂');
-    } else if (pokemon[Number(num)][0] === 'パフュートン♂') {
-        result = pokesNo_search('パフュートン♀');
-    } else if (pokemon[Number(num)][0] === '真昼ルガルガン') {
-        result = pokesNo_search('真夜中ルガルガン');
-    } else if (pokemon[Number(num)][0] === '真夜中ルガルガン') {
-        result = pokesNo_search('黄昏ルガルガン');
-    } else if (pokemon[Number(num)][0] === '黄昏ルガルガン') {
-        result = pokesNo_search('真昼ルガルガン');
-    } else if (pokemon[Number(num)][0] === 'ロトム') {
-        result = pokesNo_search('ヒートロトム');
-    } else if (pokemon[Number(num)][0] === 'ヒートロトム') {
-        result = pokesNo_search('ウォッシュロトム');
-    } else if (pokemon[Number(num)][0] === 'ウォッシュロトム') {
-        result = pokesNo_search('フロストロトム');
-    } else if (pokemon[Number(num)][0] === 'フロストロトム') {
-        result = pokesNo_search('スピンロトム');
-    } else if (pokemon[Number(num)][0] === 'スピンロトム') {
-        result = pokesNo_search('カットロトム');
-    } else if (pokemon[Number(num)][0] === 'カットロトム') {
-        result = pokesNo_search('ロトム');
-    }
-
-    return result;
 }
 
 function pokesNo_search(name) {
