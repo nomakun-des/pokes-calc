@@ -1126,9 +1126,13 @@ function poke1_imgs() {
 }
 
 function set1imgs() {
-    if (img_no_1 === -1 || img[Number(img_no_1)][2] === 0) {
+    if (img_no_1 === -1) {
         document.getElementById("poke1_icon").src =
                 "img/pokes-icon/poke_null.png";
+    } else if (img[Number(img_no_1)][2] === 0){
+        document.getElementById("poke1_icon").src =
+                "https://img.yakkun.com/poke/icon32/n"
+                + url[img_no_1][0] + ".gif";
     } else {
         document.getElementById("poke1_icon").src =
                 "img/pokes-icon/poke_"
@@ -1149,9 +1153,13 @@ function set1imgs() {
 }
 
 function set2imgs() {
-    if (img_no_2 === -1 || img[Number(img_no_2)][2] === 0) {
+    if (img_no_2 === -1) {
         document.getElementById("poke2_icon").src =
                 "img/pokes-icon/poke_null.png";
+    } else if (img[Number(img_no_2)][2] === 0){
+        document.getElementById("poke2_icon").src =
+                "https://img.yakkun.com/poke/icon32/n"
+                + url[img_no_2][0] + ".gif";
     } else {
         document.getElementById("poke2_icon").src =
                 "img/pokes-icon/poke_"
