@@ -517,6 +517,11 @@ function Stats_calc(num, lv) {
         IV = Number(document.getElementById("IV_H").value);                 //個体値
         Basestats = Number(document.getElementById("Basestats_H").value);   //種族値
         result = Math.floor((Basestats * 2 + IV + Math.floor(EV / 4)) * lv / 100) + lv + 10;
+        
+        poke1_imgs();
+        if (img_no_1 === 343) {
+            result = 1;
+        }
 
         return result;
     } else {
@@ -835,7 +840,8 @@ function getStats(num, lv, EV, IV, Basestats, Nature) {
         if (Basestats === "")
             Basestats = Number(document.getElementById("Basestats_H").value);   //種族値
         result = Math.floor((Basestats * 2 + IV + Math.floor(EV / 4)) * lv / 100) + lv + 10;
-
+        
+        
         return result;
     } else {
         if (EV === "")
@@ -1129,7 +1135,7 @@ function set1imgs() {
     if (img_no_1 === -1) {
         document.getElementById("poke1_icon").src =
                 "img/pokes-icon/poke_null.png";
-    } else if (img[Number(img_no_1)][2] === 0){
+    } else if (img[Number(img_no_1)][2] === 0) {
         document.getElementById("poke1_icon").src =
                 "https://img.yakkun.com/poke/icon32/n"
                 + url[img_no_1][0] + ".gif";
@@ -1138,13 +1144,13 @@ function set1imgs() {
                 "img/pokes-icon/poke_"
                 + img[img_no_1][0] + ".png";
     }
-    if (img_no_1===-1) {
+    if (img_no_1 === -1) {
         document.getElementById("poke1_form").innerHTML = "";
-    } else if(pokemon[Number(img_no_1)][1] !== ""){
+    } else if (pokemon[Number(img_no_1)][1] !== "") {
         document.getElementById("poke1_form").innerHTML =
                 "(" + pokemon[Number(img_no_1)][1] + ")"
                 + "<a href='https://yakkun.com/sv/zukan/n" + url[img_no_1][0] + "' target='_blank'>ポケ徹</a>";
-    }else{
+    } else {
         document.getElementById("poke1_form").innerHTML = ""
                 + "<a href='https://yakkun.com/sv/zukan/n" + url[img_no_1][0] + "' target='_blank'>ポケ徹</a>";
     }
@@ -1156,7 +1162,7 @@ function set2imgs() {
     if (img_no_2 === -1) {
         document.getElementById("poke2_icon").src =
                 "img/pokes-icon/poke_null.png";
-    } else if (img[Number(img_no_2)][2] === 0){
+    } else if (img[Number(img_no_2)][2] === 0) {
         document.getElementById("poke2_icon").src =
                 "https://img.yakkun.com/poke/icon32/n"
                 + url[img_no_2][0] + ".gif";
@@ -1165,13 +1171,13 @@ function set2imgs() {
                 "img/pokes-icon/poke_"
                 + img[img_no_2][0] + ".png";
     }
-    if (img_no_2===-1) {
+    if (img_no_2 === -1) {
         document.getElementById("poke2_form").innerHTML = "";
-    } else if(pokemon[Number(img_no_2)][1] !== ""){
+    } else if (pokemon[Number(img_no_2)][1] !== "") {
         document.getElementById("poke2_form").innerHTML =
                 "(" + pokemon[Number(img_no_2)][1] + ")"
                 + "<a href='https://yakkun.com/sv/zukan/n" + url[img_no_2][0] + "' target='_blank'>ポケ徹</a>";
-    }else{
+    } else {
         document.getElementById("poke2_form").innerHTML = ""
                 + "<a href='https://yakkun.com/sv/zukan/n" + url[img_no_2][0] + "' target='_blank'>ポケ徹</a>";
     }
