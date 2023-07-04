@@ -89,7 +89,7 @@ function first_setup() {
             }
             document.getElementById("pokename_" + j).innerHTML = pokemon[i][0] + detail;
             document.getElementById("pokename_" + j).value = i;
-            document.getElementById("pokename2_" + j).innerHTML = pokemon[i][0] + detail+" ("+pokemon[i][7]+")";
+            document.getElementById("pokename2_" + j).innerHTML = pokemon[i][0] + detail + " (" + pokemon[i][7] + ")";
             document.getElementById("pokename2_" + j).value = i;
             j++;
         }
@@ -825,7 +825,7 @@ function set_Nature(crease, num) {
 }
 
 function getStats(num, lv, EV, IV, Basestats, Nature) {
-    console.log("getStats(" + num + "," + lv + "," + EV + "," + IV + "," + Basestats +","+ Nature + ")");
+    console.log("getStats(" + num + "," + lv + "," + EV + "," + IV + "," + Basestats + "," + Nature + ")");
 
     if (num === 0) {
         if (EV === "")
@@ -930,9 +930,9 @@ function getNature() {
 
 function setPoke2_speed(theory) {
     console.log("setPoke2_speed()");
-    
+
     poke2_imgs();
-    
+
     document.getElementById("poke2_speed").value = setPoke2_button(theory);
 
     real_speed2();
@@ -1126,7 +1126,7 @@ function poke1_imgs() {
 }
 
 function set1imgs() {
-    if (img_no_1 === -1||img[Number(img_no_1)][2]===0) {
+    if (img_no_1 === -1 || img[Number(img_no_1)][2] === 0) {
         document.getElementById("poke1_icon").src =
                 "img/pokes-icon/poke_null.png";
     } else {
@@ -1134,17 +1134,38 @@ function set1imgs() {
                 "img/pokes-icon/poke_"
                 + img[img_no_1][0] + ".png";
     }
+    if (img_no_1===-1) {
+        document.getElementById("poke1_form").innerHTML = "";
+    } else if(pokemon[Number(img_no_1)][1] !== ""){
+        document.getElementById("poke1_form").innerHTML =
+                "(" + pokemon[Number(img_no_1)][1] + ")"
+                + "<a href='https://yakkun.com/sv/zukan/n" + url[img_no_1][0] + "' target='_blank'>ポケ徹</a>";
+    }else{
+        document.getElementById("poke1_form").innerHTML = ""
+                + "<a href='https://yakkun.com/sv/zukan/n" + url[img_no_1][0] + "' target='_blank'>ポケ徹</a>";
+    }
+
     poke1_types();
 }
 
 function set2imgs() {
-    if (img_no_2 === -1||img[Number(img_no_2)][2]===0) {
+    if (img_no_2 === -1 || img[Number(img_no_2)][2] === 0) {
         document.getElementById("poke2_icon").src =
                 "img/pokes-icon/poke_null.png";
     } else {
         document.getElementById("poke2_icon").src =
                 "img/pokes-icon/poke_"
                 + img[img_no_2][0] + ".png";
+    }
+    if (img_no_2===-1) {
+        document.getElementById("poke2_form").innerHTML = "";
+    } else if(pokemon[Number(img_no_2)][1] !== ""){
+        document.getElementById("poke2_form").innerHTML =
+                "(" + pokemon[Number(img_no_2)][1] + ")"
+                + "<a href='https://yakkun.com/sv/zukan/n" + url[img_no_2][0] + "' target='_blank'>ポケ徹</a>";
+    }else{
+        document.getElementById("poke2_form").innerHTML = ""
+                + "<a href='https://yakkun.com/sv/zukan/n" + url[img_no_2][0] + "' target='_blank'>ポケ徹</a>";
     }
 }
 
@@ -1181,12 +1202,12 @@ function poke1_types() {
 function nextIMG() {
     console.log("nextIMG()");
 
-    if (img[img_no_1][1] !== 0&&list[img_no_1 + img[img_no_1][1]][0] === 0) {
+    if (img[img_no_1][1] !== 0 && list[img_no_1 + img[img_no_1][1]][0] === 0) {
         img_no_1 = img_no_1 + img[img_no_1][1];
 
         set1imgs();
     } else {
-        if (img[img_no_1][1] !== 0&&list[img_no_1 + img[img_no_1][1]][0] === 1) {
+        if (img[img_no_1][1] !== 0 && list[img_no_1 + img[img_no_1][1]][0] === 1) {
             $('#pokename').val(img_no_1 + img[img_no_1][1]).trigger('change');
             console.log("change:" + pokemon[img_no_1 + img[img_no_1][1]][0]);
             setPokes();
@@ -1197,12 +1218,12 @@ function nextIMG() {
 function nextIMG2() {
     console.log("nextIMG2()");
 
-    if (img[img_no_2][1] !== 0&&list[img_no_2 + img[img_no_2][1]][0] === 0) {
+    if (img[img_no_2][1] !== 0 && list[img_no_2 + img[img_no_2][1]][0] === 0) {
         img_no_2 = img_no_2 + img[img_no_2][1];
 
         set2imgs();
     } else {
-        if (img[img_no_2][1] !== 0&&list[img_no_2 + img[img_no_2][1]][0] === 1) {
+        if (img[img_no_2][1] !== 0 && list[img_no_2 + img[img_no_2][1]][0] === 1) {
             $('#pokename2').val(img_no_2 + img[img_no_2][1]).trigger('change');
             console.log("change:" + pokemon[img_no_1 + img[img_no_1][1]][0]);
             setPoke2_speed('max');
