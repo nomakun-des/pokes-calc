@@ -466,6 +466,17 @@ function setTitle() {
 function setText() {
     console.log("setText()");
 
+    if (document.getElementById("s_item").value !== "") {
+        hold_item = speed_item[Number(document.getElementById("s_item").value)][0];
+    } else {
+        hold_item = "なし";
+    }
+    if (document.getElementById("s_skill").value !== "") {
+        ability = speed_skill[Number(document.getElementById("s_skill").value)][0];
+    } else {
+        ability = "とくせい";
+    }
+
     if (document.getElementById("pokename").value === "") {
         document.getElementById("text").value = "";
     } else {
@@ -485,27 +496,20 @@ function setText() {
         }
         Nature = getNature();
 
-        if (Nature.length < 3) {
-            tab1 = "\t\t\t";
-        } else if (Nature.length < 5) {
-            tab1 = "\t\t";
-        } else {
-            tab1 = "\t";
-        }
-
         EV = "";
         for (let i = 0; i < 6; i++) {
-            if (Number(document.getElementById("EV_" + stats_name[i]).value) !== 0) {
-                if (i !== 0) {
-                    if (Number(document.getElementById("EV_" + stats_name[i - 1]).value) !== 0) {
-                        EV += " ";
-                    }
-                }
-                EV += stats_name[i] + document.getElementById("EV_" + stats_name[i]).value;
+            if (i !== 0) {
+                EV += "-";
+            }
+            if (x_list[i] === 0) {
+                EV += document.getElementById("EV_" + stats_name[i]).value;
+            } else {
+                EV += "x";
             }
         }
 
-        document.getElementById("text").value = name + "\n" + Stats + "\n" + Nature + tab1 + EV;
+        document.getElementById("text").value =
+                name + "　@　" + hold_item + "\n" + ability + "　/　" + Nature + "\n" + EV + "\n" + Stats;
     }
 }
 
@@ -517,7 +521,7 @@ function Stats_calc(num, lv) {
         IV = Number(document.getElementById("IV_H").value);                 //個体値
         Basestats = Number(document.getElementById("Basestats_H").value);   //種族値
         result = Math.floor((Basestats * 2 + IV + Math.floor(EV / 4)) * lv / 100) + lv + 10;
-        
+
         poke1_imgs();
         if (img_no_1 === 343) {
             result = 1;
@@ -840,8 +844,8 @@ function getStats(num, lv, EV, IV, Basestats, Nature) {
         if (Basestats === "")
             Basestats = Number(document.getElementById("Basestats_H").value);   //種族値
         result = Math.floor((Basestats * 2 + IV + Math.floor(EV / 4)) * lv / 100) + lv + 10;
-        
-        
+
+
         return result;
     } else {
         if (EV === "")
@@ -1080,6 +1084,7 @@ function real_speed() {
         result = Math.floor(result / 2);
 
     document.getElementById("real_Speed").value = result;
+    setText();
 }
 
 function click_arrow(type, num, change) {
@@ -1144,14 +1149,24 @@ function set1imgs() {
                 "img/pokes-icon/poke_"
                 + img[img_no_1][0] + ".png";
     }
+    if (img_no_1 !== -1) {
+        if (img[img_no_1][2] !== 1) {
+            confirming = "非内定";
+        } else {
+            confirming = "内定済";
+        }
+    }
     if (img_no_1 === -1) {
         document.getElementById("poke1_form").innerHTML = "";
     } else if (pokemon[Number(img_no_1)][1] !== "") {
         document.getElementById("poke1_form").innerHTML =
-                "(" + pokemon[Number(img_no_1)][1] + ")"
+                confirming + "<br>"
+                + "(" + pokemon[Number(img_no_1)][1] + ")　"
                 + "<a href='https://yakkun.com/sv/zukan/n" + url[img_no_1][0] + "' target='_blank'>ポケ徹</a>";
     } else {
-        document.getElementById("poke1_form").innerHTML = ""
+        document.getElementById("poke1_form").innerHTML =
+                confirming + "<br>"
+                + ""
                 + "<a href='https://yakkun.com/sv/zukan/n" + url[img_no_1][0] + "' target='_blank'>ポケ徹</a>";
     }
 
@@ -1171,14 +1186,24 @@ function set2imgs() {
                 "img/pokes-icon/poke_"
                 + img[img_no_2][0] + ".png";
     }
+    if (img_no_2 !== -1) {
+        if (img[img_no_2][2] !== 1) {
+            confirming = "非内定";
+        } else {
+            confirming = "内定済";
+        }
+    }
     if (img_no_2 === -1) {
         document.getElementById("poke2_form").innerHTML = "";
     } else if (pokemon[Number(img_no_2)][1] !== "") {
         document.getElementById("poke2_form").innerHTML =
-                "(" + pokemon[Number(img_no_2)][1] + ")"
+                confirming + "<br>"
+                + "(" + pokemon[Number(img_no_2)][1] + ")　"
                 + "<a href='https://yakkun.com/sv/zukan/n" + url[img_no_2][0] + "' target='_blank'>ポケ徹</a>";
     } else {
-        document.getElementById("poke2_form").innerHTML = ""
+        document.getElementById("poke2_form").innerHTML =
+                confirming + "<br>"
+                + ""
                 + "<a href='https://yakkun.com/sv/zukan/n" + url[img_no_2][0] + "' target='_blank'>ポケ徹</a>";
     }
 }
