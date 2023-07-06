@@ -1467,29 +1467,44 @@ function auto_HBD() {
             }
         }
     }
-    
-    if(x_list[0]===1)
+
+    if (x_list[0] === 1)
         setX(0);
-    if(x_list[2]===1)
+    if (x_list[2] === 1)
         setX(2);
-    if(x_list[4]===1)
+    if (x_list[4] === 1)
         setX(4);
-    setIV(31,0);
-    setIV(31,2);
-    setIV(31,4);
-    setEV(efficient_ev[0],0);
-    setEV(efficient_ev[1],2);
-    setEV(efficient_ev[2],4);
+    setIV(31, 0);
+    setIV(31, 2);
+    setIV(31, 4);
+    setEV(efficient_ev[0], 0);
+    setEV(efficient_ev[1], 2);
+    setEV(efficient_ev[2], 4);
+    console.log(efficient_ev[0] + "-" + efficient_ev[1] + "-" + efficient_ev[2]);
 }
 
 function Efficient_HBDcalc(lv, H, B, D) {
+    ratio = document.getElementById("bd_range").value;
 
     //getStats(H=0,lv,EV,IV,Basestats,Nature)
     H_rst = getStats(0, lv, H, 31, Number(document.getElementById("Basestats_H").value), "");
     B_rst = getStats(2, lv, B, 31, Number(document.getElementById("Basestats_B").value), "");
     D_rst = getStats(4, lv, D, 31, Number(document.getElementById("Basestats_D").value), "");
 
-    result = (H_rst * B_rst * D_rst) / (B_rst + D_rst);
+    if (ratio === "0") {
+        result = (H_rst * D_rst) / (1 + D_rst);
+    } else if ((100 - ratio) === 0) {
+        result = (H_rst * B_rst) / (1 + B_rst);
+    } else {
+        result = (H_rst * B_rst * (ratio / 50) * D_rst * ((100 - ratio) / 50)) / (B_rst * (ratio / 50) + D_rst * ((100 - ratio) / 50));
+    }
+
 
     return result;
+}
+
+function BD_ratio() {
+    ratio = document.getElementById("bd_range").value;
+    document.getElementById("per_b").innerHTML = "B(" + ratio + "%)";
+    document.getElementById("per_d").innerHTML = "D(" + (100 - ratio) + "%)";
 }
