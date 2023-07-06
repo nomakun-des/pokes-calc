@@ -1504,7 +1504,23 @@ function Efficient_HBDcalc(lv, H, B, D) {
 }
 
 function BD_ratio() {
-    ratio = document.getElementById("bd_range").value;
-    document.getElementById("per_b").innerHTML = "B(" + ratio + "%)";
-    document.getElementById("per_d").innerHTML = "D(" + (100 - ratio) + "%)";
+    ratio = Number(document.getElementById("bd_range").value);
+    document.getElementById("per_b").value = ratio;
+    document.getElementById("per_d").value = (100 - ratio);
+}
+
+function ratioByNum(num) {
+    if (num === 0) {
+        document.getElementById("bd_range").value = document.getElementById("per_b").value;
+        document.getElementById("per_d").value = (100 - Number(document.getElementById("per_b").value));
+    } else {
+        document.getElementById("bd_range").value = (100 - Number(document.getElementById("per_d").value));
+        document.getElementById("per_b").value = (100 - Number(document.getElementById("per_d").value));
+    }
+}
+
+function ratio_reset() {
+    document.getElementById("bd_range").value = 50;
+    document.getElementById("per_b").value = 50;
+    document.getElementById("per_d").value = 50;
 }
