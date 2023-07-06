@@ -77,7 +77,6 @@ window.onload = function () {
 };
 
 function first_setup() {
-    console.log("first_setup()");
 
     j = 0;
     for (let i = 0; i < pokemon.length; i++) {
@@ -184,7 +183,6 @@ function setupSpeedbutton() {
 }
 
 function setHpInfo() {
-    console.log("setHpInfo()");
 
     for (let i = 0; i < hpTheory.length; i++) {
         document.getElementById("hpTheoryInfo_" + (i + 1)).innerHTML = hpTheory[i];
@@ -192,7 +190,6 @@ function setHpInfo() {
 }
 
 function reCalc() {
-    console.log("reCalc()");
 
     for (let i = 0; i < 6; i++) {
         if (document.getElementById("EV_" + stats_name[i]).value === '') {
@@ -221,43 +218,36 @@ function reCalc() {
 }
 
 function byStats(change) {
-    console.log("byStats(" + change + ")");
 
     for (let i = 0; i < 6; i++) {
         if (EV_calc(i, change) >= 0)
             document.getElementById("EV_" + stats_name[i]).value = EV_calc(i, change);
-        console.log(EV_calc(i, change));
     }
 
     reCalc();
 }
 
 function highStats(num) {
-    console.log("highStats(" + num + ")");
 
     return ((Number(document.getElementById("EV_" + stats_name[num]).value) === 252)
             && (Number(document.getElementById("IV_" + stats_name[num]).value) === 31)
             && (num === 0 || !document.getElementById('Nature_' + stats_name[num] + '_dec').checked));
 }
 function lowStats(num) {
-    console.log("lowStats(" + num + ")");
 
     return ((Number(document.getElementById("EV_" + stats_name[num]).value) === 0)
             && (Number(document.getElementById("IV_" + stats_name[num]).value) === 0)
             && (num === 0 || !document.getElementById('Nature_' + stats_name[num] + '_inc').checked));
 }
 function maxStats(num) {
-    console.log("maxStats(" + num + ")");
 
     return (highStats(num) && document.getElementById('Nature_' + stats_name[num] + '_inc').checked);
 }
 function minStats(num) {
-    console.log("minStats(" + num + ")");
 
     return (lowStats(num) && document.getElementById('Nature_' + stats_name[num] + '_dec').checked);
 }
 function nameofTheory() {
-    console.log("nameofTheory()");
 
     if (maxStats(5)) {
         return "最速";
@@ -291,18 +281,15 @@ function nameofTheory() {
     }
 }
 function nameofTheory_vague(num) {
-    console.log("nameofTheory_vague(" + num + ")");
 
     return (Number(document.getElementById("EV_" + stats_name[num]).value) >= 180);
 }
 
 function ANplusB_H(A, B) {
-    console.log("ANplusB_H(" + A + "," + B + ")");
 
     return Number.isInteger(((Number(document.getElementById("Stats_H").value)) - B) / A);
 }
 function ANplusB_excess(A, B) {
-    console.log("ANplusB_excess(" + A + "," + B + ")");
 
     HP = Number(document.getElementById("Stats_H").value);
     plus = 0;
@@ -316,7 +303,6 @@ function ANplusB_excess(A, B) {
     return "<span style='color:#ef5350;'>+" + plus + "</span> / <span style='color:#1297ff;'>-" + minus + "</span>";
 }
 function ANplusB_excess_3point(A, B1, B2, B3) {
-    console.log("ANplusB_excess_3point(" + A + ", " + B1 + ", " + B2 + ", " + B3 + ")");
 
     HP = Number(document.getElementById("Stats_H").value);
     plus = 0;
@@ -363,7 +349,6 @@ function ANplusB_excess_3point(A, B1, B2, B3) {
     return "<span style='color:#ef5350;'>+" + plus + "</span> / <span style='color:#1297ff;'>-" + minus + "</span>";
 }
 function HPcheck(A, B) {
-    console.log("HPcheck(" + A + "," + B + ")");
 
     if (ANplusB_H(A, B)) {
         return "O";
@@ -372,7 +357,6 @@ function HPcheck(A, B) {
     }
 }
 function HPcheck_3point(A, B1, B2, B3) {
-    console.log("HPcheck_3point(" + A + ", " + B1 + ", " + B2 + ", " + B3 + ")");
 
     if (ANplusB_H(A, B1) || ANplusB_H(A, B2) || ANplusB_H(A, B3)) {
         return "O";
@@ -381,7 +365,6 @@ function HPcheck_3point(A, B1, B2, B3) {
     }
 }
 function hpTheoryOutPut(no, name, A, B) {
-    console.log("hpTheoryOutPut(" + no + "," + name + "," + A + "," + B + ")");
 
 
     if (B === "1~3") {
@@ -402,7 +385,6 @@ function hpTheoryOutPut(no, name, A, B) {
     document.getElementById("hpTheoryName_" + no).innerHTML = name;
 }
 function HPchecker() {
-    console.log("HPchecker()");
 
     let i = 1;
     hpTheoryOutPut(i, "2n", 2, 0);
@@ -449,7 +431,6 @@ function HPchecker() {
 }
 
 function setTitle() {
-    console.log("setTitle()");
 
     if (document.getElementById("pokename").value === "") {
         document.title = "POKES STATS CALC";
@@ -464,7 +445,6 @@ function setTitle() {
 }
 
 function setText() {
-    console.log("setText()");
 
     if (document.getElementById("s_item").value !== "") {
         hold_item = speed_item[Number(document.getElementById("s_item").value)][0];
@@ -514,7 +494,6 @@ function setText() {
 }
 
 function Stats_calc(num, lv) {
-    console.log("Stats_calc(" + num + "," + lv + ")");
 
     if (num === 0) {
         EV = Number(document.getElementById("EV_H").value);                 //努力値
@@ -547,7 +526,6 @@ function Stats_calc(num, lv) {
 }
 
 function EV_calc(num, sign) {
-    console.log("EV_calc(" + num + sign + ")");
 
     lv = Number(document.getElementById("lv").value);
     if (num === 0) {
@@ -621,7 +599,6 @@ function EV_calc(num, sign) {
 }
 
 function setPokes() {
-    console.log("setPokes()");
 
     SC_list_reset();
     for (let i = 0; i < 6; i++) {
@@ -635,7 +612,6 @@ function setPokes() {
 }
 
 function all_set(num) {
-    console.log("all_set(" + num + ")");
 
     for (let i = 0; i < 6; i++) {
         setEV(num, i);
@@ -643,11 +619,9 @@ function all_set(num) {
 }
 
 function setEV(num, id) {
-    console.log("setEV(" + num + "," + id + ")");
 
     if (Number(document.getElementById("EV_" + stats_name[id]).value) < num) {
         if ((Number(document.getElementById("EV_total").value) + num) > 508) {
-            console.log("setEV is over");
             num = 508 - (Number(document.getElementById("EV_total").value) - Number(document.getElementById("EV_" + stats_name[id]).value));
             while (num % 4 !== 0)
                 num--;
@@ -665,7 +639,6 @@ function setEV(num, id) {
 }
 
 function setIV(num, id) {
-    console.log("setIV(" + num + "," + id + ")");
 
     document.getElementById("IV_" + stats_name[id]).value = num;
 
@@ -673,7 +646,6 @@ function setIV(num, id) {
 }
 
 function setLv(num) {
-    console.log("setLv(" + num + ")");
 
     document.getElementById("lv").value = num;
 
@@ -681,7 +653,6 @@ function setLv(num) {
 }
 
 function numCheck_parts(name, max, min) {
-    console.log("numCheck_parts(" + name + "," + max + "," + min + ")");
 
     if (min === undefined) {
         n = max;
@@ -704,7 +675,6 @@ function numCheck_parts(name, max, min) {
 }
 
 function numCheck() {
-    console.log("numCheck()");
 
     numCheck_parts('lv', 100, 1);
     numcheck_list[0] = numCheck_parts('EV_H', 252, 0);
@@ -731,7 +701,6 @@ function numCheck() {
 }
 
 function total_ev() {
-    console.log("total_ev()");
 
     result = 0;
     for (let i = 0; i < 6; i++) {
@@ -742,7 +711,6 @@ function total_ev() {
 }
 
 function total_bs() {
-    console.log("total_bs()");
 
     result = 0;
     for (let i = 0; i < 6; i++) {
@@ -753,7 +721,6 @@ function total_bs() {
 }
 
 function set_Nature(crease, num) {
-    console.log("set_Nature(" + crease + "," + num + ")");
 
     if (crease === 0) {
         if (num === 1) {
@@ -834,7 +801,7 @@ function set_Nature(crease, num) {
 }
 
 function getStats(num, lv, EV, IV, Basestats, Nature) {
-    console.log("getStats(" + num + "," + lv + "," + EV + "," + IV + "," + Basestats + "," + Nature + ")");
+
 
     if (num === 0) {
         if (EV === "")
@@ -843,8 +810,11 @@ function getStats(num, lv, EV, IV, Basestats, Nature) {
             IV = Number(document.getElementById("IV_H").value);                 //個体値
         if (Basestats === "")
             Basestats = Number(document.getElementById("Basestats_H").value);   //種族値
-        result = Math.floor((Basestats * 2 + IV + Math.floor(EV / 4)) * lv / 100) + lv + 10;
+        result = Math.floor((Basestats * 2 + IV + Math.floor(EV / 4)) * lv / 100) + Number(lv) + Number(10);
 
+        if (img_no_1 === 343) {
+            result = 1;
+        }
 
         return result;
     } else {
@@ -871,7 +841,6 @@ function getStats(num, lv, EV, IV, Basestats, Nature) {
 }
 
 function getNature() {
-    console.log("getNature()");
 
     if (document.getElementById('Nature_A_inc').checked) {
         if (document.getElementById('Nature_B_dec').checked)
@@ -939,7 +908,6 @@ function getNature() {
 }
 
 function setPoke2_speed(theory) {
-    console.log("setPoke2_speed()");
 
     poke2_imgs();
 
@@ -950,7 +918,6 @@ function setPoke2_speed(theory) {
 }
 
 function setPoke2_button(theory) {
-    console.log("setPoke2_button(" + theory + ")");
 
     if (document.getElementById("pokename2").value === '') {
         return "";
@@ -1003,7 +970,6 @@ function setPoke2_button(theory) {
 }
 
 function hpTable_display() {
-    console.log("hpTable_display()");
 
     var change = document.getElementById("hpTheory");
 
@@ -1017,7 +983,6 @@ function hpTable_display() {
 }
 
 function info_display() {
-    console.log("info_display()");
 
     var change = document.getElementById("info");
 
@@ -1031,7 +996,6 @@ function info_display() {
 }
 
 function real_speed() {
-    console.log("real_speed()");
 
     result = document.getElementById("Stats_S").value;
 
@@ -1088,7 +1052,6 @@ function real_speed() {
 }
 
 function click_arrow(type, num, change) {
-    console.log("click_arrow(" + type + "," + num + "," + change + ")");
 
     if (type === 'lv') {
         result = Number(document.getElementById(type).value) + Number(change);
@@ -1125,7 +1088,6 @@ function click_arrow(type, num, change) {
 }
 
 function poke1_imgs() {
-    console.log("poke1_imgs()");
 
     if (document.getElementById("pokename").value !== "") {
         img_no_1 = Number(document.getElementById("pokename").value);
@@ -1209,7 +1171,6 @@ function set2imgs() {
 }
 
 function poke2_imgs() {
-    console.log("poke2_imgs()");
 
     if (document.getElementById("pokename2").value !== "") {
         img_no_2 = Number(document.getElementById("pokename2").value);
@@ -1220,7 +1181,6 @@ function poke2_imgs() {
 }
 
 function poke1_types() {
-    console.log("poke1_types()");
 
     if (img_no_1 === -1) {
         type1 = 0;
@@ -1239,7 +1199,6 @@ function poke1_types() {
 }
 
 function nextIMG() {
-    console.log("nextIMG()");
 
     if (img[img_no_1][1] !== 0 && list[img_no_1 + img[img_no_1][1]][0] === 0) {
         img_no_1 = img_no_1 + img[img_no_1][1];
@@ -1248,14 +1207,12 @@ function nextIMG() {
     } else {
         if (img[img_no_1][1] !== 0 && list[img_no_1 + img[img_no_1][1]][0] === 1) {
             $('#pokename').val(img_no_1 + img[img_no_1][1]).trigger('change');
-            console.log("change:" + pokemon[img_no_1 + img[img_no_1][1]][0]);
             setPokes();
         }
     }
 }
 
 function nextIMG2() {
-    console.log("nextIMG2()");
 
     if (img[img_no_2][1] !== 0 && list[img_no_2 + img[img_no_2][1]][0] === 0) {
         img_no_2 = img_no_2 + img[img_no_2][1];
@@ -1264,7 +1221,6 @@ function nextIMG2() {
     } else {
         if (img[img_no_2][1] !== 0 && list[img_no_2 + img[img_no_2][1]][0] === 1) {
             $('#pokename2').val(img_no_2 + img[img_no_2][1]).trigger('change');
-            console.log("change:" + pokemon[img_no_1 + img[img_no_1][1]][0]);
             setPoke2_speed('max');
         }
     }
@@ -1282,7 +1238,6 @@ function pokesNo_search(name) {
 }
 
 function real_speed2() {
-    console.log("real_speed2()");
 
     if (document.getElementById("pokename2").value === "") {
         result = "";
@@ -1341,7 +1296,6 @@ function real_speed2() {
 }
 
 function SC_list_set(num) {
-    console.log("SC_list_set(" + num + ")");
 
     if (num === undefined) {
         add = 0;
@@ -1365,7 +1319,6 @@ function SC_list_set(num) {
 }
 
 function SC_list_add() {
-    console.log("SC_list_add()");
 
     if (document.getElementById("pokename2").value === '') {
 
@@ -1424,14 +1377,12 @@ function SC_list_add() {
 }
 
 function SC_list_reset() {
-    console.log("SC_list_reset()");
 
     sc_list.length = 0;
     SC_list_set();
 }
 
 function SC_list_delete(num) {
-    console.log("SC_list_delete(" + num + ")");
 
     sc_list_delete_button = '';
 
@@ -1453,7 +1404,6 @@ function deleteon(num) {
 }
 
 function setX(num) {
-    console.log("setX(" + num + ")");
 
     x_list[num] = Math.abs(x_list[num] - 1);
 
@@ -1464,7 +1414,6 @@ function setX(num) {
 }
 
 function color() {
-    console.log("color()");
 
     for (let i = 0; i < 6; i++) {
         if (x_list[i] === 1) {
@@ -1487,4 +1436,60 @@ function color() {
             }
         }
     }
+}
+
+function auto_HBD() {
+
+    lv = Number(document.getElementById("lv").value);
+    //min(now)~max check
+    H_min = Number(document.getElementById("EV_H").value) - (Number(document.getElementById("EV_H").value) % 4);
+    B_min = Number(document.getElementById("EV_B").value) - (Number(document.getElementById("EV_B").value) % 4);
+    D_min = Number(document.getElementById("EV_D").value) - (Number(document.getElementById("EV_D").value) % 4);
+    A = Number(document.getElementById("EV_A").value);
+    C = Number(document.getElementById("EV_C").value);
+    S = Number(document.getElementById("EV_S").value);
+
+    max = 0;
+    efficient_ev = [0, 0, 0];
+
+    for (let i = H_min; i <= 252; i += 4) {
+        for (let j = B_min; j <= 252; j += 4) {
+            for (let k = D_min; k <= 252; k += 4) {
+                if (i + j + k + A + C + S <= 508) {
+                    if (Efficient_HBDcalc(lv, i, j, k) > max) {
+                        max = Efficient_HBDcalc(lv, i, j, k);
+                        efficient_ev[0] = i;
+                        efficient_ev[1] = j;
+                        efficient_ev[2] = k;
+                    }
+                } else {
+                }
+            }
+        }
+    }
+    
+    if(x_list[0]===1)
+        setX(0);
+    if(x_list[2]===1)
+        setX(2);
+    if(x_list[4]===1)
+        setX(4);
+    setIV(31,0);
+    setIV(31,2);
+    setIV(31,4);
+    setEV(efficient_ev[0],0);
+    setEV(efficient_ev[1],2);
+    setEV(efficient_ev[2],4);
+}
+
+function Efficient_HBDcalc(lv, H, B, D) {
+
+    //getStats(H=0,lv,EV,IV,Basestats,Nature)
+    H_rst = getStats(0, lv, H, 31, Number(document.getElementById("Basestats_H").value), "");
+    B_rst = getStats(2, lv, B, 31, Number(document.getElementById("Basestats_B").value), "");
+    D_rst = getStats(4, lv, D, 31, Number(document.getElementById("Basestats_D").value), "");
+
+    result = (H_rst * B_rst * D_rst) / (B_rst + D_rst);
+
+    return result;
 }
