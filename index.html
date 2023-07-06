@@ -2529,16 +2529,38 @@
                         <TD></TD>
                         <TD><button id="all_0" onClick="all_set(0)">ALL0</button></TD>
                         <TD><input type="number" value="600" id="Bs_total" readonly></TD>
-                        <TD colspan="4">
+                    </TR>
+                </TABLE>
+                <TABLE>
+                    <TR>
+                        <TH colspan="5"><div>比率</div></TH>
+                    </TR>
+                    <TR>
+                        <TD>B</TD>
+                        <TD>
+                            <input class="no-spin" type="number" value="50" id="per_b"
+                                        onChange="ratioByNum(0)">%
+                        </TD>
+                        <TD>
                             <label class="range_lbl">
-                                <span id="per_b">B(50%)</span>
                                 <input id="bd_range" type="range" min="0" max="100"
                                        onChange="BD_ratio()">
-                                <span id="per_d">D(50%)</span>
                             </label>
                         </TD>
-                        <TD colspan="2"><button id="auto_HBD" class="tooltip" onClick="auto_HBD()">
-                                <span class="tooltip-text">(H×B×D)/(B+D)が最大になるように振ります</span>
+                        <TD>D</TD>
+                        <TD>
+                            <input class="no-spin" type="number" value="50" id="per_d"
+                                        onChange="ratioByNum(1)">%
+                        </TD>
+                        <TD>
+                            <button id="ratio_reset" onClick="ratio_reset()">
+                                リセット
+                            </button>
+                        </TD>
+                    </TR>
+                    <TR>
+                        <TD colspan="3">
+                            <button id="auto_HBD" onClick="auto_HBD()">
                                 耐久振り
                             </button>
                         </TD>
@@ -5179,7 +5201,7 @@
                 Thx to <a href="https://github.com/select2/select2" target="_blank">select2</a>, 
                 <a href="https://tobiasahlin.com/spinkit/" target="_blank">spinkit</a><br>
                 Made by <a href="https://twitter.com/nomakun_des" target="_blank">@nomakun_des</a><br>
-                v6.00.0 <a href="update.html" target="_blank">Update Details</a>
+                v6.01.0 <a href="update.html" target="_blank">Update Details</a>
             </div>
         </DIV>
 
