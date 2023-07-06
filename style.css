@@ -200,7 +200,10 @@ button#all_0{
     width: 50px;
 }
 button#auto_HBD{
-    width: 60px;
+    width: 80px;
+}
+button#ratio_reset{
+    width: 70px;
 }
 button#sc_add{
     width: 160px;
@@ -543,7 +546,6 @@ input#Wetlands2:checked::after {
 }
 
 .range_lbl{
-    font-size: 8px;
 }
 
 input[type="range"] {
@@ -554,6 +556,7 @@ input[type="range"] {
   cursor: pointer;
   width: 50px;
   border-radius: 8px;
+  height: 4px;
 }
 /* google */
 input[type="range"]::-webkit-slider-runnable-track {
@@ -572,7 +575,7 @@ input[type="range"]::-webkit-slider-thumb {
 /* Firefox */
 input[type="range"]::-moz-range-track {
   background: #222222;
-  height: 8px;
+  height: 4px;
   border-radius: 8px;
 }
 input[type="range"]::-moz-range-thumb {
