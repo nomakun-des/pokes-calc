@@ -541,3 +541,43 @@ input#Wetlands2:checked::after {
 #poke1_form, #poke2_form{
     font-size: 8px;
 }
+
+.range_lbl{
+    font-size: 8px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  width: 50px;
+  border-radius: 8px;
+}
+/* google */
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #333333;
+  height: 4px;
+  border-radius: 8px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 10px;
+  width: 3px;
+  margin-top: -3px;
+  background-color: #ffffff;
+}
+/* Firefox */
+input[type="range"]::-moz-range-track {
+  background: #222222;
+  height: 8px;
+  border-radius: 8px;
+}
+input[type="range"]::-moz-range-thumb {
+  border: none;
+  height: 10px;
+  width: 3px;
+  background-color: #ffffff;
+}
