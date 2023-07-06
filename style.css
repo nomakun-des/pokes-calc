@@ -199,6 +199,9 @@ button.pokes_S{
 button#all_0{
     width: 50px;
 }
+button#auto_HBD{
+    width: 60px;
+}
 button#sc_add{
     width: 160px;
 }
