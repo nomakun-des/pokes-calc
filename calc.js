@@ -1505,16 +1505,16 @@ function Efficient_HBDcalc(lv, H, B, D) {
 
 function BD_ratio() {
     ratio = Number(document.getElementById("bd_range").value);
-    document.getElementById("per_b").value = ratio;
-    document.getElementById("per_d").value = (100 - ratio);
+    document.getElementById("per_b").value = (100 - ratio);
+    document.getElementById("per_d").value = ratio;
 }
 
 function ratioByNum(num) {
     if (num === 0) {
-        document.getElementById("bd_range").value = document.getElementById("per_b").value;
+        document.getElementById("bd_range").value = (100 - Number(document.getElementById("per_b").value));
         document.getElementById("per_d").value = (100 - Number(document.getElementById("per_b").value));
     } else {
-        document.getElementById("bd_range").value = (100 - Number(document.getElementById("per_d").value));
+        document.getElementById("bd_range").value = Number(document.getElementById("per_d").value);
         document.getElementById("per_b").value = (100 - Number(document.getElementById("per_d").value));
     }
 }
