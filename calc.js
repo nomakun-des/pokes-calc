@@ -1360,7 +1360,6 @@ function deleteon(num) {
 }
 
 function setX(num) {
-
     x_list[num] = Math.abs(x_list[num] - 1);
 
     reCalc();
@@ -1370,7 +1369,6 @@ function setX(num) {
 }
 
 function color() {
-
     for (let i = 0; i < 6; i++) {
         if (x_list[i] === 1) {
             document.getElementById("Stats_" + stats_name[i]).style.color = 'var(--js-x-color)';
@@ -1386,6 +1384,9 @@ function color() {
             document.getElementById("Stats_" + stats_name[i]).style.color = null;
             if (!numcheck_list[i]) {
                 document.getElementById("EV_" + stats_name[i]).style.color = null;
+                if(Number(document.getElementById("EV_" + stats_name[i]).value)%4!==0){
+                    document.getElementById("EV_" + stats_name[i]).style.color = 'var(--js-waste-no-text)';
+                }
             }
             if (!numcheck_list[i + 6]) {
                 document.getElementById("IV_" + stats_name[i]).style.color = null;
@@ -1467,9 +1468,23 @@ function BD_ratio() {
 
 function ratioByNum(num) {
     if (num === 0) {
+        if(Number(document.getElementById("per_b").value)<0){
+            document.getElementById("per_b").value = 0;
+        }else if(Number(document.getElementById("per_b").value)>100){
+            document.getElementById("per_b").value = 100;
+        }else if(document.getElementById("per_b").value===""){
+            document.getElementById("per_b").value = 0;
+        }
         document.getElementById("bd_range").value = (100 - Number(document.getElementById("per_b").value));
         document.getElementById("per_d").value = (100 - Number(document.getElementById("per_b").value));
     } else {
+        if(Number(document.getElementById("per_d").value)<0){
+            document.getElementById("per_d").value = 0;
+        }else if(Number(document.getElementById("per_d").value)>100){
+            document.getElementById("per_d").value = 100;
+        }else if(document.getElementById("per_d").value===""){
+            document.getElementById("per_d").value = 0;
+        }
         document.getElementById("bd_range").value = Number(document.getElementById("per_d").value);
         document.getElementById("per_b").value = (100 - Number(document.getElementById("per_d").value));
     }
