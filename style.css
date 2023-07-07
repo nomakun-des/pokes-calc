@@ -116,6 +116,7 @@ h2{
     color: var(--title-text);
     margin: 10px 0px;
     font-size: 15px;
+    min-width: 500px;
 }
 h3{
     color: var(--title-text);
@@ -214,7 +215,7 @@ pre{
 }
 div#speedcomparison_box {
     margin: 10px 0;
-    height: 240px;
+    max-height: 240px;
     overflow: auto;
 }
 
@@ -560,7 +561,7 @@ input[type="range"] {
 }
 /* google */
 input[type="range"]::-webkit-slider-runnable-track {
-  background: #333333;
+  background: var(--button-bg);
   height: 4px;
   border-radius: 8px;
 }
@@ -570,11 +571,11 @@ input[type="range"]::-webkit-slider-thumb {
   height: 10px;
   width: 3px;
   margin-top: -3px;
-  background-color: #ffffff;
+  background-color: var(--main-text);
 }
 /* Firefox */
 input[type="range"]::-moz-range-track {
-  background: #222222;
+  background: var(--button-bg);
   height: 4px;
   border-radius: 8px;
 }
@@ -582,5 +583,5 @@ input[type="range"]::-moz-range-thumb {
   border: none;
   height: 10px;
   width: 3px;
-  background-color: #ffffff;
+  background-color: var(--main-text);
 }
