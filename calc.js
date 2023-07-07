@@ -1,3 +1,7 @@
+/*
+sc:SpeedComparison 
+*/
+
 var black = '\u001b[30m';
 var red = '\u001b[31m';
 var green = '\u001b[32m';
@@ -67,7 +71,7 @@ let speed_item = [
     ["パワー系アイテム", "0.5"]
 ];
 
-window.onload = function () {
+window.onload = function () {//setup
     first_setup();
     reCalc();
     setHpInfo();
@@ -77,7 +81,6 @@ window.onload = function () {
 };
 
 function first_setup() {
-
     j = 0;
     for (let i = 0; i < pokemon.length; i++) {
         if (list[i][0] !== 0) {
@@ -111,7 +114,7 @@ function first_setup() {
     $(document).ready(function () {
         $('.select_search').select2();
     });
-    $(function () {
+    $(function () {//thx to custommatcher
         function customMatcher(params, data) {
             if ($.trim(params.term) === '') {
                 return data;
@@ -183,14 +186,12 @@ function setupSpeedbutton() {
 }
 
 function setHpInfo() {
-
     for (let i = 0; i < hpTheory.length; i++) {
         document.getElementById("hpTheoryInfo_" + (i + 1)).innerHTML = hpTheory[i];
     }
 }
 
 function reCalc() {
-
     for (let i = 0; i < 6; i++) {
         if (document.getElementById("EV_" + stats_name[i]).value === '') {
             document.getElementById("EV_" + stats_name[i]).value = 0;
@@ -218,7 +219,6 @@ function reCalc() {
 }
 
 function byStats(change) {
-
     for (let i = 0; i < 6; i++) {
         if (EV_calc(i, change) >= 0)
             document.getElementById("EV_" + stats_name[i]).value = EV_calc(i, change);
@@ -228,27 +228,22 @@ function byStats(change) {
 }
 
 function highStats(num) {
-
     return ((Number(document.getElementById("EV_" + stats_name[num]).value) === 252)
             && (Number(document.getElementById("IV_" + stats_name[num]).value) === 31)
             && (num === 0 || !document.getElementById('Nature_' + stats_name[num] + '_dec').checked));
 }
 function lowStats(num) {
-
     return ((Number(document.getElementById("EV_" + stats_name[num]).value) === 0)
             && (Number(document.getElementById("IV_" + stats_name[num]).value) === 0)
             && (num === 0 || !document.getElementById('Nature_' + stats_name[num] + '_inc').checked));
 }
 function maxStats(num) {
-
     return (highStats(num) && document.getElementById('Nature_' + stats_name[num] + '_inc').checked);
 }
 function minStats(num) {
-
     return (lowStats(num) && document.getElementById('Nature_' + stats_name[num] + '_dec').checked);
 }
 function nameofTheory() {
-
     if (maxStats(5)) {
         return "最速";
     } else if (minStats(5)) {
@@ -281,16 +276,13 @@ function nameofTheory() {
     }
 }
 function nameofTheory_vague(num) {
-
     return (Number(document.getElementById("EV_" + stats_name[num]).value) >= 180);
 }
 
 function ANplusB_H(A, B) {
-
     return Number.isInteger(((Number(document.getElementById("Stats_H").value)) - B) / A);
 }
 function ANplusB_excess(A, B) {
-
     HP = Number(document.getElementById("Stats_H").value);
     plus = 0;
     minus = 0;
@@ -303,7 +295,6 @@ function ANplusB_excess(A, B) {
     return "<span style='color:#ef5350;'>+" + plus + "</span> / <span style='color:#1297ff;'>-" + minus + "</span>";
 }
 function ANplusB_excess_3point(A, B1, B2, B3) {
-
     HP = Number(document.getElementById("Stats_H").value);
     plus = 0;
     minus = 0;
@@ -349,7 +340,6 @@ function ANplusB_excess_3point(A, B1, B2, B3) {
     return "<span style='color:#ef5350;'>+" + plus + "</span> / <span style='color:#1297ff;'>-" + minus + "</span>";
 }
 function HPcheck(A, B) {
-
     if (ANplusB_H(A, B)) {
         return "O";
     } else {
@@ -357,7 +347,6 @@ function HPcheck(A, B) {
     }
 }
 function HPcheck_3point(A, B1, B2, B3) {
-
     if (ANplusB_H(A, B1) || ANplusB_H(A, B2) || ANplusB_H(A, B3)) {
         return "O";
     } else {
@@ -365,8 +354,6 @@ function HPcheck_3point(A, B1, B2, B3) {
     }
 }
 function hpTheoryOutPut(no, name, A, B) {
-
-
     if (B === "1~3") {
         document.getElementById("hpTheory_" + no).innerHTML = HPcheck_3point(A, 1, 2, 3);
         if (ANplusB_H(A, 1) || ANplusB_H(A, 2) || ANplusB_H(A, 3)) {
@@ -385,7 +372,6 @@ function hpTheoryOutPut(no, name, A, B) {
     document.getElementById("hpTheoryName_" + no).innerHTML = name;
 }
 function HPchecker() {
-
     let i = 1;
     hpTheoryOutPut(i, "2n", 2, 0);
     i++;
@@ -431,7 +417,6 @@ function HPchecker() {
 }
 
 function setTitle() {
-
     if (document.getElementById("pokename").value === "") {
         document.title = "POKES STATS CALC";
     } else {
@@ -445,7 +430,6 @@ function setTitle() {
 }
 
 function setText() {
-
     if (document.getElementById("s_item").value !== "") {
         hold_item = speed_item[Number(document.getElementById("s_item").value)][0];
     } else {
@@ -494,7 +478,6 @@ function setText() {
 }
 
 function Stats_calc(num, lv) {
-
     if (num === 0) {
         EV = Number(document.getElementById("EV_H").value);                 //努力値
         IV = Number(document.getElementById("IV_H").value);                 //個体値
@@ -526,7 +509,6 @@ function Stats_calc(num, lv) {
 }
 
 function EV_calc(num, sign) {
-
     lv = Number(document.getElementById("lv").value);
     if (num === 0) {
         IV = Number(document.getElementById("IV_H").value);                 //個体値
@@ -598,8 +580,7 @@ function EV_calc(num, sign) {
     }
 }
 
-function setPokes() {
-
+function setPokes() {//if you selected pokemon
     SC_list_reset();
     for (let i = 0; i < 6; i++) {
         document.getElementById("Basestats_" + stats_name[i]).value =
@@ -612,14 +593,12 @@ function setPokes() {
 }
 
 function all_set(num) {
-
     for (let i = 0; i < 6; i++) {
         setEV(num, i);
     }
 }
 
 function setEV(num, id) {
-
     if (Number(document.getElementById("EV_" + stats_name[id]).value) < num) {
         if ((Number(document.getElementById("EV_total").value) + num) > 508) {
             num = 508 - (Number(document.getElementById("EV_total").value) - Number(document.getElementById("EV_" + stats_name[id]).value));
@@ -639,21 +618,18 @@ function setEV(num, id) {
 }
 
 function setIV(num, id) {
-
     document.getElementById("IV_" + stats_name[id]).value = num;
 
     reCalc();
 }
 
 function setLv(num) {
-
     document.getElementById("lv").value = num;
 
     reCalc();
 }
 
 function numCheck_parts(name, max, min) {
-
     if (min === undefined) {
         n = max;
     } else {
@@ -675,7 +651,6 @@ function numCheck_parts(name, max, min) {
 }
 
 function numCheck() {
-
     numCheck_parts('lv', 100, 1);
     numcheck_list[0] = numCheck_parts('EV_H', 252, 0);
     numcheck_list[1] = numCheck_parts('EV_A', 252, 0);
@@ -701,7 +676,6 @@ function numCheck() {
 }
 
 function total_ev() {
-
     result = 0;
     for (let i = 0; i < 6; i++) {
         result += Number(document.getElementById('EV_' + stats_name[i]).value);
@@ -711,7 +685,6 @@ function total_ev() {
 }
 
 function total_bs() {
-
     result = 0;
     for (let i = 0; i < 6; i++) {
         result += Number(document.getElementById('Basestats_' + stats_name[i]).value);
@@ -721,7 +694,6 @@ function total_bs() {
 }
 
 function set_Nature(crease, num) {
-
     if (crease === 0) {
         if (num === 1) {
             document.getElementById('Nature_A_dec').checked = false;
@@ -800,9 +772,7 @@ function set_Nature(crease, num) {
     return;
 }
 
-function getStats(num, lv, EV, IV, Basestats, Nature) {
-
-
+function getStats(num, lv, EV, IV, Basestats, Nature) {//get stats without output
     if (num === 0) {
         if (EV === "")
             EV = Number(document.getElementById("EV_H").value);                 //努力値
@@ -840,8 +810,7 @@ function getStats(num, lv, EV, IV, Basestats, Nature) {
     }
 }
 
-function getNature() {
-
+function getNature() {//get nature name by checkbox
     if (document.getElementById('Nature_A_inc').checked) {
         if (document.getElementById('Nature_B_dec').checked)
             return "さみしがり";
@@ -908,7 +877,6 @@ function getNature() {
 }
 
 function setPoke2_speed(theory) {
-
     poke2_imgs();
 
     document.getElementById("poke2_speed").value = setPoke2_button(theory);
@@ -918,7 +886,6 @@ function setPoke2_speed(theory) {
 }
 
 function setPoke2_button(theory) {
-
     if (document.getElementById("pokename2").value === '') {
         return "";
     } else {
@@ -970,7 +937,6 @@ function setPoke2_button(theory) {
 }
 
 function hpTable_display() {
-
     var change = document.getElementById("hpTheory");
 
     if (change.style.display === "table") {
@@ -983,7 +949,6 @@ function hpTable_display() {
 }
 
 function info_display() {
-
     var change = document.getElementById("info");
 
     if (change.style.display === "block") {
@@ -996,7 +961,6 @@ function info_display() {
 }
 
 function real_speed() {
-
     result = document.getElementById("Stats_S").value;
 
     if (Number(document.getElementById("s_rank").value) >= 0) {
@@ -1052,7 +1016,6 @@ function real_speed() {
 }
 
 function click_arrow(type, num, change) {
-
     if (type === 'lv') {
         result = Number(document.getElementById(type).value) + Number(change);
     } else {
@@ -1088,7 +1051,6 @@ function click_arrow(type, num, change) {
 }
 
 function poke1_imgs() {
-
     if (document.getElementById("pokename").value !== "") {
         img_no_1 = Number(document.getElementById("pokename").value);
     } else {
@@ -1171,7 +1133,6 @@ function set2imgs() {
 }
 
 function poke2_imgs() {
-
     if (document.getElementById("pokename2").value !== "") {
         img_no_2 = Number(document.getElementById("pokename2").value);
     } else {
@@ -1181,7 +1142,6 @@ function poke2_imgs() {
 }
 
 function poke1_types() {
-
     if (img_no_1 === -1) {
         type1 = 0;
         type2 = 0;
@@ -1199,7 +1159,6 @@ function poke1_types() {
 }
 
 function nextIMG() {
-
     if (img[img_no_1][1] !== 0 && list[img_no_1 + img[img_no_1][1]][0] === 0) {
         img_no_1 = img_no_1 + img[img_no_1][1];
 
@@ -1213,7 +1172,6 @@ function nextIMG() {
 }
 
 function nextIMG2() {
-
     if (img[img_no_2][1] !== 0 && list[img_no_2 + img[img_no_2][1]][0] === 0) {
         img_no_2 = img_no_2 + img[img_no_2][1];
 
@@ -1238,7 +1196,6 @@ function pokesNo_search(name) {
 }
 
 function real_speed2() {
-
     if (document.getElementById("pokename2").value === "") {
         result = "";
     } else {
@@ -1296,7 +1253,6 @@ function real_speed2() {
 }
 
 function SC_list_set(num) {
-
     if (num === undefined) {
         add = 0;
     } else {
@@ -1319,7 +1275,6 @@ function SC_list_set(num) {
 }
 
 function SC_list_add() {
-
     if (document.getElementById("pokename2").value === '') {
 
     } else {
@@ -1330,10 +1285,11 @@ function SC_list_add() {
             tab = "&#009;&#009;";
         }
         result += document.getElementById("real_Speed2").value + " -" + tab
-                + sc_button + pokemon[Number(document.getElementById("pokename2").value)][0];
+                + sc_button + pokemon[Number(document.getElementById("pokename2").value)][7] +"族"
+                + "("+pokemon[Number(document.getElementById("pokename2").value)][0]+")";
         if (Number(document.getElementById("s_rank2").value) !== 0) {
             result += "&ensp;";
-            result += document.getElementById("s_rank2").value + "積み";
+            result += display_additionsign(document.getElementById("s_rank2").value);
         }
 
         if (document.getElementById("s_skill2").value !== ""
@@ -1523,4 +1479,12 @@ function ratio_reset() {
     document.getElementById("bd_range").value = 50;
     document.getElementById("per_b").value = 50;
     document.getElementById("per_d").value = 50;
+}
+
+function display_additionsign(num){
+    if(Number(num)>0){
+        return "+"+num;
+    }else{
+        return num;
+    }
 }
