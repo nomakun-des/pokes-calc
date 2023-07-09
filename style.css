@@ -207,6 +207,9 @@ button#auto_HBD{
 button#ratio_reset{
     width: 70px;
 }
+button#set_bytxt{
+    width: 120px;
+}
 button#sc_add{
     width: 160px;
 }
@@ -585,4 +588,9 @@ input[type="range"]::-moz-range-thumb {
   height: 10px;
   width: 3px;
   background-color: var(--main-text);
+}
+
+#set_bt_rst{
+    font-size: 10px;
+    padding-left: 12px;
 }
