@@ -2539,7 +2539,7 @@
                         <TD>B</TD>
                         <TD>
                             <input class="no-spin" type="number" value="50" id="per_b"
-                                        onChange="ratioByNum(0)">%
+                                   onChange="ratioByNum(0)">%
                         </TD>
                         <TD>
                             <label class="range_lbl">
@@ -2550,7 +2550,7 @@
                         <TD>D</TD>
                         <TD>
                             <input class="no-spin" type="number" value="50" id="per_d"
-                                        onChange="ratioByNum(1)">%
+                                   onChange="ratioByNum(1)">%
                         </TD>
                         <TD>
                             <button id="ratio_reset" onClick="ratio_reset()">
@@ -2692,7 +2692,11 @@
                     </TR>
                 </TABLE>
                 <br>
-                <textarea id="text" placeholder="コピペ"></textarea><br>
+                <textarea id="text" placeholder="コピペ / 努力値入力(例:4-252-0-x-0-252)"></textarea><br>
+                <button id="set_bytxt" onClick="setEV_byText()">
+                    努力値入力
+                </button>
+                <span id="set_bt_rst"></span>
             </div>
             <div id="speedcheck">
                 <DIV class="flex">
@@ -5201,7 +5205,7 @@
                 Thx to <a href="https://github.com/select2/select2" target="_blank">select2</a>, 
                 <a href="https://tobiasahlin.com/spinkit/" target="_blank">spinkit</a><br>
                 Made by <a href="https://twitter.com/nomakun_des" target="_blank">@nomakun_des</a><br>
-                v6.04.0 <a href="update.html" target="_blank">Update Details</a>
+                v7.00.0 <a href="update.html" target="_blank">Update Details</a>
             </div>
         </DIV>
 
