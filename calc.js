@@ -1511,7 +1511,7 @@ function display_additionsign(num) {
 
 function setEV_byText() {
     text = document.getElementById("text").value;
-    list = ["", "", "", "", "", "", "true"];//H,A,B,C,D,S,t/f
+    sebt_list = ["", "", "", "", "", "", "true"];//H,A,B,C,D,S,t/f
     fls_dtl = 0;
 
     j = 0;
@@ -1519,37 +1519,37 @@ function setEV_byText() {
         if (text.charAt(i) === "-") {
             j++;
         } else {
-            if (j > list.length - 2) {
-                list[6] = "false";
+            if (j > sebt_list.length - 2) {
+                sebt_list[6] = "false";
                 fls_dtl = 1;
                 break;
             }
-            list[j] += text.charAt(i);
+            sebt_list[j] += text.charAt(i);
         }
     }
-    for (let i = 0; i < list.length - 1; i++) {
-        if (isNaN(list[i]) && list[i] !== "x" || list[i] === "") {
-            list[6] = "false";//!String or Null exist
+    for (let i = 0; i < sebt_list.length - 1; i++) {
+        if (isNaN(sebt_list[i]) && sebt_list[i] !== "x" || sebt_list[i] === "") {
+            sebt_list[6] = "false";//!String or Null exist
             fls_dtl = 2;
         }
-        if (0 > Number(list[i]) || 252 < Number(list[i]) || Number(list[i]) % 4 !== 0) {
-            if (list[i] !== "x") {
-                list[6] = "false";//Not fit for EV
+        if (0 > Number(sebt_list[i]) || 252 < Number(sebt_list[i]) || Number(sebt_list[i]) % 4 !== 0) {
+            if (sebt_list[i] !== "x") {
+                sebt_list[6] = "false";//Not fit for EV
             }
             fls_dtl = 3;
         }
     }
 
-    if (list[6] === "true") {
+    if (sebt_list[6] === "true") {
         for (let i = 0; i < 6; i++) {
-            if (list[i] === "x") {
+            if (sebt_list[i] === "x") {
                 if (x_list[i] === 0)
                     setX(i);
             } else {
                 if (x_list[i] === 1) {
                     setX(i);
                 }
-                document.getElementById("EV_" + stats_name[i]).value = list[i];
+                document.getElementById("EV_" + stats_name[i]).value = sebt_list[i];
             }
         }
         document.getElementById("set_bt_rst").innerHTML = "正常に動作しました";
