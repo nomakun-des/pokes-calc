@@ -1,6 +1,6 @@
 /*
-sc:SpeedComparison 
-*/
+ sc:SpeedComparison 
+ */
 
 var black = '\u001b[30m';
 var red = '\u001b[31m';
@@ -191,7 +191,7 @@ function setHpInfo() {
     }
 }
 
-function reCalc() {
+function reCalc(addsetting) {
     for (let i = 0; i < 6; i++) {
         if (document.getElementById("EV_" + stats_name[i]).value === '') {
             document.getElementById("EV_" + stats_name[i]).value = 0;
@@ -214,6 +214,11 @@ function reCalc() {
     HPchecker();
     poke1_imgs();
     color();
+
+    if (addsetting !== "sebt") {
+        document.getElementById("set_bt_rst").innerHTML = "";
+        document.getElementById("set_bt_rst").style.color = null;
+    }
 
     return;
 }
@@ -1285,8 +1290,8 @@ function SC_list_add() {
             tab = "&#009;&#009;";
         }
         result += document.getElementById("real_Speed2").value + " -" + tab
-                + sc_button + pokemon[Number(document.getElementById("pokename2").value)][7] +"族"
-                + "("+pokemon[Number(document.getElementById("pokename2").value)][0]+")";
+                + sc_button + pokemon[Number(document.getElementById("pokename2").value)][7] + "族"
+                + "(" + pokemon[Number(document.getElementById("pokename2").value)][0] + ")";
         if (Number(document.getElementById("s_rank2").value) !== 0) {
             result += "&ensp;";
             result += display_additionsign(document.getElementById("s_rank2").value);
@@ -1384,7 +1389,7 @@ function color() {
             document.getElementById("Stats_" + stats_name[i]).style.color = null;
             if (!numcheck_list[i]) {
                 document.getElementById("EV_" + stats_name[i]).style.color = null;
-                if(Number(document.getElementById("EV_" + stats_name[i]).value)%4!==0){
+                if (Number(document.getElementById("EV_" + stats_name[i]).value) % 4 !== 0) {
                     document.getElementById("EV_" + stats_name[i]).style.color = 'var(--js-waste-no-text)';
                 }
             }
@@ -1468,21 +1473,21 @@ function BD_ratio() {
 
 function ratioByNum(num) {
     if (num === 0) {
-        if(Number(document.getElementById("per_b").value)<0){
+        if (Number(document.getElementById("per_b").value) < 0) {
             document.getElementById("per_b").value = 0;
-        }else if(Number(document.getElementById("per_b").value)>100){
+        } else if (Number(document.getElementById("per_b").value) > 100) {
             document.getElementById("per_b").value = 100;
-        }else if(document.getElementById("per_b").value===""){
+        } else if (document.getElementById("per_b").value === "") {
             document.getElementById("per_b").value = 0;
         }
         document.getElementById("bd_range").value = (100 - Number(document.getElementById("per_b").value));
         document.getElementById("per_d").value = (100 - Number(document.getElementById("per_b").value));
     } else {
-        if(Number(document.getElementById("per_d").value)<0){
+        if (Number(document.getElementById("per_d").value) < 0) {
             document.getElementById("per_d").value = 0;
-        }else if(Number(document.getElementById("per_d").value)>100){
+        } else if (Number(document.getElementById("per_d").value) > 100) {
             document.getElementById("per_d").value = 100;
-        }else if(document.getElementById("per_d").value===""){
+        } else if (document.getElementById("per_d").value === "") {
             document.getElementById("per_d").value = 0;
         }
         document.getElementById("bd_range").value = Number(document.getElementById("per_d").value);
@@ -1496,10 +1501,71 @@ function ratio_reset() {
     document.getElementById("per_d").value = 50;
 }
 
-function display_additionsign(num){
-    if(Number(num)>0){
-        return "+"+num;
-    }else{
+function display_additionsign(num) {
+    if (Number(num) > 0) {
+        return "+" + num;
+    } else {
         return num;
     }
+}
+
+function setEV_byText() {
+    text = document.getElementById("text").value;
+    list = ["", "", "", "", "", "", "true"];//H,A,B,C,D,S,t/f
+    fls_dtl = 0;
+
+    j = 0;
+    for (let i = 0; i < text.length; i++) {
+        if (text.charAt(i) === "-") {
+            j++;
+        } else {
+            if (j > list.length - 2) {
+                list[6] = "false";
+                fls_dtl = 1;
+                break;
+            }
+            list[j] += text.charAt(i);
+        }
+    }
+    for (let i = 0; i < list.length - 1; i++) {
+        if (isNaN(list[i]) && list[i] !== "x" || list[i] === "") {
+            list[6] = "false";//!String or Null exist
+            fls_dtl = 2;
+        }
+        if (0 > Number(list[i]) || 252 < Number(list[i]) || Number(list[i]) % 4 !== 0) {
+            if (list[i] !== "x") {
+                list[6] = "false";//Not fit for EV
+            }
+            fls_dtl = 3;
+        }
+    }
+
+    if (list[6] === "true") {
+        for (let i = 0; i < 6; i++) {
+            if (list[i] === "x") {
+                if (x_list[i] === 0)
+                    setX(i);
+            } else {
+                if (x_list[i] === 1) {
+                    setX(i);
+                }
+                document.getElementById("EV_" + stats_name[i]).value = list[i];
+            }
+        }
+        document.getElementById("set_bt_rst").innerHTML = "正常に動作しました";
+        document.getElementById("set_bt_rst").style.color = null;
+    } else {
+        if (fls_dtl === 1) {
+            document.getElementById("set_bt_rst").innerHTML = "努力値として認識できませんでした";
+        } else if (fls_dtl === 2) {
+            document.getElementById("set_bt_rst").innerHTML = "数字またはxを入力してください";
+        } else if (fls_dtl === 3) {
+            document.getElementById("set_bt_rst").innerHTML = "4の倍数,0-252であることを確認してください";
+        } else {
+            document.getElementById("set_bt_rst").innerHTML = "原因不明のエラーです";
+        }
+        document.getElementById("set_bt_rst").style.color = "var(--js-waste-no-text)";
+    }
+
+    reCalc("sebt");
 }
