@@ -594,3 +594,7 @@ input[type="range"]::-moz-range-thumb {
     font-size: 10px;
     padding-left: 12px;
 }
+
+#rule_box{
+    padding-bottom: 5px;
+}
