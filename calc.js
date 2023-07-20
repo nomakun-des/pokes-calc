@@ -74,6 +74,7 @@ let speed_item = [
 window.onload = function () {//setup
     first_setup();
     reCalc();
+    setRule(0);
     setHpInfo();
 
     const loader = document.getElementById('loader');
@@ -209,6 +210,7 @@ function reCalc(addsetting) {
     Speed_lv50 = Stats_calc(5, 50);
     numCheck();
     real_speed();
+    setPoke2_speed(getSpeedTheory());
     setText();
     setTitle();
     HPchecker();
@@ -453,7 +455,7 @@ function setText() {
         Stats = "";
         for (let i = 0; i < 6; i++) {
             if (x_list[i] === 0) {
-                Stats += Stats_calc(i, 50);
+                Stats += Stats_calc(i, getLV_byRule());
                 if (Number(document.getElementById("EV_" + stats_name[i]).value) !== 0) {
                     Stats += "(" + document.getElementById("EV_" + stats_name[i]).value + ")";
                 }
@@ -935,7 +937,7 @@ function setPoke2_button(theory) {
         }
 
         speed = pokemon[img_no_2][7];
-        result = getStats(5, 50, EV, IV, speed, Nature);
+        result = getStats(5, getLV_byRule(), EV, IV, speed, Nature);
 
         return result;
     }
@@ -966,7 +968,7 @@ function info_display() {
 }
 
 function real_speed() {
-    result = document.getElementById("Stats_S").value;
+    result = Stats_calc(5, getLV_byRule());
 
     if (Number(document.getElementById("s_rank").value) >= 0) {
         rank = (Number(document.getElementById('s_rank').value) + 2) / 2;
@@ -1568,4 +1570,49 @@ function setEV_byText() {
     }
 
     reCalc("sebt");
+}
+
+function setRule(num) {
+    if (num === 0) {
+        $('#rule_lv').val(1).trigger('change');
+    } else {
+        setPoke2_speed(getSpeedTheory());
+        real_speed();
+    }
+}
+
+function getLV_byRule() {
+    result = document.getElementById("lv").value;
+
+    if (document.getElementById("rule_lv").value === '0') {
+        if (result > 50) {
+            result = 50;
+        }
+    } else if (document.getElementById("rule_lv").value === '1') {
+        result = 50;
+    } else if (document.getElementById("rule_lv").value === '2') {
+
+    }
+
+    return Number(result);
+}
+
+function getSpeedTheory() {
+    result = "";
+    
+    if (sc_button === "最速") {
+        result = "max";
+    }else if (sc_button === "準速") {
+        result = "high";
+    }else if (sc_button === "無振") {
+        result = "normal";
+    }else if (sc_button === "下降") {
+        result = "low";
+    }else if (sc_button === "最遅") {
+        result = "min";
+    }else{
+        result = "max";
+    }
+    
+    return result;
 }
