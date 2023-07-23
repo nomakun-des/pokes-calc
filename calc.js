@@ -23,6 +23,15 @@ var numcheck_list =
         [0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0];
 
+let Nature_name = [
+    'さみしがり', 'いじっぱり', 'やんちゃ', 'ゆうかん',
+    'ずぶとい', 'わんぱく', 'のうてんき', 'のんき',
+    'ひかえめ', 'おっとり', 'うっかりや', 'れいせい',
+    'おだやか', 'おとなしい', 'しんちょう', 'なまいき',
+    'おくびょう', 'せっかち', 'ようき', 'むじゃき',
+    'てれや', 'がんばりや', 'すなお', 'きまぐれ', 'まじめ'
+];
+
 let stats_name = ['H', 'A', 'B', 'C', 'D', 'S'];
 var Speed_lv50;
 let hpTheory = [
@@ -85,17 +94,26 @@ function first_setup() {
     j = 0;
     for (let i = 0; i < pokemon.length; i++) {
         if (list[i][0] !== 0) {
-            if (pokemon[i][1] !== "") {
-                detail = "(" + pokemon[i][1] + ")";
+            if (prepost[i][0] !== "") {
+                pre = prepost[i][0];
             } else {
-                detail = "";
+                pre = "";
             }
-            document.getElementById("pokename_" + j).innerHTML = pokemon[i][0] + detail;
+            if (prepost[i][1] !== "") {
+                post = prepost[i][1];
+            } else {
+                post = "";
+            }
+            document.getElementById("pokename_" + j).innerHTML = pre + pokemon[i][0] + post;
             document.getElementById("pokename_" + j).value = i;
-            document.getElementById("pokename2_" + j).innerHTML = pokemon[i][0] + detail + " (" + pokemon[i][7] + ")";
+            document.getElementById("pokename2_" + j).innerHTML = pre + pokemon[i][0] + post + " (" + pokemon[i][7] + ")";
             document.getElementById("pokename2_" + j).value = i;
             j++;
         }
+    }
+    for (let i = 0; i < Nature_name.length; i++) {
+        document.getElementById("naturename_" + i).innerHTML =
+                Nature_name[i];
     }
     for (let i = 0; i < speed_skill.length; i++) {
         document.getElementById("s_skill_" + i).innerHTML =
@@ -156,6 +174,10 @@ function first_setup() {
             matcher: customMatcher
         });
         $("#pokename2").select2({
+            language: "ja",
+            matcher: customMatcher
+        });
+        $("#naturename").select2({
             language: "ja",
             matcher: customMatcher
         });
@@ -700,7 +722,7 @@ function total_bs() {
     return result;
 }
 
-function set_Nature(crease, num) {
+function set_Nature(crease, num, type = 1) {
     if (crease === 0) {
         if (num === 1) {
             document.getElementById('Nature_A_dec').checked = false;
@@ -737,7 +759,7 @@ function set_Nature(crease, num) {
             document.getElementById('Nature_C_inc').checked = false;
             document.getElementById('Nature_D_inc').checked = false;
         }
-    } else {
+    } else if (crease === 1) {
         if (num === 1) {
             document.getElementById('Nature_A_inc').checked = false;
             document.getElementById('Nature_B_dec').checked = false;
@@ -773,9 +795,23 @@ function set_Nature(crease, num) {
             document.getElementById('Nature_C_dec').checked = false;
             document.getElementById('Nature_D_dec').checked = false;
         }
+    } else if (crease === -1) {
+        document.getElementById('Nature_A_inc').checked = false;
+        document.getElementById('Nature_B_inc').checked = false;
+        document.getElementById('Nature_C_inc').checked = false;
+        document.getElementById('Nature_D_inc').checked = false;
+        document.getElementById('Nature_S_inc').checked = false;
+        document.getElementById('Nature_A_dec').checked = false;
+        document.getElementById('Nature_B_dec').checked = false;
+        document.getElementById('Nature_C_dec').checked = false;
+        document.getElementById('Nature_D_dec').checked = false;
+        document.getElementById('Nature_S_dec').checked = false;
     }
 
     reCalc();
+    if (type === 1) {
+        resetNatureTXT_byCheck();
+    }
     return;
 }
 
@@ -820,53 +856,53 @@ function getStats(num, lv, EV, IV, Basestats, Nature) {//get stats without outpu
 function getNature() {//get nature name by checkbox
     if (document.getElementById('Nature_A_inc').checked) {
         if (document.getElementById('Nature_B_dec').checked)
-            return "さみしがり";
+            return Nature_name[0];
         if (document.getElementById('Nature_C_dec').checked)
-            return "いじっぱり";
+            return Nature_name[1];
         if (document.getElementById('Nature_D_dec').checked)
-            return "やんちゃ";
+            return Nature_name[2];
         if (document.getElementById('Nature_S_dec').checked)
-            return "ゆうかん";
+            return Nature_name[3];
         return "？？？";
     } else if (document.getElementById('Nature_B_inc').checked) {
         if (document.getElementById('Nature_A_dec').checked)
-            return "ずぶとい";
+            return Nature_name[4];
         if (document.getElementById('Nature_C_dec').checked)
-            return "わんぱく";
+            return Nature_name[5];
         if (document.getElementById('Nature_D_dec').checked)
-            return "のうてんき";
+            return Nature_name[6];
         if (document.getElementById('Nature_S_dec').checked)
-            return "のんき";
+            return Nature_name[7];
         return "？？？";
     } else if (document.getElementById('Nature_C_inc').checked) {
         if (document.getElementById('Nature_A_dec').checked)
-            return "ひかえめ";
+            return Nature_name[8];
         if (document.getElementById('Nature_B_dec').checked)
-            return "おっとり";
+            return Nature_name[9];
         if (document.getElementById('Nature_D_dec').checked)
-            return "うっかりや";
+            return Nature_name[10];
         if (document.getElementById('Nature_S_dec').checked)
-            return "れいせい";
+            return Nature_name[11];
         return "？？？";
     } else if (document.getElementById('Nature_D_inc').checked) {
         if (document.getElementById('Nature_A_dec').checked)
-            return "おだやか";
+            return Nature_name[12];
         if (document.getElementById('Nature_B_dec').checked)
-            return "おとなしい";
+            return Nature_name[13];
         if (document.getElementById('Nature_C_dec').checked)
-            return "しんちょう";
+            return Nature_name[14];
         if (document.getElementById('Nature_S_dec').checked)
-            return "なまいき";
+            return Nature_name[15];
         return "？？？";
     } else if (document.getElementById('Nature_S_inc').checked) {
         if (document.getElementById('Nature_A_dec').checked)
-            return "おくびょう";
+            return Nature_name[16];
         if (document.getElementById('Nature_B_dec').checked)
-            return "せっかち";
+            return Nature_name[17];
         if (document.getElementById('Nature_C_dec').checked)
-            return "ようき";
+            return Nature_name[18];
         if (document.getElementById('Nature_D_dec').checked)
-            return "むじゃき";
+            return Nature_name[19];
         return "？？？";
     } else {
         if (document.getElementById('Nature_A_dec').checked)
@@ -879,7 +915,12 @@ function getNature() {//get nature name by checkbox
             return "？？？";
         if (document.getElementById('Nature_S_dec').checked)
             return "？？？";
-        return "まじめ";
+
+        if (Number(document.getElementById("naturename").value) > 19) {
+            return Nature_name[Number(document.getElementById("naturename").value)];
+        } else {
+            return Nature_name[24];
+        }
     }
 }
 
@@ -1599,20 +1640,195 @@ function getLV_byRule() {
 
 function getSpeedTheory() {
     result = "";
-    
+
     if (sc_button === "最速") {
         result = "max";
-    }else if (sc_button === "準速") {
+    } else if (sc_button === "準速") {
         result = "high";
-    }else if (sc_button === "無振") {
+    } else if (sc_button === "無振") {
         result = "normal";
-    }else if (sc_button === "下降") {
+    } else if (sc_button === "下降") {
         result = "low";
-    }else if (sc_button === "最遅") {
+    } else if (sc_button === "最遅") {
         result = "min";
-    }else{
+    } else {
         result = "max";
     }
-    
+
     return result;
+}
+
+function get(name, type) {
+    cnct = "";
+    result = "";
+    max = 0;
+
+    if (type === "nl") {
+        cnct = "\n";
+    } else if (type === "spc") {
+        cnct = " ";
+    }
+
+    if (name === "EV") {
+        max = 6;
+        for (let i = 0; i < max; i++) {
+            result += stats_name[i] + ":";
+            result += document.getElementById("EV_" + stats_name[i]).value;
+            if (i !== (max - 1)) {
+                result += cnct;
+            }
+        }
+    } else if (name === "IV") {
+        max = 6;
+        for (let i = 0; i < max; i++) {
+            result += stats_name[i] + ":";
+            result += document.getElementById("IV_" + stats_name[i]).value;
+            if (i !== (max - 1)) {
+                result += cnct;
+            }
+        }
+    } else if (name === "Basestats") {
+        max = 6;
+        for (let i = 0; i < max; i++) {
+            result += stats_name[i] + ":";
+            result += document.getElementById("Basestats_" + stats_name[i]).value;
+            if (i !== (max - 1)) {
+                result += cnct;
+            }
+        }
+    } else {
+        result = null;
+    }
+
+    console.log(result);
+}
+
+function setNature_byTXT() {
+    num = document.getElementById("naturename").value;
+
+    if (num === "0") {//A:1,B:2,C:3,D:4,S:5
+        document.getElementById('Nature_A_inc').checked = true;
+        set_Nature(0, 1, 0);    //inc
+        document.getElementById('Nature_B_dec').checked = true;
+        set_Nature(1, 2, 0);    //dec
+    } else if (num === "1") {
+        document.getElementById('Nature_A_inc').checked = true;
+        set_Nature(0, 1, 0);
+        document.getElementById('Nature_C_dec').checked = true;
+        set_Nature(1, 3, 0);
+    } else if (num === "2") {
+        document.getElementById('Nature_A_inc').checked = true;
+        set_Nature(0, 1, 0);
+        document.getElementById('Nature_D_dec').checked = true;
+        set_Nature(1, 4, 0);
+    } else if (num === "3") {
+        document.getElementById('Nature_A_inc').checked = true;
+        set_Nature(0, 1, 0);
+        document.getElementById('Nature_S_dec').checked = true;
+        set_Nature(1, 5, 0);
+    } else if (num === "4") {//--
+        document.getElementById('Nature_B_inc').checked = true;
+        set_Nature(0, 2, 0);
+        document.getElementById('Nature_A_dec').checked = true;
+        set_Nature(1, 1, 0);
+    } else if (num === "5") {
+        document.getElementById('Nature_B_inc').checked = true;
+        set_Nature(0, 2, 0);
+        document.getElementById('Nature_C_dec').checked = true;
+        set_Nature(1, 3, 0);
+    } else if (num === "6") {
+        document.getElementById('Nature_B_inc').checked = true;
+        set_Nature(0, 2, 0);
+        document.getElementById('Nature_D_dec').checked = true;
+        set_Nature(1, 4, 0);
+    } else if (num === "7") {
+        document.getElementById('Nature_B_inc').checked = true;
+        set_Nature(0, 2, 0);
+        document.getElementById('Nature_S_dec').checked = true;
+        set_Nature(1, 5, 0);
+    } else if (num === "8") {//--
+        document.getElementById('Nature_C_inc').checked = true;
+        set_Nature(0, 3, 0);
+        document.getElementById('Nature_A_dec').checked = true;
+        set_Nature(1, 1, 0);
+    } else if (num === "9") {
+        document.getElementById('Nature_C_inc').checked = true;
+        set_Nature(0, 3, 0);
+        document.getElementById('Nature_B_dec').checked = true;
+        set_Nature(1, 2, 0);
+    } else if (num === "10") {
+        document.getElementById('Nature_C_inc').checked = true;
+        set_Nature(0, 3, 0);
+        document.getElementById('Nature_D_dec').checked = true;
+        set_Nature(1, 4, 0);
+    } else if (num === "11") {
+        document.getElementById('Nature_C_inc').checked = true;
+        set_Nature(0, 3, 0);
+        document.getElementById('Nature_S_dec').checked = true;
+        set_Nature(1, 5, 0);
+    } else if (num === "12") {//--
+        document.getElementById('Nature_D_inc').checked = true;
+        set_Nature(0, 4, 0);
+        document.getElementById('Nature_A_dec').checked = true;
+        set_Nature(1, 1, 0);
+    } else if (num === "13") {
+        document.getElementById('Nature_D_inc').checked = true;
+        set_Nature(0, 4, 0);
+        document.getElementById('Nature_B_dec').checked = true;
+        set_Nature(1, 2, 0);
+    } else if (num === "14") {
+        document.getElementById('Nature_D_inc').checked = true;
+        set_Nature(0, 4, 0);
+        document.getElementById('Nature_C_dec').checked = true;
+        set_Nature(1, 3, 0);
+    } else if (num === "15") {
+        document.getElementById('Nature_D_inc').checked = true;
+        set_Nature(0, 4, 0);
+        document.getElementById('Nature_S_dec').checked = true;
+        set_Nature(1, 5, 0);
+    } else if (num === "16") {//--
+        document.getElementById('Nature_S_inc').checked = true;
+        set_Nature(0, 5, 0);
+        document.getElementById('Nature_A_dec').checked = true;
+        set_Nature(1, 1, 0);
+    } else if (num === "17") {
+        document.getElementById('Nature_S_inc').checked = true;
+        set_Nature(0, 5, 0);
+        document.getElementById('Nature_B_dec').checked = true;
+        set_Nature(1, 2, 0);
+    } else if (num === "18") {
+        document.getElementById('Nature_S_inc').checked = true;
+        set_Nature(0, 5, 0);
+        document.getElementById('Nature_C_dec').checked = true;
+        set_Nature(1, 3, 0);
+    } else if (num === "19") {
+        document.getElementById('Nature_S_inc').checked = true;
+        set_Nature(0, 5, 0);
+        document.getElementById('Nature_D_dec').checked = true;
+        set_Nature(1, 4, 0);
+    } else if (num === "20") {//--
+        set_Nature(-1, 0, 0);
+    } else if (num === "21") {
+        set_Nature(-1, 0, 0);
+    } else if (num === "22") {
+        set_Nature(-1, 0, 0);
+    } else if (num === "23") {
+        set_Nature(-1, 0, 0);
+    } else if (num === "24") {
+        set_Nature(-1, 0, 0);
+    }
+}
+
+function resetNatureTXT_byCheck() {
+    $('#naturename').val("").trigger('change');
+}
+
+function NatureTXTset_byCheck() {
+    text = getNature();
+
+    if (text === "？？？") {
+        $('#naturename').val("").trigger('change');
+    } else {
+        $('#naturename').val(Nature_name.indexOf(text)).trigger('change');
+    }
 }
