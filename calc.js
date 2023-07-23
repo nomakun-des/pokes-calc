@@ -1485,7 +1485,6 @@ function auto_HBD() {
     setEV(efficient_ev[0], 0);
     setEV(efficient_ev[1], 2);
     setEV(efficient_ev[2], 4);
-    console.log(efficient_ev[0] + "-" + efficient_ev[1] + "-" + efficient_ev[2]);
 }
 
 function Efficient_HBDcalc(lv, H, B, D) {
