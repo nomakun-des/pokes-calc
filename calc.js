@@ -1700,6 +1700,7 @@ function get(name, type) {
     }
 
     console.log(result);
+    return pokemon[Number(document.getElementById("pokename").value)][0];
 }
 
 function setNature_byTXT() {
